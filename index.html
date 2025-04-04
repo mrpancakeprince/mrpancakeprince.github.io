@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Šeimos Kelionių Planai</title>
-    <script src="/path/to/env.js" type="module"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -491,8 +489,8 @@
         </h2>
 
         <div class="map-image-container">
-            <img src="https://i.ibb.co/1tJ2XPSs/image.png" alt="Saugomų teritorijų žemėlapis"
-                class="protected-area-map">
+            <img src="https://i.ibb.co/1tJ2XPSs/image.png"
+                alt="Saugomų teritorijų žemėlapis" class="protected-area-map">
         </div>
 
         <div class="stamp-collection-info">
@@ -502,8 +500,7 @@
                 <li style="margin-bottom: 10px;">Rekomenduojama pasiimti savo rašalą</li>
             </ul>
 
-            <a href="https://i.ibb.co/1tJ2XPSs/image.png" download="https://i.ibb.co/1tJ2XPSs/image.png"
-                class="download-map-btn">
+            <a href="https://i.ibb.co/1tJ2XPSs/image.png" download="https://i.ibb.co/1tJ2XPSs/image.png" class="download-map-btn">
                 📥 Parsisiųsti žemėlapį
             </a>
         </div>
@@ -531,33 +528,6 @@
     </form>
 
     <script>
-
-        async function savePlan(planData) {
-            try {
-                const encryptedData = encryptData(planData);
-                await db.collection("plans").doc(currentPlanId).update({
-                    encryptedData: encryptedData
-                });
-            } catch (error) {
-                console.error("Šifravimo klaida:", error);
-            }
-        }
-
-        async function loadPlan() {
-            const doc = await db.collection("plans").doc(currentPlanId).get();
-            return decryptData(doc.data().encryptedData);
-        }
-
-        const encryptionKey = "ELVIS"; // Pakeiskite į unikalų raktą
-
-        function encryptData(data) {
-            return CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
-        }
-
-        function decryptData(ciphertext) {
-            const bytes = CryptoJS.AES.decrypt(ciphertext, encryptionKey);
-            return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-        }
 
         async function exportToGoogleMaps() {
             if (!currentPlanId || !map) {
