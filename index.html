@@ -528,7 +528,23 @@
     </form>
 
     <script>
+                // Blokuojame klaviatūros trumpinius
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+                alert('Ši operacija draudžiama!');
+            }
+        });
 
+        // Blokuojame dešinį pelės mygtuką
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        // Blokuojame iframe įkėlimą
+        if (window.top !== window.self) window.top.location = window.self.location;
+        
         async function exportToGoogleMaps() {
             if (!currentPlanId || !map) {
                 alert("Pirma pasirinkite planą su maršrutu");
