@@ -489,8 +489,8 @@
         </h2>
 
         <div class="map-image-container">
-            <img src="https://i.ibb.co/1tJ2XPSs/image.png"
-                alt="Saugomų teritorijų žemėlapis" class="protected-area-map">
+            <img src="https://i.ibb.co/1tJ2XPSs/image.png" alt="Saugomų teritorijų žemėlapis"
+                class="protected-area-map">
         </div>
 
         <div class="stamp-collection-info">
@@ -500,7 +500,8 @@
                 <li style="margin-bottom: 10px;">Pasiimkite savo rašalo</li>
             </ul>
 
-            <a href="https://i.ibb.co/1tJ2XPSs/image.png" download="https://i.ibb.co/1tJ2XPSs/image.png" class="download-map-btn">
+            <a href="https://i.ibb.co/1tJ2XPSs/image.png" download="https://i.ibb.co/1tJ2XPSs/image.png"
+                class="download-map-btn">
                 📥 Parsisiųsti žemėlapį
             </a>
         </div>
@@ -528,7 +529,7 @@
     </form>
 
     <script>
-                // Blokuojame klaviatūros trumpinius
+        // Blokuojame klaviatūros trumpinius
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S')) {
                 e.preventDefault();
@@ -544,7 +545,7 @@
 
         // Blokuojame iframe įkėlimą
         if (window.top !== window.self) window.top.location = window.self.location;
-        
+
         async function exportToGoogleMaps() {
             if (!currentPlanId || !map) {
                 alert("Pirma pasirinkite planą su maršrutu");
@@ -575,18 +576,38 @@
                 return;
             }
 
-            // Formuojame Google Maps URL
+            // Mobile aptikimas
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            // URL kūrimas
             const origin = `${coordinates[0][0]},${coordinates[0][1]}`;
             const destination = `${coordinates[coordinates.length - 1][0]},${coordinates[coordinates.length - 1][1]}`;
-            const waypoints = coordinates.slice(1, -1).map(c => `${c[0]},${c[1]}`).join('|');
 
-            const url = new URL("https://www.google.com/maps/dir/");
-            url.searchParams.set('api', '1');
-            url.searchParams.set('origin', origin);
-            url.searchParams.set('destination', destination);
-            if (waypoints) url.searchParams.set('waypoints', waypoints);
+            let url;
+            if (isMobile) {
+                // Supaprastinta versija mobiliesiems
+                url = new URL("https://www.google.com/maps/dir/");
+                url.searchParams.set('api', '1');
+                url.searchParams.set('origin', origin);
+                url.searchParams.set('destination', destination);
+                url.searchParams.set('travelmode', 'driving');
+                url.searchParams.set('_fsi', '1'); // Force web version
+            } else {
+                // Pilna versija desktop
+                const waypoints = coordinates.slice(1, -1).map(c => `${c[0]},${c[1]}`).join('|');
+                url = new URL("https://www.google.com/maps/dir/");
+                url.searchParams.set('api', '1');
+                url.searchParams.set('origin', origin);
+                url.searchParams.set('destination', destination);
+                if (waypoints) url.searchParams.set('waypoints', waypoints);
+            }
 
-            window.open(url.toString(), '_blank');
+            // Atidarymo logika
+            if (isMobile) {
+                window.location.href = url.toString(); // Geriau veikia mobiliuose
+            } else {
+                window.open(url.toString(), '_blank');
+            }
         }
 
         // ========== FIREBASE KONFIGURACIJA ==========
