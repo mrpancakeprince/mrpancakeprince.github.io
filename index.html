@@ -11,6 +11,64 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <style>
+        .progress-container {
+            margin: 30px 0;
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #2c5f96;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 25px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #2c5f96 0%, #228B22 100%);
+            width: 0%;
+            border-radius: 12px;
+            transition: width 0.5s ease, box-shadow 0.3s ease;
+            box-shadow: 2px 0 8px rgba(44, 95, 150, 0.2);
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
         .protected-areas-section {
             margin: 40px 0;
             background: white;
@@ -71,6 +129,12 @@
             border-radius: 25px;
             text-decoration: none;
             transition: all 0.3s ease;
+            display: flex;
+            /* Enables CSS flexbox */
+            justify-content: center;
+            /* Centers horizontally */
+            align-items: center;
+            /* Centers vertically */
         }
 
         .download-map-btn:hover {
@@ -493,17 +557,20 @@
                 class="protected-area-map">
         </div>
 
-        <div class="stamp-collection-info">
-            <h3 style="color: #228B22; margin-bottom: 15px;">ℹ️ Svarbu žinoti:</h3>
-            <ul style="list-style-type: ' 🌱'; padding-left: 25px;">
-                <li style="margin-bottom: 10px;">Žvaigždės – aplankytos vietos</li>
-                <li style="margin-bottom: 10px;">Pasiimkite savo rašalo</li>
-            </ul>
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>🟢 Aplankyta parkų</span>
+                <span id="progress-count">0 / 35</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
 
-            <a href="https://i.ibb.co/sJb3xH4p/image-1.png" download="https://i.ibb.co/sJb3xH4p/image-1.png"
-                class="download-map-btn">
-                📥 Parsisiųsti žemėlapį
-            </a>
+        <a href="https://i.ibb.co/sJb3xH4p/image-1.png" download="https://i.ibb.co/sJb3xH4p/image-1.png"
+            class="download-map-btn">
+            📥 Parsisiųsti žemėlapį
+        </a>
         </div>
     </section>
 
@@ -512,12 +579,20 @@
         <div class="stat-item">⏱️ Laikas automobilyje: <span id="total-duration">-</span></div>
     </div>
 
+    <hr color: #2c5f96>
+
+    <h1 style="text-align: center; color: #2c5f96; margin-bottom: 25px;">
+        Idėjos
+    </h1>
+
     <div id="itinerary-container"></div>
 
     <div id="map-container" class="hidden">
         <div id="map"></div>
         <div id="map-notification"></div> <!-- Klaidų pranešimai -->
     </div>
+
+    <hr>
 
     <h2 style="text-align:center">✏️ Pridėti naują veiklą ✏️</h2>
     <form id="suggestion-form">
@@ -925,6 +1000,25 @@
 
             e.target.reset();
         });
+
+        function updateProgress(visitedCount) {
+            const progressFill = document.getElementById('progress-fill');
+            const progressCount = document.getElementById('progress-count');
+            const percentage = (visitedCount / 35) * 100;
+
+            progressFill.style.width = `${percentage}%`;
+            progressCount.textContent = `${visitedCount} / 35`;
+
+            // Gradiento animacija
+            const hueRotate = percentage * 3.6;
+            progressFill.style.background = `linear-gradient(
+        135deg, 
+        hsl(${200 - (percentage * 0.5)}, 60%, 45%) 0%, 
+        hsl(${120 + (percentage * 0.3)}, 80%, 35%) 100%
+    )`;
+        }
+
+        updateProgress(8); // Pakeiskite skaičių į tikrą aplankytų parkų kiekį
 
         // Paleisti
         initPlans();
