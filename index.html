@@ -11,6 +11,42 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
     <style>
+        /* Kontekstinis meniu */
+        .context-menu {
+            position: fixed;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            min-width: 180px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .context-menu.visible {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .context-menu-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: #2c5f96;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .context-menu-item:hover {
+            background: #f0f8ff;
+            transform: translateX(3px);
+        }
+
         @media (max-width: 768px) {
             .glass-nav {
                 flex-direction: column;
@@ -642,6 +678,10 @@
 <body>
     <h1 style="text-align: center;">🚗 Šeimos Kelionių Planai 🚗</h1>
 
+    <div id="context-menu" class="context-menu">
+        <div class="context-menu-item" onclick="handleEditEntry()">✏️ Redaguoti</div>
+    </div>
+
     <div class="plan-controls">
         <select id="plan-selector" onchange="loadSelectedPlan()"></select>
         <div class="button-group">
@@ -1178,6 +1218,82 @@
             t--;
             return -c / 2 * (t * (t - 2) - 1) + b;
         }
+
+        let contextMenuState = {
+            visible: false,
+            selectedEntry: null
+        };
+
+        // Kontekstinio meniu valdymas
+        document.addEventListener('contextmenu', async (e) => {
+            const card = e.target.closest('.itinerary-card');
+            if (card) {
+                e.preventDefault();
+                e.stopPropagation(); // Užkirsti kelią globaliam blokavimui
+
+                try {
+                    const entryId = card.querySelector('.delete-entry-btn')
+                        .getAttribute('onclick').match(/'([^']+)'/)[1];
+
+                    const doc = await db.collection("plans").doc(currentPlanId).get();
+                    const entry = doc.data().entries.find(e => e.id === entryId);
+
+                    if (entry) {
+                        contextMenuState.selectedEntry = entry;
+                        showContextMenu(e.clientX, e.clientY);
+                    }
+                } catch (error) {
+                    console.error("Klaida atveriant meniu:", error);
+                }
+            }
+        });
+
+        function showContextMenu(x, y) {
+            const menu = document.getElementById('context-menu');
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const menuWidth = 180; // Fiksuotas dydis
+            const menuHeight = 48; // Fiksuotas dydis
+
+            menu.style.left = `${Math.min(x, viewportWidth - menuWidth - 10)}px`;
+            menu.style.top = `${Math.min(y, viewportHeight - menuHeight - 10)}px`;
+            menu.classList.add('visible');
+        }
+
+        function hideContextMenu() {
+            document.getElementById('context-menu').classList.remove('visible');
+            contextMenuState.selectedEntry = null;
+        }
+
+        // Redagavimo funkcija
+        async function handleEditEntry() {
+            if (!contextMenuState.selectedEntry) return;
+
+            const newNotes = prompt("Redaguoti pastabas:", contextMenuState.selectedEntry.notes);
+            if (newNotes === null) return;
+
+            const planRef = db.collection("plans").doc(currentPlanId);
+            const doc = await planRef.get();
+            const entries = [...doc.data().entries];
+
+            // Atnaujiname pasirinktą įrašą
+            const updatedEntries = entries.map(entry =>
+                entry.id === contextMenuState.selectedEntry.id
+                    ? { ...entry, notes: newNotes }
+                    : entry
+            );
+
+            await planRef.update({ entries: updatedEntries });
+            renderItinerary();
+            hideContextMenu();
+        }
+
+        // Uždarymo event listeners
+        document.addEventListener('click', hideContextMenu);
+        document.addEventListener('wheel', hideContextMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideContextMenu();
+        })
 
         // Paleisti
         initPlans();
