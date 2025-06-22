@@ -376,13 +376,14 @@
             <div class="logo">
                 <i class="fas fa-route"></i>
             </div>
-            <h1>Maršrutai po Aukštaitiją ir Dzūkiją</h1>
+            <h1>Maršrutai po Aukštaitiją, Dzūkiją ir Trakų–Dieveniškių apylinkes</h1>
         </div>
 
         <div class="content">
             <div class="intro">
                 <p>Sveiki,</p>
-                <p>Parengiau du išskirtinius maršrutus – pažintines keliones po Aukštaitijos ir Dzūkijos regionus.
+                <p>Parengiau tris išskirtinius maršrutus – pažintines keliones po Aukštaitijos, Dzūkijos, Trakų bei
+                    Dieveniškių regionus.
                     Maršrutai pritaikyti vienos dienos išvykai, apimantys gamtos objektus, pažintinius takus ir
                     išskirtines apžvalgos vietas.</p>
             </div>
@@ -631,19 +632,134 @@
                             </div>
                         </div>
 
-                        <script>
-                            // Papildoma interaktyvumo funkcija
-                            document.querySelectorAll('.toggle-details').forEach(button => {
-                                button.addEventListener('click', function () {
-                                    const card = this.closest('.route-card');
-                                    const mapPreview = document.createElement('div');
+                        <br>
+                        <hr>
+                        <br>
 
-                                    if (card.querySelector('.map-preview')) {
-                                        card.querySelector('.map-preview').remove();
-                                        this.innerHTML = '<i class="fas fa-map-marked-alt"></i> Rodyti žemėlapio peržiūrą';
-                                    } else {
-                                        mapPreview.className = 'map-preview';
-                                        mapPreview.innerHTML = `
+                        <div class="route-card dieveniskes">
+                            <div class="route-header">
+                                <div class="route-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <h2 class="route-title">Trakų–Dieveniškių maršrutas</h2>
+                            </div>
+
+                            <div class="route-content">
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Laikas</th>
+                                                <th>Vieta</th>
+                                                <th>Trumpas aprašymas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="time-col">07:00
+                                                </td>
+                                                <td class="location-col">Išvykstam</td>
+                                                <td class="description-col">Prieš išeinant pro duris, svarbu
+                                                    pasitikrinti, ar viską
+                                                    pasiėmėte!</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">9:50
+                                                    <br>
+                                                    9:55
+                                                </td>
+                                                <td class="location-col">Trakų istorinis nacionalinis parkas</td>
+                                                <td class="description-col">Antspaudas.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">10:15
+                                                    11:30
+                                                </td>
+                                                <td class="location-col">Varnikų pažintinis takas</td>
+                                                <td class="description-col">Lietuvoje daug gražios gamtos, bet ši vieta
+                                                    yra tikrai išskirtinė. Varnikų botaninio zoologinio draustinio
+                                                    pažintinis takas yra 3,5 kilometro ilgio. Jis apima du reljefo ir
+                                                    kraštovaizdžio tipus: ledyno pakraščio suformuotą kalvotą miškingą
+                                                    reljefą bei pelkę su liekaniniais ežerėliais.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">13:40
+                                                    13:55
+                                                </td>
+                                                <td class="location-col">Aukštojo kalnas</td>
+                                                <td class="description-col">Tai aukščiausiai virš jūros lygio iškilęs
+                                                    žemės paviršiaus taškas Lietuvoje, kurio aukštis siekia beveik 294
+                                                    metrus. Aukštojo kalno viršuje pastatytas apžvalgos bokštas (10 m),
+                                                    nuo kurio atsiveria aplinkui plytintis Medininkų aukštumos
+                                                    kraštovaizdis.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">14:00
+                                                    14:40
+                                                </td>
+                                                <td class="location-col">Medininkų pilis</td>
+                                                <td class="description-col">Medininkų pilis yra didžiausia ir viena
+                                                    seniausių pilių Lietuvoje. Ir kadangi atstatyta ji palyginti
+                                                    neseniai - 2012 metais, dar prieš kelioliką metų jos teritorijoje
+                                                    ganėsi karvės. Medininkų pilis, ko gero, yra garsiausių Lietuvos
+                                                    pilių šešelyje. Bet nereikia apsigauti - Medininkų pilyje tikrai yra
+                                                    ką pamatyti.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">15:30
+                                                    15:35
+                                                </td>
+                                                <td class="location-col">Dieveniškių istorinis regioninis parkas</td>
+                                                <td class="description-col">Antspaudas.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">15:40
+                                                    16:00
+                                                </td>
+                                                <td class="location-col">Bėčionų piliakalnis</td>
+                                                <td class="description-col">Vienintelis žinomas piliakalnis Dieveniškių
+                                                    apylinkėse. Datuojamas I tūkst. pr. m. e. Dar ir dabar galima
+                                                    pastebėti pylimo liekanas, o šalia jų griovio pėdsakus.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">16:10
+                                                    16:40
+                                                </td>
+                                                <td class="location-col">Gaujos mokomasis takas</td>
+                                                <td class="description-col">Tako trasoje (1,7 km) yra įrengti
+                                                    informaciniai stendai, tilteliai, suolai, apžvalgos bokštas ir kt.
+                                                    2004 metais Gaujos mokamasis takas buvo pripažintas geriausiu
+                                                    Lietuvoje.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="time-col">20:30</td>
+                                                <td class="location-col">Grįžimas namo</td>
+                                                <td class="description-col">Kelionės pabaiga.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="note">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>Būtina pasiimti asmens tapatybę patvirtinančius dokumentus!
+                                    </div>
+                                </div>
+
+                                <script>
+                                    // Papildoma interaktyvumo funkcija
+                                    document.querySelectorAll('.toggle-details').forEach(button => {
+                                        button.addEventListener('click', function () {
+                                            const card = this.closest('.route-card');
+                                            const mapPreview = document.createElement('div');
+
+                                            if (card.querySelector('.map-preview')) {
+                                                card.querySelector('.map-preview').remove();
+                                                this.innerHTML = '<i class="fas fa-map-marked-alt"></i> Rodyti žemėlapio peržiūrą';
+                                            } else {
+                                                mapPreview.className = 'map-preview';
+                                                mapPreview.innerHTML = `
             <div style="padding: 20px; background: #f8f9fa; border-top: 1px solid #eee; margin-top: 15px; border-radius: 0 0 12px 12px;">
               <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
                 <i class="fas fa-map" style="font-size: 24px; color: #0d47a1;"></i>
@@ -656,12 +772,12 @@
             </div>
           `;
 
-                                        card.querySelector('.route-content').appendChild(mapPreview);
-                                        this.innerHTML = '<i class="fas fa-times"></i> Slėpti žemėlapio peržiūrą';
-                                    }
-                                });
-                            });
-                        </script>
+                                                card.querySelector('.route-content').appendChild(mapPreview);
+                                                this.innerHTML = '<i class="fas fa-times"></i> Slėpti žemėlapio peržiūrą';
+                                            }
+                                        });
+                                    });
+                                </script>
 </body>
 
 </html>
