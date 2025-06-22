@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelionių maršrutai</title>
+    <title>🗺️ KELIONĖS 🚗</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -12,6 +12,9 @@
             --primary-light: #5472d3;
             --secondary: #4e342e;
             --secondary-light: #7b5e57;
+            --tertiary: #2e7d32;
+            /* Nauja spalva Trečiam maršrutui */
+            --tertiary-light: #4caf50;
             --accent: #ff6f00;
             --light: #f8f9fa;
             --dark: #212529;
@@ -147,6 +150,10 @@
             background: linear-gradient(to right, var(--secondary), var(--secondary-light));
         }
 
+        .dieveniskes .route-header {
+            background: linear-gradient(to right, var(--tertiary), var(--tertiary-light));
+        }
+
         .route-icon {
             width: 50px;
             height: 50px;
@@ -204,6 +211,10 @@
             border-left: 4px solid var(--secondary);
         }
 
+        .dieveniskes th:first-child {
+            border-left: 4px solid var(--tertiary);
+        }
+
         td {
             padding: 14px 20px;
             border-bottom: 1px solid #eaeaea;
@@ -226,6 +237,10 @@
 
         .dzukija .time-col {
             color: var(--secondary);
+        }
+
+        .dieveniskes .time-col {
+            color: var(--tertiary);
         }
 
         .location-col {
@@ -255,34 +270,6 @@
             margin-top: 2px;
         }
 
-        .toggle-details {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f0f5ff;
-            color: var(--primary);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: var(--transition);
-        }
-
-        .toggle-details:hover {
-            background: #e1ebff;
-        }
-
-        .dzukija .toggle-details {
-            background: #f5f0ed;
-            color: var(--secondary);
-        }
-
-        .dzukija .toggle-details:hover {
-            background: #ece5e1;
-        }
-
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -290,24 +277,6 @@
             font-size: 0.95rem;
             border-top: 1px solid #eaeaea;
             margin-top: 10px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contact-item i {
-            color: var(--primary);
         }
 
         @media (max-width: 768px) {
@@ -503,281 +472,257 @@
 
                     <div class="note">
                         <i class="fas fa-info-circle"></i>
-                        <div>Jeigu norėtumėme aplankyti Sartų regioninį parką, kelionė pailgėtų mažiausiai 45 min.
+                        <div>Jeigu norėtumėme aplankyti Sartų regioninį parką, kelionė pailgėtų <b>mažiausiai</b> 45 min.
                         </div>
                     </div>
 
                     <div class="note">
                         <i class="fas fa-info-circle"></i>
-                        <div>Tarpinis sustojimas galimas ir kitoje vietoje.
+                        <div>Tarpinis sustojimas galimas ir <b>kitoje vietoje</b>.
                         </div>
                     </div>
-
-                    <br>
-                    <hr>
-                    <br>
-
-                    <!-- Dzūkijos maršrutas -->
-                    <div class="route-card dzukija">
-                        <div class="route-header">
-                            <div class="route-icon">
-                                <i class="fas fa-hiking"></i>
-                            </div>
-                            <h2 class="route-title">Dzūkijos maršrutas</h2>
-                        </div>
-
-                        <div class="route-content">
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Laikas</th>
-                                            <th>Vieta</th>
-                                            <th>Trumpas aprašymas</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="time-col">06:55</td>
-                                            <td class="location-col">Išvykstam</td>
-                                            <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti,
-                                                ar viską pasiėmėte!</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">10:10</td>
-                                            <td class="location-col">Aukštadvario regioninis parkas</td>
-                                            <td class="description-col">Trumpa sustojimo vieta ir antspaudas.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">11:10
-                                                <br>
-                                                11:25
-                                            </td>
-                                            <td class="location-col">Merkinės apžvalgos bokštas</td>
-                                            <td class="description-col">Bokšto vieta – aukštas Nemuno krantas, apaugęs
-                                                tipiniu Dzūkijos mišku – pušynu. Apžvalgos aikštelės įrengtos 15 ir 25 m
-                                                aukštyje, jos netaisyklingos formos, primena stilizuotas pušų lajas.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">11:45
-                                                12:00
-                                            </td>
-                                            <td class="location-col">Puvočių apžvalgos bokštas</td>
-                                            <td class="description-col">„Telia“ bokšte yra įrengta apžvalgos aikštelė –
-                                                30 m. aukštyje. Bokštas iškilęs aukščiau miškų, tad nuo apžvalgos
-                                                aikštelės atsiveria toliai ir aplinkui matosi žalia miškų jūra.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">12:10
-                                                12:30
-                                            </td>
-                                            <td class="location-col">Klonių kalno Gaidžio kopa</td>
-                                            <td class="description-col">Kopos – ne tik Kuršių nerijos simbolis. Ši kopa
-                                                dar gyva: ji dar slenka ir, padedama vėjo, stengiasi kovoti su augalais,
-                                                pildama ant jų baltą smėlį.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">12:35</td>
-                                            <td class="location-col">Dzūkijos nacionalinis parkas</td>
-                                            <td class="description-col">Antspaudas.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">13:00
-                                                14:00
-                                            </td>
-                                            <td class="location-col">Čepkelių raisto mokomasis takas</td>
-                                            <td class="description-col">Šiame take lankytojai pamato Čepkelių raistą,
-                                                pušynais apaugusias kopas, susipažįsta su pelkės ir miško augmenija.
-                                                Suteikta galimybė nors akies krašteliu žvilgtelėti į vieną vertingiausių
-                                                mūsų krašto objektų – Čepkelių raistą. (~10
-                                                min. nuo
-                                                Dzūkijos NP).</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">14:40
-                                                15:00
-                                            </td>
-                                            <td class="location-col">Merkinės piliakalnis</td>
-                                            <td class="description-col">Merkinės piliakalnis bei nuo jo atsiverianti
-                                                Nemuno ir Merkio santaka jau seniai tapo Dainavos krašto simboliu. Ties
-                                                Merkio ir Nemuno santaka, kairiajame Stangės upelio krante, nupjauto
-                                                kūgio formos kalvoje stūkso piliakalnis.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">15:45
-                                                18:10
-                                            </td>
-                                            <td class="location-col">Punios šilo pažintinis takas</td>
-                                            <td class="description-col">Punios šilo pažintinis takas – 8 km ilgio trasa
-                                                vingiuojanti per vieną gražiausių Lietuvos miškų – Punios šilą. Pakeliui
-                                                – šimtamečiai ąžuolai, retos augalų rūšys, Panemuninkų piliakalnis ir
-                                                vaizdai į Punios piliakalnį esantį kitoje Nemuno pusėje.</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="time-col">21:10</td>
-                                            <td class="location-col">Grįžimas namo</td>
-                                            <td class="description-col">Kelionės pabaiga.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="note">
-                                <i class="fas fa-info-circle"></i>
-                                <div>Į Čepkelių raistą ekskursijos vyksta 10, 13 ir 15 val. – būtina išankstinė
-                                    registracija.
-                                </div>
-                            </div>
-                        </div>
-
-                        <br>
-                        <hr>
-                        <br>
-
-                        <div class="route-card dieveniskes">
-                            <div class="route-header">
-                                <div class="route-icon">
-                                    <i class="fas fa-tree"></i>
-                                </div>
-                                <h2 class="route-title">Trakų–Dieveniškių maršrutas</h2>
-                            </div>
-
-                            <div class="route-content">
-                                <div class="table-container">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Laikas</th>
-                                                <th>Vieta</th>
-                                                <th>Trumpas aprašymas</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="time-col">07:00
-                                                </td>
-                                                <td class="location-col">Išvykstam</td>
-                                                <td class="description-col">Prieš išeinant pro duris, svarbu
-                                                    pasitikrinti, ar viską
-                                                    pasiėmėte!</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">9:50
-                                                    <br>
-                                                    9:55
-                                                </td>
-                                                <td class="location-col">Trakų istorinis nacionalinis parkas</td>
-                                                <td class="description-col">Antspaudas.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">10:15
-                                                    11:30
-                                                </td>
-                                                <td class="location-col">Varnikų pažintinis takas</td>
-                                                <td class="description-col">Lietuvoje daug gražios gamtos, bet ši vieta
-                                                    yra tikrai išskirtinė. Varnikų botaninio zoologinio draustinio
-                                                    pažintinis takas yra 3,5 kilometro ilgio. Jis apima du reljefo ir
-                                                    kraštovaizdžio tipus: ledyno pakraščio suformuotą kalvotą miškingą
-                                                    reljefą bei pelkę su liekaniniais ežerėliais.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">13:40
-                                                    13:55
-                                                </td>
-                                                <td class="location-col">Aukštojo kalnas</td>
-                                                <td class="description-col">Tai aukščiausiai virš jūros lygio iškilęs
-                                                    žemės paviršiaus taškas Lietuvoje, kurio aukštis siekia beveik 294
-                                                    metrus. Aukštojo kalno viršuje pastatytas apžvalgos bokštas (10 m),
-                                                    nuo kurio atsiveria aplinkui plytintis Medininkų aukštumos
-                                                    kraštovaizdis.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">14:00
-                                                    14:40
-                                                </td>
-                                                <td class="location-col">Medininkų pilis</td>
-                                                <td class="description-col">Medininkų pilis yra didžiausia ir viena
-                                                    seniausių pilių Lietuvoje. Ir kadangi atstatyta ji palyginti
-                                                    neseniai - 2012 metais, dar prieš kelioliką metų jos teritorijoje
-                                                    ganėsi karvės. Medininkų pilis, ko gero, yra garsiausių Lietuvos
-                                                    pilių šešelyje. Bet nereikia apsigauti - Medininkų pilyje tikrai yra
-                                                    ką pamatyti.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">15:30
-                                                    15:35
-                                                </td>
-                                                <td class="location-col">Dieveniškių istorinis regioninis parkas</td>
-                                                <td class="description-col">Antspaudas.
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">15:40
-                                                    16:00
-                                                </td>
-                                                <td class="location-col">Bėčionų piliakalnis</td>
-                                                <td class="description-col">Vienintelis žinomas piliakalnis Dieveniškių
-                                                    apylinkėse. Datuojamas I tūkst. pr. m. e. Dar ir dabar galima
-                                                    pastebėti pylimo liekanas, o šalia jų griovio pėdsakus.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">16:10
-                                                    16:40
-                                                </td>
-                                                <td class="location-col">Gaujos mokomasis takas</td>
-                                                <td class="description-col">Tako trasoje (1,7 km) yra įrengti
-                                                    informaciniai stendai, tilteliai, suolai, apžvalgos bokštas ir kt.
-                                                    2004 metais Gaujos mokamasis takas buvo pripažintas geriausiu
-                                                    Lietuvoje.</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="time-col">20:30</td>
-                                                <td class="location-col">Grįžimas namo</td>
-                                                <td class="description-col">Kelionės pabaiga.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="note">
-                                    <i class="fas fa-info-circle"></i>
-                                    <div>Būtina pasiimti asmens tapatybę patvirtinančius dokumentus!
-                                    </div>
-                                </div>
-
-                                <script>
-                                    // Papildoma interaktyvumo funkcija
-                                    document.querySelectorAll('.toggle-details').forEach(button => {
-                                        button.addEventListener('click', function () {
-                                            const card = this.closest('.route-card');
-                                            const mapPreview = document.createElement('div');
-
-                                            if (card.querySelector('.map-preview')) {
-                                                card.querySelector('.map-preview').remove();
-                                                this.innerHTML = '<i class="fas fa-map-marked-alt"></i> Rodyti žemėlapio peržiūrą';
-                                            } else {
-                                                mapPreview.className = 'map-preview';
-                                                mapPreview.innerHTML = `
-            <div style="padding: 20px; background: #f8f9fa; border-top: 1px solid #eee; margin-top: 15px; border-radius: 0 0 12px 12px;">
-              <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                <i class="fas fa-map" style="font-size: 24px; color: #0d47a1;"></i>
-                <h3 style="font-size: 1.2rem;">Maršruto žemėlapio peržiūra</h3>
-              </div>
-              <div style="background: #e9ecef; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6c757d;">
-                Interaktyvus maršruto žemėlapis
-              </div>
-              <p style="margin-top: 15px; font-size: 0.9rem; color: #6c757d;">Norėdami gauti išsamų maršruto žemėlapį, susisiekite su mumis el. paštu.</p>
+                </div>
             </div>
-          `;
 
-                                                card.querySelector('.route-content').appendChild(mapPreview);
-                                                this.innerHTML = '<i class="fas fa-times"></i> Slėpti žemėlapio peržiūrą';
-                                            }
-                                        });
-                                    });
-                                </script>
+            <!-- Dzūkijos maršrutas -->
+            <div class="route-card dzukija">
+                <div class="route-header">
+                    <div class="route-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h2 class="route-title">Dzūkijos maršrutas</h2>
+                </div>
+
+                <div class="route-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Laikas</th>
+                                    <th>Vieta</th>
+                                    <th>Trumpas aprašymas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time-col">06:55</td>
+                                    <td class="location-col">Išvykstam</td>
+                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti,
+                                        ar viską pasiėmėte!</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">10:10</td>
+                                    <td class="location-col">Aukštadvario regioninis parkas</td>
+                                    <td class="description-col">Trumpa sustojimo vieta ir antspaudas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">11:10
+                                        <br>
+                                        11:25
+                                    </td>
+                                    <td class="location-col">Merkinės apžvalgos bokštas</td>
+                                    <td class="description-col">Bokšto vieta – aukštas Nemuno krantas, apaugęs
+                                        tipiniu Dzūkijos mišku – pušynu. Apžvalgos aikštelės įrengtos 15 ir 25 m
+                                        aukštyje, jos netaisyklingos formos, primena stilizuotas pušų lajas.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">11:45
+                                        12:00
+                                    </td>
+                                    <td class="location-col">Puvočių apžvalgos bokštas</td>
+                                    <td class="description-col">„Telia“ bokšte yra įrengta apžvalgos aikštelė –
+                                        30 m. aukštyje. Bokštas iškilęs aukščiau miškų, tad nuo apžvalgos
+                                        aikštelės atsiveria toliai ir aplinkui matosi žalia miškų jūra.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">12:10
+                                        12:30
+                                    </td>
+                                    <td class="location-col">Klonių kalno Gaidžio kopa</td>
+                                    <td class="description-col">Kopos – ne tik Kuršių nerijos simbolis. Ši kopa
+                                        dar gyva: ji dar slenka ir, padedama vėjo, stengiasi kovoti su augalais,
+                                        pildama ant jų baltą smėlį.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">12:35</td>
+                                    <td class="location-col">Dzūkijos nacionalinis parkas</td>
+                                    <td class="description-col">Antspaudas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">13:00
+                                        14:00
+                                    </td>
+                                    <td class="location-col">Čepkelių raisto mokomasis takas</td>
+                                    <td class="description-col">Šiame take lankytojai pamato Čepkelių raistą,
+                                        pušynais apaugusias kopas, susipažįsta su pelkės ir miško augmenija.
+                                        Suteikta galimybė nors akies krašteliu žvilgtelėti į vieną vertingiausių
+                                        mūsų krašto objektų – Čepkelių raistą. (~10
+                                        min. nuo
+                                        Dzūkijos NP).</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">14:40
+                                        15:00
+                                    </td>
+                                    <td class="location-col">Merkinės piliakalnis</td>
+                                    <td class="description-col">Merkinės piliakalnis bei nuo jo atsiverianti
+                                        Nemuno ir Merkio santaka jau seniai tapo Dainavos krašto simboliu. Ties
+                                        Merkio ir Nemuno santaka, kairiajame Stangės upelio krante, nupjauto
+                                        kūgio formos kalvoje stūkso piliakalnis.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">15:45
+                                        18:10
+                                    </td>
+                                    <td class="location-col">Punios šilo pažintinis takas</td>
+                                    <td class="description-col">Punios šilo pažintinis takas – 8 km ilgio trasa
+                                        vingiuojanti per vieną gražiausių Lietuvos miškų – Punios šilą. Pakeliui
+                                        – šimtamečiai ąžuolai, retos augalų rūšys, Panemuninkų piliakalnis ir
+                                        vaizdai į Punios piliakalnį esantį kitoje Nemuno pusėje.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">21:10</td>
+                                    <td class="location-col">Grįžimas namo</td>
+                                    <td class="description-col">Kelionės pabaiga.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <div>Į Čepkelių raistą ekskursijos vyksta 10, 13 ir 15 val. – <b>būtina</b> išankstinė
+                            registracija.
+                        </div>
+                    </div>
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <div>Atsilikus nuo grafiko, gali tekti <b>laikinai</b> pradžioje praleisti Merkinės apžvalgos bokštą arba Gaidžio kopą.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trakų–Dieveniškių maršrutas -->
+            <div class="route-card dieveniskes">
+                <div class="route-header">
+                    <div class="route-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h2 class="route-title">Trakų–Dieveniškių maršrutas</h2>
+                </div>
+
+                <div class="route-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Laikas</th>
+                                    <th>Vieta</th>
+                                    <th>Trumpas aprašymas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time-col">07:00
+                                    </td>
+                                    <td class="location-col">Išvykstam</td>
+                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską
+                                        pasiėmėte!</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">9:50
+                                        <br>
+                                        9:55
+                                    </td>
+                                    <td class="location-col">Trakų istorinis nacionalinis parkas</td>
+                                    <td class="description-col">Antspaudas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">10:15
+                                        11:30
+                                    </td>
+                                    <td class="location-col">Varnikų pažintinis takas</td>
+                                    <td class="description-col">Lietuvoje daug gražios gamtos, bet ši vieta
+                                        yra tikrai išskirtinė. Varnikų botaninio zoologinio draustinio
+                                        pažintinis takas yra 3,5 kilometro ilgio. Jis apima du reljefo ir
+                                        kraštovaizdžio tipus: ledyno pakraščio suformuotą kalvotą miškingą
+                                        reljefą bei pelkę su liekaniniais ežerėliais.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">13:40
+                                        13:55
+                                    </td>
+                                    <td class="location-col">Aukštojo kalnas</td>
+                                    <td class="description-col">Tai aukščiausiai virš jūros lygio iškilęs
+                                        žemės paviršiaus taškas Lietuvoje, kurio aukštis siekia beveik 294
+                                        metrus. Aukštojo kalno viršuje pastatytas apžvalgos bokštas (10 m),
+                                        nuo kurio atsiveria aplinkui plytintis Medininkų aukštumos
+                                        kraštovaizdis.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">14:00
+                                        14:40
+                                    </td>
+                                    <td class="location-col">Medininkų pilis</td>
+                                    <td class="description-col">Medininkų pilis yra didžiausia ir viena
+                                        seniausių pilių Lietuvoje. Ir kadangi atstatyta ji palyginti
+                                        neseniai - 2012 metais, dar prieš kelioliką metų jos teritorijoje
+                                        ganėsi karvės. Medininkų pilis, ko gero, yra garsiausių Lietuvos
+                                        pilių šešelyje. Bet nereikia apsigauti - Medininkų pilyje tikrai yra
+                                        ką pamatyti.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">15:30
+                                        15:35
+                                    </td>
+                                    <td class="location-col">Dieveniškių istorinis regioninis parkas</td>
+                                    <td class="description-col">Antspaudas.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">15:40
+                                        16:00
+                                    </td>
+                                    <td class="location-col">Bėčionų piliakalnis</td>
+                                    <td class="description-col">Vienintelis žinomas piliakalnis Dieveniškių
+                                        apylinkėse. Datuojamas I tūkst. pr. m. e. Dar ir dabar galima
+                                        pastebėti pylimo liekanas, o šalia jų griovio pėdsakus.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">16:10
+                                        16:40
+                                    </td>
+                                    <td class="location-col">Gaujos mokomasis takas</td>
+                                    <td class="description-col">Tako trasoje (1,7 km) yra įrengti
+                                        informaciniai stendai, tilteliai, suolai, apžvalgos bokštas ir kt.
+                                        2004 metais Gaujos mokamasis takas buvo pripažintas geriausiu
+                                        Lietuvoje.</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">20:30</td>
+                                    <td class="location-col">Grįžimas namo</td>
+                                    <td class="description-col">Kelionės pabaiga.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <div><b>Būtina</b> pasiimti asmens tapatybę patvirtinančius dokumentus!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
+        </div>
+    </div>
 </body>
 
 </html>
