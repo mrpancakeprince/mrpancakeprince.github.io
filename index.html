@@ -21,6 +21,8 @@
             --border-radius: 12px;
             --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --future: #9c27b0;
+            --future-light: #ba68c8;
         }
 
         * {
@@ -126,6 +128,10 @@
             gap: 10px;
             margin: 0 0 30px 0;
             padding: 0 20px;
+        }
+
+        .tab-btn.future.active {
+            background: var(--future);
         }
 
         .tab-btn {
@@ -436,6 +442,27 @@
             table {
                 min-width: 100%;
             }
+
+            .future .route-header {
+                background: linear-gradient(to right, var(--future), var(--future-light));
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.7;
+                }
+
+                50% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: scale(1);
+                    opacity: 0.7;
+                }
+            }
         }
     </style>
 </head>
@@ -452,9 +479,9 @@
         <div class="content">
             <div class="intro">
                 <p>Sveiki,</p>
-                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos regionus. 
-                   Maršrutai apima įdomiausius gamtos objektus, pažintinius takus bei unikaliausias apžvalgos vietas. 
-                   Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
+                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos regionus.
+                    Maršrutai apima įdomiausius gamtos objektus, pažintinius takus bei unikaliausias apžvalgos vietas.
+                    Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
             </div>
 
             <!-- Tab Navigation -->
@@ -464,6 +491,9 @@
                 </button>
                 <button class="tab-btn dieveniskes" data-tab="dieveniskes">
                     <i class="fas fa-landmark"></i> Trakai-Dieveniškės
+                </button>
+                <button class="tab-btn future" data-tab="future">
+                    <i class="fas fa-hard-hat"></i> Anykščiai
                 </button>
             </nav>
 
@@ -502,7 +532,8 @@
                                             11:25
                                         </td>
                                         <td class="location-col">Šiliniškių apžvalgos bokštas</td>
-                                        <td class="description-col">Tai „Bitės“ telekomunikacijų bokštas, kuriame 30 metrų
+                                        <td class="description-col">Tai „Bitės“ telekomunikacijų bokštas, kuriame 30
+                                            metrų
                                             aukštyje
                                             įrengta apžvalgos aikštelė. Atsiveria kvapą gniaužianti panorama –
                                             Šiliniškių
@@ -546,7 +577,8 @@
                                         <td class="location-col">Sirvėtos regioninis parkas</td>
                                         <td class="description-col">Antspaudas + 2014 metų pabaigoje įrengtas pažintinis
                                             mitologinis takas, kurio pradžia ir yra šalia Sirvėtos regioninio
-                                            parko lankytojų centro. Šia atkarpa keliaujantis žmogus pamato 17 skulptūrų, kuriose įkūnytos
+                                            parko lankytojų centro. Šia atkarpa keliaujantis žmogus pamato 17 skulptūrų,
+                                            kuriose įkūnytos
                                             senosios lietuvių dievybės ir mitologinės būtybės.
                                         </td>
                                     </tr>
@@ -724,11 +756,16 @@
                                             2004 metais Gaujos mokamasis takas buvo pripažintas geriausiu
                                             Lietuvoje.</td>
                                     </tr>
-                                                                            <td class="time-col">19:45
-                                            20:15
-                                        </td>
-                                        <td class="location-col">Daugėliškių miško bunkerio pažintinis takas</td>
-                                        <td class="description-col">Pokario metais Lietuvoje veikus partizaninio pasipriešinimo judėjimui, vienas iš bunkerių buvo įrengtas Daugėliškių miške. Atlikus archeologinius tyrimus atsirado iniciatoriai, kurie nusprendė bunkerį atstatyti. Iki jo ir iki partizanų žūties vietos nutiestas Daugėliškių miško bunkerio pažintinis takas, kuris supažindina su šioje vietoje veikusiais partizanais.</td>
+                                    <td class="time-col">19:45
+                                        20:15
+                                    </td>
+                                    <td class="location-col">Daugėliškių miško bunkerio pažintinis takas</td>
+                                    <td class="description-col">Pokario metais Lietuvoje veikus partizaninio
+                                        pasipriešinimo judėjimui, vienas iš bunkerių buvo įrengtas Daugėliškių miške.
+                                        Atlikus archeologinius tyrimus atsirado iniciatoriai, kurie nusprendė bunkerį
+                                        atstatyti. Iki jo ir iki partizanų žūties vietos nutiestas Daugėliškių miško
+                                        bunkerio pažintinis takas, kuris supažindina su šioje vietoje veikusiais
+                                        partizanais.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">21:45</td>
@@ -748,6 +785,41 @@
             </section>
         </div>
 
+        <section id="future" class="content-section">
+            <div class="route-card future">
+                <div class="route-header">
+                    <div class="route-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h2 class="route-title">Statybų Zona!</h2>
+                </div>
+
+                <div class="route-content" style="text-align: center; padding: 50px 20px;">
+                    <div style="font-size: 8rem; color: #e0e0e0; margin-bottom: 30px;">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 20px; color: var(--future);">
+                        Darbai vyksta!
+                    </h3>
+                    <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
+                        Ruošiama jums nepamirštama kelionės patirtis! Grįžkite vėliau ir atrasite
+                        naują nuostabų maršrutą.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <div style="font-size: 3rem; color: #e0e0e0;">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <div style="font-size: 3rem; color: #e0e0e0; animation: pulse 2s infinite;">
+                            <i class="fas fa-traffic-cone"></i>
+                        </div>
+                        <div style="font-size: 3rem; color: #e0e0e0;">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="footer">
             <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
         </div>
@@ -755,6 +827,10 @@
 
     <script>
         // Tab Navigation
+        document.querySelector('.tab-btn.future').addEventListener('click', function () {
+            // Automatiškai paslėps aktyvų turinį ir rodys šį
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const contentSections = document.querySelectorAll('.content-section');
