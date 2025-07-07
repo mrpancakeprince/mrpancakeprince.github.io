@@ -97,6 +97,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            animation: pulse 2s infinite;
         }
 
         .logo i {
@@ -147,6 +148,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            position: relative;
+            overflow: hidden;
         }
 
         .tab-btn:hover,
@@ -288,6 +291,7 @@
             padding: 14px 20px;
             border-bottom: 1px solid #eaeaea;
             vertical-align: top;
+            transition: background-color 0.3s;
         }
 
         tr:last-child td {
@@ -350,6 +354,7 @@
             align-items: flex-start;
             gap: 10px;
             font-weight: bold;
+            animation: pulseWarning 1.5s infinite;
         }
 
         .warning-note i {
@@ -369,6 +374,122 @@
             font-size: 0.95rem;
             border-top: 1px solid #eaeaea;
             margin-top: 10px;
+        }
+
+        /* Animacijos */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseWarning {
+            0% {
+                box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+            }
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: linear-gradient(to right, var(--future), var(--future-light));
+            width: 0%;
+            border-radius: 10px;
+            margin-top: 15px;
+            transition: width 0.5s ease;
+        }
+
+        /* Nauji elementai */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-preview {
+            height: 200px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507697364665-69eec30ea1eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-preview:hover {
+            transform: scale(0.98);
         }
 
         @media (max-width: 768px) {
@@ -414,6 +535,66 @@
                 max-width: 300px;
                 margin-bottom: 10px;
             }
+
+            /* Responsyvi lentelė */
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid #ddd;
+                margin-bottom: 15px;
+                border-radius: var(--border-radius);
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                width: 100%;
+            }
+
+            td:before {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+
+            td:nth-of-type(1):before {
+                content: "Laikas";
+            }
+
+            td:nth-of-type(2):before {
+                content: "Vieta";
+            }
+
+            td:nth-of-type(3):before {
+                content: "Aprašymas";
+            }
+
+            .time-col,
+            .location-col,
+            .description-col {
+                width: 100% !important;
+            }
         }
 
         @media (max-width: 480px) {
@@ -446,23 +627,6 @@
             .future .route-header {
                 background: linear-gradient(to right, var(--future), var(--future-light));
             }
-
-            @keyframes pulse {
-                0% {
-                    transform: scale(1);
-                    opacity: 0.7;
-                }
-
-                50% {
-                    transform: scale(1.1);
-                    opacity: 1;
-                }
-
-                100% {
-                    transform: scale(1);
-                    opacity: 0.7;
-                }
-            }
         }
     </style>
 </head>
@@ -486,7 +650,7 @@
 
             <!-- Tab Navigation -->
             <nav class="nav-tabs">
-                <button class="tab-btn dieveniskes" data-tab="dieveniskes">
+                <button class="tab-btn dieveniskes active" data-tab="dieveniskes">
                     <i class="fas fa-landmark"></i> Trakai–Dieveniškės
                 </button>
                 <button class="tab-btn future" data-tab="future">
@@ -495,7 +659,7 @@
             </nav>
 
             <!-- Trakų–Dieveniškių maršrutas -->
-            <section id="dieveniskes" class="content-section">
+            <section id="dieveniskes" class="content-section active">
                 <div class="route-card dieveniskes">
                     <div class="route-header">
                         <div class="route-icon">
@@ -516,33 +680,24 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="time-col">07:00
-                                        </td>
+                                        <td class="time-col">07:00</td>
                                         <td class="location-col">Išvykstam</td>
                                         <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
                                             viską
                                             pasiėmėte!</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">9:55
-                                            <br>
-                                            10:00
-                                        </td>
+                                        <td class="time-col">09:55<br>10:00</td>
                                         <td class="location-col">Aukštadvario regioninis parkas</td>
                                         <td class="description-col">Antspaudas.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">10:35
-                                            <br>
-                                            10:40
-                                        </td>
+                                        <td class="time-col">10:35<br>10:40</td>
                                         <td class="location-col">Trakų istorinis nacionalinis parkas</td>
                                         <td class="description-col">Antspaudas.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">10:55
-                                            12:10
-                                        </td>
+                                        <td class="time-col">10:55<br>12:10</td>
                                         <td class="location-col">Varnikų pažintinis takas</td>
                                         <td class="description-col">Lietuvoje daug gražios gamtos, bet ši vieta
                                             yra tikrai išskirtinė. Varnikų botaninio zoologinio draustinio
@@ -551,9 +706,7 @@
                                             reljefą bei pelkę su liekaniniais ežerėliais.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">13:20
-                                            14:00
-                                        </td>
+                                        <td class="time-col">13:20<br>14:00</td>
                                         <td class="location-col">Paulavos respublika</td>
                                         <td class="description-col">Čia rymoja kadaise buvusių didingų rūmų, arklidžių
                                             ir
@@ -563,9 +716,7 @@
                                             turėjusi savo įstatymus, pinigus, herbą bei vėliavą.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">14:20
-                                            14:35
-                                        </td>
+                                        <td class="time-col">14:20<br>14:35</td>
                                         <td class="location-col">Aukštojo kalnas</td>
                                         <td class="description-col">Tai aukščiausiai virš jūros lygio iškilęs
                                             žemės paviršiaus taškas Lietuvoje, kurio aukštis siekia beveik 294
@@ -574,9 +725,7 @@
                                             kraštovaizdis.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">14:45
-                                            15:30
-                                        </td>
+                                        <td class="time-col">14:45<br>15:30</td>
                                         <td class="location-col">Medininkų pilis</td>
                                         <td class="description-col">Medininkų pilis yra didžiausia ir viena
                                             seniausių pilių Lietuvoje. Ir kadangi atstatyta ji palyginti
@@ -586,26 +735,20 @@
                                             ką pamatyti.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">16:10
-                                            16:15
-                                        </td>
+                                        <td class="time-col">16:10<br>16:15</td>
                                         <td class="location-col">Dieveniškių istorinis regioninis parkas</td>
                                         <td class="description-col">Antspaudas.
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">16:20
-                                            16:35
-                                        </td>
+                                        <td class="time-col">16:20<br>16:35</td>
                                         <td class="location-col">Bėčionų piliakalnis</td>
                                         <td class="description-col">Vienintelis žinomas piliakalnis Dieveniškių
                                             apylinkėse. Datuojamas I tūkst. pr. m. e. Dar ir dabar galima
                                             pastebėti pylimo liekanas, o šalia jų griovio pėdsakus.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">16:45
-                                            17:15
-                                        </td>
+                                        <td class="time-col">16:45<br>17:15</td>
                                         <td class="location-col">Gaujos mokomasis takas</td>
                                         <td class="description-col">Tako trasoje (1,7 km) yra įrengti
                                             informaciniai stendai, tilteliai, suolai, apžvalgos bokštas ir kt.
@@ -613,11 +756,10 @@
                                             Lietuvoje.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col">18:50
-                                            19:00
-                                        </td>
+                                        <td class="time-col">18:50<br>19:00</td>
                                         <td class="location-col">Švč. Mergelės Marijos Kankinių Karalienės bažnyčia</td>
-                                        <td class="description-col">Bažnyčia yra Elektrėnuose. Tai modernios architektūros bažnyčia, išsiskirianti savo ypatingu „portalu“.</td>
+                                        <td class="description-col">Bažnyčia yra Elektrėnuose. Tai modernios
+                                            architektūros bažnyčia, išsiskirianti savo ypatingu „portalu“.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">21:40</td>
@@ -643,31 +785,49 @@
                     <div class="route-icon">
                         <i class="fas fa-hard-hat"></i>
                     </div>
-                    <h2 class="route-title">Statybų Zona!</h2>
+                    <h2 class="route-title">Anykščių–Zarasų maršrutas</h2>
                 </div>
 
                 <div class="route-content" style="text-align: center; padding: 50px 20px;">
-                    <div style="font-size: 8rem; color: #e0e0e0; margin-bottom: 30px;">
+                    <div
+                        style="font-size: 8rem; color: var(--future-light); margin-bottom: 30px; animation: pulse 2s infinite;">
                         <i class="fas fa-tools"></i>
                     </div>
                     <h3 style="font-size: 2.2rem; margin-bottom: 20px; color: var(--future);">
                         Darbai vyksta!
                     </h3>
                     <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
-                        Ruošiama jums nepamirštama kelionės patirtis! Grįžkite vėliau ir atrasite
-                        naują maršrutą.
+                        Ruošiama jums nepamirštama kelionės patirtis po Anykščius ir Zarasus!
+                        Grįžkite vėliau ir atrasite naują maršrutą.
                     </p>
+
+                    <div
+                        style="max-width: 500px; margin: 0 auto 30px; background: #f9f5ff; padding: 20px; border-radius: 12px;">
+                        <h4 style="margin-bottom: 15px; color: var(--future);">Planuojamos kelionės vietos:</h4>
+                        <ul style="text-align: left; columns: 2; list-style-type: none; padding: 0;">
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                    style="color: var(--future);"></i> Rubikių apžvalgos bokštas</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                    style="color: var(--future);"></i> Stelmužės ąžuolas</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                    style="color: var(--future);"></i> Zarasų apžvalgos ratas</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
+                                    style="color: var(--future);"></i> Šavašos pažintinis takas</li>
+                    </div>
+
                     <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <div style="font-size: 3rem; color: #e0e0e0;">
+                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.2s;">
                             <i class="fas fa-hammer"></i>
                         </div>
-                        <div style="font-size: 3rem; color: #e0e0e0; animation: pulse 2s infinite;">
+                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.4s;">
                             <i class="fas fa-traffic-cone"></i>
                         </div>
-                        <div style="font-size: 3rem; color: #e0e0e0;">
+                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.6s;">
                             <i class="fas fa-ruler-combined"></i>
                         </div>
                     </div>
+
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
             </div>
         </section>
@@ -677,15 +837,19 @@
         </div>
     </div>
 
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
         // Tab Navigation
-        document.querySelector('.tab-btn.future').addEventListener('click', function () {
-            // Automatiškai paslėps aktyvų turinį ir rodys šį
-        });
-
         document.addEventListener('DOMContentLoaded', function () {
             const tabBtns = document.querySelectorAll('.tab-btn');
             const contentSections = document.querySelectorAll('.content-section');
+
+            // Padaryti pirmąjį tabą aktyvų pagal nutylėjimą
+            tabBtns[0].classList.add('active');
+            contentSections[0].classList.add('active');
 
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -701,6 +865,32 @@
                     document.getElementById(tabId).classList.add('active');
                 });
             });
+
+            // Grįžti į viršų mygtukas
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Statybų progreso animacija
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) {
+                setTimeout(() => {
+                    progressBar.style.width = '89%';
+                }, 500);
+            }
         });
     </script>
 </body>
