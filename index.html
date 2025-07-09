@@ -23,6 +23,10 @@
             --transition: all 0.3s ease;
             --future: #9c27b0;
             --future-light: #ba68c8;
+            --latvija: #b71c1c;
+            /* Nauja spalva Latvijos maršrutui */
+            --latvija-light: #f44336;
+            /* Šviesesnė atspalvio versija */
         }
 
         * {
@@ -161,12 +165,12 @@
             box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
         }
 
-        .tab-btn.dzukija.active {
-            background: var(--secondary);
-        }
-
         .tab-btn.dieveniskes.active {
             background: var(--tertiary);
+        }
+
+        .tab-btn.latvija.active {
+            background: var(--latvija);
         }
 
         /* Content Sections */
@@ -214,16 +218,12 @@
             gap: 15px;
         }
 
-        .aukstaitija .route-header {
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-        }
-
-        .dzukija .route-header {
-            background: linear-gradient(to right, var(--secondary), var(--secondary-light));
-        }
-
         .dieveniskes .route-header {
             background: linear-gradient(to right, var(--tertiary), var(--tertiary-light));
+        }
+
+        .latvija .route-header {
+            background: linear-gradient(to right, var(--latvija), var(--latvija-light));
         }
 
         .route-icon {
@@ -275,16 +275,12 @@
             white-space: nowrap;
         }
 
-        .aukstaitija th:first-child {
-            border-left: 4px solid var(--primary);
-        }
-
-        .dzukija th:first-child {
-            border-left: 4px solid var(--secondary);
-        }
-
         .dieveniskes th:first-child {
             border-left: 4px solid var(--tertiary);
+        }
+
+        .latvija th:first-child {
+            border-left: 4px solid var(--latvija);
         }
 
         td {
@@ -305,15 +301,14 @@
         .time-col {
             width: 12%;
             font-weight: 600;
-            color: var(--primary);
-        }
-
-        .dzukija .time-col {
-            color: var(--secondary);
         }
 
         .dieveniskes .time-col {
             color: var(--tertiary);
+        }
+
+        .latvija .time-col {
+            color: var(--latvija);
         }
 
         .location-col {
@@ -643,7 +638,7 @@
         <div class="content">
             <div class="intro">
                 <p>Sveiki,</p>
-                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos regionus.
+                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos ir kaimyninių šalių regionus.
                     Maršrutai apima įdomiausius gamtos objektus, pažintinius takus bei unikaliausias apžvalgos vietas.
                     Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
             </div>
@@ -655,6 +650,10 @@
                 </button>
                 <button class="tab-btn future" data-tab="future">
                     <i class="fas fa-hard-hat"></i> Anykščiai–Zarasai
+                </button>
+                <!-- Naujas tabas Latvijos maršrutui -->
+                <button class="tab-btn latvija" data-tab="latvija">
+                    <i class="fas fa-flag"></i> Ogrė–Aizkrauklė
                 </button>
             </nav>
 
@@ -828,6 +827,74 @@
                     </div>
 
                     <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Naujas Latvijos maršrutas -->
+        <section id="latvija" class="content-section">
+            <div class="route-card latvija">
+                <div class="route-header">
+                    <div class="route-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h2 class="route-title">Ogrė–Aizkrauklė</h2>
+                </div>
+
+                <div class="route-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Laikas</th>
+                                    <th>Vieta</th>
+                                    <th>Trumpas aprašymas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time-col">07:30</td>
+                                    <td class="location-col">Išvykstam</td>
+                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską pasiėmėte!</td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">10:50<br>11:40</td>
+                                    <td class="location-col">Ogrės mėlynieji kalnai</td>
+                                    <td class="description-col"></td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">12:30<br>13:05</td>
+                                    <td class="location-col">Koknesės pilies griuvėsiai</td>
+                                    <td class="description-col"></td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">13:25<br>13:40</td>
+                                    <td class="location-col">Aizkrauklės piliakalnis</td>
+                                    <td class="description-col"></td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">14:20<br>14:35</td>
+                                    <td class="location-col">Taborkalno apžvalgos bokštas</td>
+                                    <td class="description-col"></td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">17:00<br>17:15</td>
+                                    <td class="location-col">Tervetės apžvalgos bokštas</td>
+                                    <td class="description-col"></td>
+                                </tr>
+                                <tr>
+                                    <td class="time-col">19:15</td>
+                                    <td class="location-col">Grįžimas namo</td>
+                                    <td class="description-col">Kelionės pabaiga.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <div>Šis maršrutas dar kuriamas.</div>
+                    </div>
                 </div>
             </div>
         </section>
