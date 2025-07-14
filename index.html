@@ -218,10 +218,6 @@
             gap: 15px;
         }
 
-        .dieveniskes .route-header {
-            background: linear-gradient(to right, var(--tertiary), var(--tertiary-light));
-        }
-
         .latvija .route-header {
             background: linear-gradient(to right, var(--latvija), var(--latvija-light));
         }
@@ -275,10 +271,6 @@
             white-space: nowrap;
         }
 
-        .dieveniskes th:first-child {
-            border-left: 4px solid var(--tertiary);
-        }
-
         .latvija th:first-child {
             border-left: 4px solid var(--latvija);
         }
@@ -301,10 +293,6 @@
         .time-col {
             width: 12%;
             font-weight: 600;
-        }
-
-        .dieveniskes .time-col {
-            color: var(--tertiary);
         }
 
         .latvija .time-col {
@@ -438,53 +426,6 @@
         .back-to-top:hover {
             background: var(--primary-light);
             transform: translateY(-3px);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .map-preview {
-            height: 200px;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1507697364665-69eec30ea1eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: var(--border-radius);
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .map-preview:hover {
-            transform: scale(0.98);
         }
 
         @media (max-width: 768px) {
@@ -645,9 +586,6 @@
 
             <!-- Tab Navigation -->
             <nav class="nav-tabs">
-                <button class="tab-btn dieveniskes active" data-tab="dieveniskes">
-                    <i class="fas fa-landmark"></i> Trakai–Dieveniškės
-                </button>
                 <button class="tab-btn future" data-tab="future">
                     <i class="fas fa-hard-hat"></i> Anykščiai–Zarasai
                 </button>
@@ -656,127 +594,6 @@
                     <i class="fas fa-flag"></i> Pietų Vidžemė
                 </button>
             </nav>
-
-            <!-- Trakų–Dieveniškių maršrutas -->
-            <section id="dieveniskes" class="content-section active">
-                <div class="route-card dieveniskes">
-                    <div class="route-header">
-                        <div class="route-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <h2 class="route-title">Trakų–Dieveniškių maršrutas</h2>
-                    </div>
-
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Trumpas aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="time-col">07:00</td>
-                                        <td class="location-col">Išvykstam</td>
-                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                            viską
-                                            pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">09:55<br>10:00</td>
-                                        <td class="location-col">Aukštadvario regioninis parkas</td>
-                                        <td class="description-col">Antspaudas.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:35<br>10:40</td>
-                                        <td class="location-col">Trakų istorinis nacionalinis parkas</td>
-                                        <td class="description-col">Antspaudas.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:55<br>12:10</td>
-                                        <td class="location-col">Varnikų pažintinis takas</td>
-                                        <td class="description-col">Lietuvoje daug gražios gamtos, bet ši vieta
-                                            yra tikrai išskirtinė. Varnikų botaninio zoologinio draustinio
-                                            pažintinis takas yra 3,5 kilometro ilgio. Jis apima du reljefo ir
-                                            kraštovaizdžio tipus: ledyno pakraščio suformuotą kalvotą miškingą
-                                            reljefą bei pelkę su liekaniniais ežerėliais.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:20<br>14:00</td>
-                                        <td class="location-col">Paulavos respublika</td>
-                                        <td class="description-col">Čia rymoja kadaise buvusių didingų rūmų, arklidžių
-                                            ir
-                                            kitų pastatų liekanos.
-                                            Visą respublikos teritoriją sudarė apie 3 tūkst. ha plotas.
-                                            Tai buvo savotiška valstybė valstybėje,
-                                            turėjusi savo įstatymus, pinigus, herbą bei vėliavą.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:20<br>14:35</td>
-                                        <td class="location-col">Aukštojo kalnas</td>
-                                        <td class="description-col">Tai aukščiausiai virš jūros lygio iškilęs
-                                            žemės paviršiaus taškas Lietuvoje, kurio aukštis siekia beveik 294
-                                            metrus. Aukštojo kalno viršuje pastatytas apžvalgos bokštas (10 m),
-                                            nuo kurio atsiveria aplinkui plytintis Medininkų aukštumos
-                                            kraštovaizdis.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:45<br>15:30</td>
-                                        <td class="location-col">Medininkų pilis</td>
-                                        <td class="description-col">Medininkų pilis yra didžiausia ir viena
-                                            seniausių pilių Lietuvoje. Ir kadangi atstatyta ji palyginti
-                                            neseniai - 2012 metais, dar prieš kelioliką metų jos teritorijoje
-                                            ganėsi karvės. Medininkų pilis, ko gero, yra garsiausių Lietuvos
-                                            pilių šešelyje. Bet nereikia apsigauti - Medininkų pilyje tikrai yra
-                                            ką pamatyti.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">16:10<br>16:15</td>
-                                        <td class="location-col">Dieveniškių istorinis regioninis parkas</td>
-                                        <td class="description-col">Antspaudas.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">16:20<br>16:35</td>
-                                        <td class="location-col">Bėčionų piliakalnis</td>
-                                        <td class="description-col">Vienintelis žinomas piliakalnis Dieveniškių
-                                            apylinkėse. Datuojamas I tūkst. pr. m. e. Dar ir dabar galima
-                                            pastebėti pylimo liekanas, o šalia jų griovio pėdsakus.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">16:45<br>17:15</td>
-                                        <td class="location-col">Gaujos mokomasis takas</td>
-                                        <td class="description-col">Tako trasoje (1,7 km) yra įrengti
-                                            informaciniai stendai, tilteliai, suolai, apžvalgos bokštas ir kt.
-                                            2004 metais Gaujos mokamasis takas buvo pripažintas geriausiu
-                                            Lietuvoje.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">18:50<br>19:00</td>
-                                        <td class="location-col">Švč. Mergelės Marijos Kankinių Karalienės bažnyčia</td>
-                                        <td class="description-col">Bažnyčia yra Elektrėnuose. Tai modernios
-                                            architektūros bažnyčia, išsiskirianti savo ypatingu „portalu“.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">21:40</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="warning-note">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <div>BŪTINA PASIIMTI ASMENS TAPATYBĘ PATVIRTINANČIUS DOKUMENTUS!</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
 
         <section id="future" class="content-section">
             <div class="route-card future">
