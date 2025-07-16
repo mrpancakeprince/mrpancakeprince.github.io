@@ -24,9 +24,7 @@
             --future: #9c27b0;
             --future-light: #ba68c8;
             --latvija: #b71c1c;
-            /* Nauja spalva Latvijos maršrutui */
             --latvija-light: #f44336;
-            /* Šviesesnė atspalvio versija */
         }
 
         * {
@@ -214,6 +212,10 @@
             gap: 15px;
         }
 
+        .future .route-header {
+            background: linear-gradient(to right, var(--future), var(--future-light));
+        }
+
         .latvija .route-header {
             background: linear-gradient(to right, var(--latvija), var(--latvija-light));
         }
@@ -267,6 +269,10 @@
             white-space: nowrap;
         }
 
+        .future th:first-child {
+            border-left: 4px solid var(--future);
+        }
+
         .latvija th:first-child {
             border-left: 4px solid var(--latvija);
         }
@@ -289,6 +295,10 @@
         .time-col {
             width: 12%;
             font-weight: 600;
+        }
+
+        .future .time-col {
+            color: var(--future);
         }
 
         .latvija .time-col {
@@ -382,15 +392,6 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
             }
-        }
-
-        .progress-bar {
-            height: 5px;
-            background: linear-gradient(to right, var(--future), var(--future-light));
-            width: 0%;
-            border-radius: 10px;
-            margin-top: 15px;
-            transition: width 0.5s ease;
         }
 
         /* Nauji elementai */
@@ -555,10 +556,6 @@
             table {
                 min-width: 100%;
             }
-
-            .future .route-header {
-                background: linear-gradient(to right, var(--future), var(--future-light));
-            }
         }
     </style>
 </head>
@@ -582,139 +579,166 @@
 
             <!-- Tab Navigation -->
             <nav class="nav-tabs">
-                <button class="tab-btn future" data-tab="future">
-                    <i class="fas fa-hard-hat"></i> Anykščiai–Zarasai
+                <button class="tab-btn future active" data-tab="future">
+                    <i class="fas fa-tree"></i> Anykščiai–Zarasai
                 </button>
-                <!-- Naujas tabas Latvijos maršrutui -->
                 <button class="tab-btn latvija" data-tab="latvija">
                     <i class="fas fa-flag"></i> Pietų Vidžemė
                 </button>
             </nav>
 
-        <section id="future" class="content-section">
-            <div class="route-card future">
-                <div class="route-header">
-                    <div class="route-icon">
-                        <i class="fas fa-hard-hat"></i>
-                    </div>
-                    <h2 class="route-title">Anykščių–Zarasų maršrutas</h2>
-                </div>
-
-                <div class="route-content" style="text-align: center; padding: 50px 20px;">
-                    <div
-                        style="font-size: 8rem; color: var(--future-light); margin-bottom: 30px; animation: pulse 2s infinite;">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 style="font-size: 2.2rem; margin-bottom: 20px; color: var(--future);">
-                        Darbai vyksta!
-                    </h3>
-                    <p style="max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
-                        Ruošiama jums nepamirštama kelionės patirtis po Anykščius ir Zarasus!
-                        Grįžkite vėliau ir atrasite naują maršrutą.
-                    </p>
-
-                    <div
-                        style="max-width: 500px; margin: 0 auto 30px; background: #f9f5ff; padding: 20px; border-radius: 12px;">
-                        <h4 style="margin-bottom: 15px; color: var(--future);">Planuojamos kelionės vietos:</h4>
-                        <ul style="text-align: left; columns: 2; list-style-type: none; padding: 0;">
-                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                    style="color: var(--future);"></i> Rubikių apžvalgos bokštas</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                    style="color: var(--future);"></i> Stelmužės ąžuolas</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                    style="color: var(--future);"></i> Zarasų apžvalgos ratas</li>
-                            <li style="margin-bottom: 10px;"><i class="fas fa-check-circle"
-                                    style="color: var(--future);"></i> Šavašos pažintinis takas</li>
-                    </div>
-
-                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.2s;">
-                            <i class="fas fa-hammer"></i>
+            <!-- Anykščių–Zarasų maršrutas -->
+            <section id="future" class="content-section active">
+                <div class="route-card future">
+                    <div class="route-header">
+                        <div class="route-icon">
+                            <i class="fas fa-tree"></i>
                         </div>
-                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.4s;">
-                            <i class="fas fa-traffic-cone"></i>
+                        <h2 class="route-title">Anykščių–Zarasų maršrutas</h2>
+                    </div>
+
+                    <div class="route-content">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Laikas</th>
+                                        <th>Vieta</th>
+                                        <th>Trumpas aprašymas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col">Išvyksta</td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col"></td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col"></td>
+                                        <td class="location-col">Grįžimas namo</td>
+                                        <td class="description-col"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div style="font-size: 3rem; color: var(--future-light); animation: pulse 2s infinite 0.6s;">
-                            <i class="fas fa-ruler-combined"></i>
+
+                        <div class="note">
+                            <i class="fas fa-info-circle"></i>
+                            <div>Šis maršrutas laukia jūsų užpildymo. Pridėkite laikus, vietas ir aprašymus!</div>
                         </div>
                     </div>
-
-                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
-        </section>
+            </section>
 
-        <!-- Naujas Latvijos maršrutas -->
-        <section id="latvija" class="content-section">
-            <div class="route-card latvija">
-                <div class="route-header">
-                    <div class="route-icon">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                    <h2 class="route-title">Pietų Vidžemė</h2>
-                </div>
-
-                <div class="route-content">
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Laikas</th>
-                                    <th>Vieta</th>
-                                    <th>Trumpas aprašymas</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="time-col">07:25</td>
-                                    <td class="location-col">Išvykstam</td>
-                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską pasiėmėte!</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">10:55<br>11:45</td>
-                                    <td class="location-col">Ogrės gamtos parkas</td>
-                                    <td class="description-col">Apžvalgos bokštas pastatytas aukščiausiame Ogrės Mėlynųjų kalvų gamtos parko taške, maždaug 90 m virš jūros lygio. Iš 30 m aukščio bokšto atsiveria žaliuojančių miškų apsupto Ogrės miesto vaizdas. Nuo stačiame krante prie Dubkalnio vandens telkinio esančios apžvalgos aikštelės atsiveria įspūdingas apylinkių vaizdas.</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">12:30<br>13:05</td>
-                                    <td class="location-col">Koknesės pilies griuvėsiai</td>
-                                    <td class="description-col">Kadaise Koknesės pilis didingai stovėjo ant kalvos, kur Persės upė įteka į Dauguvą. Šiandien, pastačius hidroelektrinę, vanduo plauna jos griuvėsių sienas...</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">13:25<br>13:40</td>
-                                    <td class="location-col">Aizkrauklės piliakalnis</td>
-                                    <td class="description-col">Aizkrauklės piliakalnis – tai senovinė Livonijos pilis su senoviniu miestu dešiniajame Dauguvos krante. Jis yra strategiškai patogioje vietoje tarp dviejų į Dauguvą įtekančių upelių, iš kurių didesnysis vadinamas Aškeri. Statūs Aizkrauklės piliakalnio šlaitai teikė gerą apsaugą.</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">14:20<br>14:35</td>
-                                    <td class="location-col">Taborkalnio apžvalgos bokštas</td>
-                                    <td class="description-col">Apžvalgos bokštas pastatytas 2021 m. Taborkalnio viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio rato „Dabors-kalns“ taško. Bokšto aukštis - 28 metrai. Nuo bokšto atsiveria kvapą gniaužiantys vaizdai į Dauguvos upę ir Vikezerso ežerą.</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">16:30<br>17:45</td>
-                                    <td class="location-col">Cenos pelkės takas</td>
-                                    <td class="description-col">Cenos pelkė yra antroji pagal dydį Latvijos pelkė, ypač saugoma gamtos teritorija – draustinis ir „Natura 2000“ teritorija. Cenos pelkėje įrengtas 5 km ilgio pėsčiųjų takas, o jo viduryje stovi apžvalgos bokštas, iš kurio galima apžiūrėti pelkę iš viršaus.</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">18:05<br>18:20</td>
-                                    <td class="location-col">Ložmetėjkalnio apžvalgos bokštas</td>
-                                    <td class="description-col">Ložmetėjkalnis (Kulkosvaidžių kalnas) yra unikali vietovė, nes joje gausu Pirmojo pasaulinio karo ir Kalėdų mūšių liudijimų. Čia yra 27 metrų aukščio bokštas, iš kurio atsiveria nuostabūs panoraminiai vaizdai ir matomos Kalėdų mūšių vietos.</td>
-                                </tr>
-                                <tr>
-                                    <td class="time-col">20:55</td>
-                                    <td class="location-col">Grįžimas namo</td>
-                                    <td class="description-col">Kelionės pabaiga.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- Latvijos maršrutas -->
+            <section id="latvija" class="content-section">
+                <div class="route-card latvija">
+                    <div class="route-header">
+                        <div class="route-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h2 class="route-title">Pietų Vidžemė</h2>
                     </div>
 
-                    <div class="note">
-                        <i class="fas fa-info-circle"></i>
-                        <div>Kadangi didžioji dalis maršruto driekiasi per gamtos teritorijas – pelkes, miškus ir upių slėnius – rekomenduojama pasirūpinti apsauga nuo vabzdžių.</div>
+                    <div class="route-content">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Laikas</th>
+                                        <th>Vieta</th>
+                                        <th>Trumpas aprašymas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="time-col">07:25</td>
+                                        <td class="location-col">Išvykstam</td>
+                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską pasiėmėte!</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">10:55<br>11:45</td>
+                                        <td class="location-col">Ogrės gamtos parkas</td>
+                                        <td class="description-col">Apžvalgos bokštas pastatytas aukščiausiame Ogrės Mėlynųjų kalvų gamtos parko taške, maždaug 90 m virš jūros lygio. Iš 30 m aukščio bokšto atsiveria žaliuojančių miškų apsupto Ogrės miesto vaizdas. Nuo stačiame krante prie Dubkalnio vandens telkinio esančios apžvalgos aikštelės atsiveria įspūdingas apylinkių vaizdas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">12:30<br>13:05</td>
+                                        <td class="location-col">Koknesės pilies griuvėsiai</td>
+                                        <td class="description-col">Kadaise Koknesės pilis didingai stovėjo ant kalvos, kur Persės upė įteka į Dauguvą. Šiandien, pastačius hidroelektrinę, vanduo plauna jos griuvėsių sienas...</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">13:25<br>13:40</td>
+                                        <td class="location-col">Aizkrauklės piliakalnis</td>
+                                        <td class="description-col">Aizkrauklės piliakalnis – tai senovinė Livonijos pilis su senoviniu miestu dešiniajame Dauguvos krante. Jis yra strategiškai patogioje vietoje tarp dviejų į Dauguvą įtekančių upelių, iš kurių didesnysis vadinamas Aškeri. Statūs Aizkrauklės piliakalnio šlaitai teikė gerą apsaugą.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">14:20<br>14:35</td>
+                                        <td class="location-col">Taborkalnio apžvalgos bokštas</td>
+                                        <td class="description-col">Apžvalgos bokštas pastatytas 2021 m. Taborkalnio viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio rato „Dabors-kalns“ taško. Bokšto aukštis - 28 metrai. Nuo bokšto atsiveria kvapą gniaužiantys vaizdai į Dauguvos upę ir Vikezerso ežerą.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">16:30<br>17:45</td>
+                                        <td class="location-col">Cenos pelkės takas</td>
+                                        <td class="description-col">Cenos pelkė yra antroji pagal dydį Latvijos pelkė, ypač saugoma gamtos teritorija – draustinis ir „Natura 2000“ teritorija. Cenos pelkėje įrengtas 5 km ilgio pėsčiųjų takas, o jo viduryje stovi apžvalgos bokštas, iš kurio galima apžiūrėti pelkę iš viršaus.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">18:05<br>18:20</td>
+                                        <td class="location-col">Ložmetėjkalnio apžvalgos bokštas</td>
+                                        <td class="description-col">Ložmetėjkalnis (Kulkosvaidžių kalnas) yra unikali vietovė, nes joje gausu Pirmojo pasaulinio karo ir Kalėdų mūšių liudijimų. Čia yra 27 metrų aukščio bokštas, iš kurio atsiveria nuostabūs panoraminiai vaizdai ir matomos Kalėdų mūšių vietos.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">20:55</td>
+                                        <td class="location-col">Grįžimas namo</td>
+                                        <td class="description-col">Kelionės pabaiga.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="note">
+                            <i class="fas fa-info-circle"></i>
+                            <div>Kadangi didžioji dalis maršruto driekiasi per gamtos teritorijas – pelkes, miškus ir upių slėnius – rekomenduojama pasirūpinti apsauga nuo vabzdžių.</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+        </div>
 
         <div class="footer">
             <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
@@ -752,7 +776,7 @@
 
             // Grįžti į viršų mygtukas
             const backToTopBtn = document.getElementById('backToTop');
-
+            
             window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 300) {
                     backToTopBtn.classList.add('visible');
@@ -760,21 +784,13 @@
                     backToTopBtn.classList.remove('visible');
                 }
             });
-
+            
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
-
-            // Statybų progreso animacija
-            const progressBar = document.getElementById('progress-bar');
-            if (progressBar) {
-                setTimeout(() => {
-                    progressBar.style.width = '89%';
-                }, 500);
-            }
         });
     </script>
 </body>
