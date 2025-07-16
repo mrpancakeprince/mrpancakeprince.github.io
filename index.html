@@ -25,48 +25,48 @@
             --future-light: #ba68c8;
             --latvija: #b71c1c;
             --latvija-light: #f44336;
+            --jura: #006064;       /* Nauja spalva - jūrinė mėlyna */
+            --jura-light: #00838f; /* Šviesesnė atmaina */
         }
 
-        .time-col.tentative {
-            position: relative;
-            color: #9c27b0;
-            /* Violetinė spalva */
+                /* Pridėti naują skirtukų stilių */
+        .tab-btn.jura {
+            background: var(--light);
+            border: 1px solid #dee2e6;
+            color: var(--gray);
+        }
+
+        .tab-btn.jura.active {
+            background: var(--jura);
+        }
+
+        .tab-btn.jura:hover {
+            background: var(--jura-light);
+        }
+
+        /* Naujo maršruto stilius */
+        .jura .route-header {
+            background: linear-gradient(to right, var(--jura), var(--jura-light));
+        }
+
+        .jura .time-col {
+            color: var(--jura);
             font-weight: 600;
         }
 
-        .time-col.tentative::after {
-            content: "";
-            position: absolute;
-            top: 2.5;
-            right: 0;
-            font-size: 1.2em;
-            color: #ff6f00;
-            /* Oranžinė spalva */
-            transform: translate(5px, -5px);
+        .jura th:first-child {
+            border-left: 4px solid var(--jura);
         }
 
-        tr.tentative {
-            position: relative;
+        .relative-time {
+            display: inline-block;
+            background-color: #e0f7fa;
+            border-radius: 4px;
+            padding: 3px 8px;
+            margin: 2px 0;
+            font-size: 0.9em;
+            color: #006064;
         }
-
-        tr.tentative::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #ff6f00, #9c27b0);
-            /* Oranžinė-violetinė gradacija */
-            border-radius: 2px;
-        }
-
-        tr.tentative:hover td {
-            background-color: #f9f2ff !important;
-            /* Šviesiai violetinė fono spalva */
-        }
-
-
 
         * {
             margin: 0;
@@ -626,6 +626,9 @@
                 <button class="tab-btn latvija" data-tab="latvija">
                     <i class="fas fa-flag"></i> Pietų Vidžemė
                 </button>
+                <button class="tab-btn jura" data-tab="jura">
+                    <i class="fas fa-water"></i> Latvijos pajūris
+                </button>
             </nav>
 
             <!-- Anykščių–Zarasų maršrutas -->
@@ -798,6 +801,79 @@
                 </div>
             </section>
 
+        </div>
+
+                    <!-- NAUJAS MARŠRUTAS: Latvijos pajūris -->
+            <section id="jura" class="content-section">
+                <div class="route-card jura">
+                    <div class="route-header">
+                        <div class="route-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h2 class="route-title">Latvijos pajūrio maršrutas</h2>
+                    </div>
+
+                    <div class="route-content">
+                        <div class="note">
+                            <i class="fas fa-clock"></i>
+                            <div>Laikai nurodyti orientaciniai.</div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Laikas</th>
+                                        <th>Vieta</th>
+                                        <th>Trumpas aprašymas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="time-col">
+                                            <span class="relative-time">0:00</span>
+                                        </td>
+                                        <td class="location-col">Išvykstame</td>
+                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską pasiėmėte!</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">
+                                            <span class="relative-time">1:35<br>2:45</span>
+                                            <span class="relative-time">1:00</span>
+                                        </td>
+                                        <td class="location-col">Bernāti gamtos parkas</td>
+                                        <td class="description-col">Bernatų gamtos parkas su jo pajūrio kopų mišku yra ypatingas savo reljefu ir yra viena didžiausių Pietų Kuržemės regiono vertybių. Gamtos parke yra 7 pažintiniai takai su daugiau nei 150 objektų – skulptūrų, pastogių, apžvalgos bokštų, kraštovaizdžio rėmų ir pan.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">
+                                            <span class="relative-time">4:05<br>4:35</span>
+                                            <span class="relative-time">00:30</span>
+                                        </td>
+                                        <td class="location-col">Jūrkalnės skardis</td>
+                                        <td class="description-col">Jūrkalnės skardis ir viena vaizdingiausių jūros pakrantės vietų Latvijoje su tyliu, civilizacijos nepaliestu paplūdimiu ir iki 20 metrų aukščio skardžiu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">
+                                            <span class="relative-time">4:50<br>5:50</span>
+                                            <span class="relative-time">1:00</span>
+                                        </td>
+                                        <td class="location-col">Kuldigos labirintai</td>
+                                        <td class="description-col">3300 kvadratinių metrų teritorijoje buvo sukurtas labirintas, kuriame išbandomos jūsų logikos galimybės. Labirintas pagamintas iš pusiau skaidraus tinklelio, per kurį galima matyti vieną ar du paskesnius takelius.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">
+                                            <span class="relative-time">8:20</span>
+                                            <span class="relative-time">2:30</span>
+                                        </td>
+                                        <td class="location-col">Grįžimas namo</td>
+                                        <td class="description-col">Kelionės pabaiga.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div class="footer">
