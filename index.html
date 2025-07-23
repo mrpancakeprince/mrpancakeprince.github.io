@@ -29,6 +29,12 @@
             --jura-light: #00838f;
             --venta: #ff8f00;
             --venta-light: #ffb300;
+            --lenkija: #5d4037;
+            --lenkija-light: #8d6e63;
+            --option1: #3f51b5;
+            --option1-light: #7986cb;
+            --option2: #e91e63;
+            --option2-light: #f48fb1;
         }
 
         /* Skirtukų stilius */
@@ -44,6 +50,21 @@
 
         .tab-btn.venta:hover {
             background: var(--venta-light);
+        }
+
+        /* Naujas skirtukas Lenkija */
+        .tab-btn.lenkija {
+            background: var(--light);
+            border: 1px solid #dee2e6;
+            color: var(--gray);
+        }
+
+        .tab-btn.lenkija.active {
+            background: var(--lenkija);
+        }
+
+        .tab-btn.lenkija:hover {
+            background: var(--lenkija-light);
         }
 
         /* Maršruto stilius */
@@ -87,6 +108,94 @@
 
         .jura th:first-child {
             border-left: 4px solid var(--jura);
+        }
+
+        /* Alternatyvių maršrutų stiliai */
+        .route-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .route-option {
+            padding: 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid transparent;
+        }
+
+        .route-option.option1 {
+            background: linear-gradient(135deg, var(--option1-light), var(--option1));
+            color: white;
+        }
+
+        .route-option.option2 {
+            background: linear-gradient(135deg, var(--option2-light), var(--option2));
+            color: white;
+        }
+
+        .route-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .route-option.active {
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--lenkija);
+        }
+
+        .route-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .route-option p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .option-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .route-card.option1 .route-header {
+            background: linear-gradient(to right, var(--option1), var(--option1-light));
+        }
+
+        .route-card.option2 .route-header {
+            background: linear-gradient(to right, var(--option2), var(--option2-light));
+        }
+
+        .option1 .time-col {
+            color: var(--option1);
+        }
+
+        .option2 .time-col {
+            color: var(--option2);
+        }
+
+        .option1 th:first-child {
+            border-left: 4px solid var(--option1);
+        }
+
+        .option2 th:first-child {
+            border-left: 4px solid var(--option2);
         }
 
         .relative-time {
@@ -269,6 +378,19 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border: 1px solid #eaeaea;
             transition: var(--transition);
+            display: block;
+        }
+
+        #lenkija .route-card {
+            display: none;
+        }
+
+        #lenkija .route-card.active {
+            display: block;
+        }
+
+        .route-card.active {
+            display: block;
         }
 
         .route-card:hover {
@@ -541,6 +663,11 @@
                 margin-bottom: 10px;
             }
 
+            .route-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
             /* Responsyvi lentelė */
             table,
             thead,
@@ -647,13 +774,13 @@
             </div>
             <nav class="nav-tabs">
                 <button class="tab-btn future active" data-tab="future">
-                    <i class="fas fa-tree"></i>Anykščiai–Zarasai 
+                    <i class="fas fa-tree"></i>Anykščiai–Zarasai
                 </button>
                 <button class="tab-btn latvija" data-tab="latvija">
-                    <i class="fas fa-chess-rook"></i>Pietų Vidžemė 
+                    <i class="fas fa-chess-rook"></i>Pietų Vidžemė
                 </button>
-                <button class="tab-btn venta" data-tab="venta">
-                    <i class="fas fa-place-of-worship"></i>??? 
+                <button class="tab-btn lenkija" data-tab="lenkija">
+                    <i class="fas fa-question"></i>
                 </button>
             </nav>
 
@@ -678,7 +805,8 @@
                                         <tr>
                                             <td class="time-col">8:55</td>
                                             <td class="location-col">Išvykstame</td>
-                                            <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
+                                            <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti,
+                                                ar
                                                 viską pasiėmėte!</td>
                                         </tr>
                                         <tr>
@@ -689,7 +817,11 @@
                                         <tr>
                                             <td class="time-col">12:25<br>12:35</td>
                                             <td class="location-col">„Cosmos“ paukščių takas</td>
-                                            <td class="description-col">Veidrodžių kambarys nukels Tave į beribį kosmosą! Patirk begalybės pojūtį, susipažink su žvaigždėmis iš arti. Tai unikali ir vienintelė vieta Baltijos šalyse, kur galima panirti į kosmosą, sustoti akimirkai ant galaktikos krašto ir pažvelgti į begalę žvaigždžių.</td>
+                                            <td class="description-col">Veidrodžių kambarys nukels Tave į beribį
+                                                kosmosą! Patirk begalybės pojūtį, susipažink su žvaigždėmis iš arti. Tai
+                                                unikali ir vienintelė vieta Baltijos šalyse, kur galima panirti į
+                                                kosmosą, sustoti akimirkai ant galaktikos krašto ir pažvelgti į begalę
+                                                žvaigždžių.</td>
                                         </tr>
                                         <tr>
                                             <td class="time-col">12:50<br>13:05</td>
@@ -730,7 +862,7 @@
                                 </table>
                             </div>
                             <div class="note"><i class="fas fa-info-circle"></i>
-                                <div>Zarasuose taip pat galima pasivaikščioti palei ežero pakrantę.</div>
+                                <div>Zarasuose taip pat yra galimybė pasivaikščioti palei ežero pakrantę.</div>
                             </div>
                         </div>
                     </div>
@@ -785,16 +917,16 @@
                                         <td class="description-col">Aizkrauklės piliakalnis – tai
                                             senovinė Livonijos pilis su senoviniu miestu dešiniajame
                                             Dauguvos krante. Jis yra strategiškai patogioje vietoje tarp
-                                            dviejų į Dauguvą įtekančių upelių, iš kurių didesnysis vadinamas Aškeri. 
+                                            dviejų į Dauguvą įtekančių upelių, iš kurių didesnysis vadinamas Aškeri.
                                             Statūs Aizkrauklės piliakalnio šlaitai teikė gerą apsaugą.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">13:55<br>14:10</td>
                                         <td class="location-col">Taborkalnio apžvalgos bokštas</td>
                                         <td class="description-col">Apžvalgos bokštas pastatytas 2021 m.
-                                            Taborkalnio viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio 
-                                            rato „Dabors-kalns“ taško. Bokšto aukštis - 28 metrai. 
-                                            Nuo bokšto atsiveria kvapą gniaužiantys vaizdai į Dauguvos upę 
+                                            Taborkalnio viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio
+                                            rato „Dabors-kalns“ taško. Bokšto aukštis - 28 metrai.
+                                            Nuo bokšto atsiveria kvapą gniaužiantys vaizdai į Dauguvos upę
                                             ir Vikezerso ežerą.</td>
                                     </tr>
                                     <tr>
@@ -810,7 +942,7 @@
                                         <td class="time-col">17:40<br>17:55</td>
                                         <td class="location-col">Ložmetėjkalnio apžvalgos bokštas</td>
                                         <td class="description-col">Ložmetėjkalnis (Kulkosvaidžių
-                                            kalnas) yra unikali vietovė, nes joje gausu Pirmojo pasaulinio karo 
+                                            kalnas) yra unikali vietovė, nes joje gausu Pirmojo pasaulinio karo
                                             ir Kalėdų mūšių liudijimų. Čia yra 27 metrų aukščio bokštas,
                                             iš kurio atsiveria nuostabūs panoraminiai vaizdai ir matomos
                                             Kalėdų mūšių vietos.</td>
@@ -825,31 +957,7 @@
                         </div>
                         <div class="warning-note"><i class="fas fa-info-circle"></i>
                             <div>Kadangi didžioji dalis maršruto driekiasi per gamtos teritorijas – pelkes, miškus ir
-                                upių slėnius – rekomenduojama pasirūpinti apsauga nuo vabzdžių.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="venta" class="content-section">
-                <div class="route-card venta">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-place-of-worship"></i></div>
-                        <h2 class="route-title">???</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Trumpas aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                                upių slėnius – būtina pasirūpinti apsauga nuo vabzdžių.</div>
                         </div>
                     </div>
                 </div>
@@ -877,13 +985,13 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="time-col"><span class="relative-time">0:00</span></td>
+                                        <td class="time-col">0:00</td>
                                         <td class="location-col">Išvykstame</td>
                                         <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
                                             viską pasiėmėte!</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col"><span class="relative-time">1:35</span></td>
+                                        <td class="time-col">1:35</td>
                                         <td class="location-col">Bernāti gamtos parkas</td>
                                         <td class="description-col">Bernatų gamtos parkas su jo pajūrio kopų mišku
                                             yra ypatingas savo reljefu ir yra viena didžiausių Pietų Kuržemės
@@ -892,22 +1000,22 @@
                                             kraštovaizdžio rėmų ir pan.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col"><span class="relative-time">1:20</span></td>
+                                        <td class="time-col">1:20</td>
                                         <td class="location-col">Jūrkalnės skardis</td>
                                         <td class="description-col">Jūrkalnės skardis ir viena vaizdingiausių jūros
-                                            pakrantės vietų Latvijoje su tyliu, civilizacijos nepaliestu paplūdimiu 
+                                            pakrantės vietų Latvijoje su tyliu, civilizacijos nepaliestu paplūdimiu
                                             ir iki 20 metrų aukščio skardžiu.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col"><span class="relative-time">0:15</span></td>
+                                        <td class="time-col">0:15</td>
                                         <td class="location-col">Kuldigos labirintai</td>
                                         <td class="description-col">3300 kvadratinių metrų teritorijoje buvo
-                                            sukurtas labirintas, kuriame išbandomos jūsų logikos galimybės. 
-                                            Labirintas pagamintas iš pusiau skaidraus tinklelio, per kurį galima 
+                                            sukurtas labirintas, kuriame išbandomos jūsų logikos galimybės.
+                                            Labirintas pagamintas iš pusiau skaidraus tinklelio, per kurį galima
                                             matyti vieną ar du paskesnius takelius.</td>
                                     </tr>
                                     <tr>
-                                        <td class="time-col"><span class="relative-time">2:35</span></td>
+                                        <td class="time-col">2:35</td>
                                         <td class="location-col">Grįžimas namo</td>
                                         <td class="description-col">Kelionės pabaiga.</td>
                                     </tr>
@@ -917,51 +1025,101 @@
                     </div>
                 </div>
             </section>
+
+            <section id="lenkija" class="content-section">
+                <div class="route-options">
+                    <div class="route-option option1 active" data-option="option1">
+                        <h3><i class="fas fa-person-military-rifle"></i> <i>???</i> </h3>
+                        <p>Ilgesnė ir intensyvesnė išvyka su mažiau sustojimų, tačiau aplankomi įspūdingi ir plačiai
+                            vertinami objektai.</p>
+                    </div>
+
+                    <div class="route-option option2" data-option="option2">
+                        <h3><i class="fas fa-church"></i> <i>???</i> </h3>
+                        <p>Trumpesnė kelionė netoli Lietuvos sienos su gausesniu skaičiumi įvairių objektų ir patogiu
+                            tempu.</p>
+                    </div>
+                </div>
+            </section>
+            <div class="footer">
+                <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
+            </div>
         </div>
-        <div class="footer">
-            <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
-        </div>
-    </div>
-    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const contentSections = document.querySelectorAll('.content-section');
+        <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                const contentSections = document.querySelectorAll('.content-section');
 
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons and sections
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    contentSections.forEach(section => section.classList.remove('active'));
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remove active class from all buttons and sections
+                        tabBtns.forEach(b => b.classList.remove('active'));
+                        contentSections.forEach(section => section.classList.remove('active'));
 
-                    // Add active class to clicked button
-                    btn.classList.add('active');
+                        // Add active class to clicked button
+                        btn.classList.add('active');
 
-                    // Show corresponding section
-                    const tabId = btn.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+                        // Show corresponding section
+                        const tabId = btn.getAttribute('data-tab');
+                        const section = document.getElementById(tabId);
+                        section.classList.add('active');
+
+                        // Special handling for Lenkija tab
+                        if (tabId === 'lenkija') {
+                            // Activate the first option
+                            const firstOption = section.querySelector('.route-option.option1');
+                            if (firstOption) {
+                                firstOption.click();
+                            }
+                        }
+                    });
+                });
+
+                // Route options selection
+                const routeOptions = document.querySelectorAll('.route-option');
+
+                routeOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        // Find the parent section
+                        const section = option.closest('.content-section');
+
+                        // Only apply this logic for Lenkija section
+                        if (section && section.id === 'lenkija') {
+                            // Remove active class from all options and cards in this section
+                            section.querySelectorAll('.route-option').forEach(opt => opt.classList.remove('active'));
+                            section.querySelectorAll('.route-card').forEach(card => card.classList.remove('active'));
+
+                            // Add active class to clicked option
+                            option.classList.add('active');
+
+                            // Show corresponding card
+                            const optionType = option.getAttribute('data-option');
+                            const card = section.querySelector(`.route-card.${optionType}`);
+                            if (card) card.classList.add('active');
+                        }
+                    });
+                });
+
+                // Grįžti į viršų mygtukas
+                const backToTopBtn = document.getElementById('backToTop');
+
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
-
-            // Grįžti į viršų mygtukas
-            const backToTopBtn = document.getElementById('backToTop');
-
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+        </script>
 </body>
 
 </html>
