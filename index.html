@@ -37,177 +37,6 @@
             --option2-light: #f48fb1;
         }
 
-        /* Skirtukų stilius */
-        .tab-btn.venta {
-            background: var(--light);
-            border: 1px solid #dee2e6;
-            color: var(--gray);
-        }
-
-        .tab-btn.venta.active {
-            background: var(--venta);
-        }
-
-        .tab-btn.venta:hover {
-            background: var(--venta-light);
-        }
-
-        /* Naujas skirtukas Lenkija */
-        .tab-btn.lenkija {
-            background: var(--light);
-            border: 1px solid #dee2e6;
-            color: var(--gray);
-        }
-
-        .tab-btn.lenkija.active {
-            background: var(--lenkija);
-        }
-
-        .tab-btn.lenkija:hover {
-            background: var(--lenkija-light);
-        }
-
-        /* Maršruto stilius */
-        .venta .route-header {
-            background: linear-gradient(to right, var(--venta), var(--venta-light));
-        }
-
-        .venta .time-col {
-            color: var(--venta);
-            font-weight: 600;
-        }
-
-        .venta th:first-child {
-            border-left: 4px solid var(--venta);
-        }
-
-        /* Pridėti naują skirtukų stilių */
-        .tab-btn.jura {
-            background: var(--light);
-            border: 1px solid #dee2e6;
-            color: var(--gray);
-        }
-
-        .tab-btn.jura.active {
-            background: var(--jura);
-        }
-
-        .tab-btn.jura:hover {
-            background: var(--jura-light);
-        }
-
-        /* Naujo maršruto stilius */
-        .jura .route-header {
-            background: linear-gradient(to right, var(--jura), var(--jura-light));
-        }
-
-        .jura .time-col {
-            color: var(--jura);
-            font-weight: 600;
-        }
-
-        .jura th:first-child {
-            border-left: 4px solid var(--jura);
-        }
-
-        /* Alternatyvių maršrutų stiliai */
-        .route-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .route-option {
-            padding: 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            border: 2px solid transparent;
-        }
-
-        .route-option.option1 {
-            background: linear-gradient(135deg, var(--option1-light), var(--option1));
-            color: white;
-        }
-
-        .route-option.option2 {
-            background: linear-gradient(135deg, var(--option2-light), var(--option2));
-            color: white;
-        }
-
-        .route-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .route-option.active {
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--lenkija);
-        }
-
-        .route-option h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .route-option p {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .option-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        .route-card.option1 .route-header {
-            background: linear-gradient(to right, var(--option1), var(--option1-light));
-        }
-
-        .route-card.option2 .route-header {
-            background: linear-gradient(to right, var(--option2), var(--option2-light));
-        }
-
-        .option1 .time-col {
-            color: var(--option1);
-        }
-
-        .option2 .time-col {
-            color: var(--option2);
-        }
-
-        .option1 th:first-child {
-            border-left: 4px solid var(--option1);
-        }
-
-        .option2 th:first-child {
-            border-left: 4px solid var(--option2);
-        }
-
-        .relative-time {
-            display: inline-block;
-            background-color: #e0f7fa;
-            border-radius: 4px;
-            padding: 3px 8px;
-            margin: 2px 0;
-            font-size: 0.9em;
-            color: #006064;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -314,10 +143,6 @@
             padding: 0 20px;
         }
 
-        .tab-btn.future.active {
-            background: var(--future);
-        }
-
         .tab-btn {
             background: var(--light);
             border: 1px solid #dee2e6;
@@ -344,8 +169,20 @@
             box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
         }
 
+        .tab-btn.future.active {
+            background: var(--future);
+        }
+
         .tab-btn.latvija.active {
             background: var(--latvija);
+        }
+
+        .tab-btn.venta.active {
+            background: var(--venta);
+        }
+
+        .tab-btn.venta:hover {
+            background: var(--venta-light);
         }
 
         /* Content Sections */
@@ -378,24 +215,13 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border: 1px solid #eaeaea;
             transition: var(--transition);
-            display: block;
-        }
-
-        #lenkija .route-card {
             display: none;
-        }
-
-        #lenkija .route-card.active {
-            display: block;
+            /* Pakeista: visi maršrutai pradžioje paslėpti */
         }
 
         .route-card.active {
             display: block;
-        }
-
-        .route-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            /* Rodyti tik aktyvų maršrutą */
         }
 
         .route-header {
@@ -412,6 +238,10 @@
 
         .latvija .route-header {
             background: linear-gradient(to right, var(--latvija), var(--latvija-light));
+        }
+
+        .venta .route-header {
+            background: linear-gradient(to right, var(--venta), var(--venta-light));
         }
 
         .route-icon {
@@ -471,6 +301,10 @@
             border-left: 4px solid var(--latvija);
         }
 
+        .venta th:first-child {
+            border-left: 4px solid var(--venta);
+        }
+
         td {
             padding: 14px 20px;
             border-bottom: 1px solid #eaeaea;
@@ -497,6 +331,10 @@
 
         .latvija .time-col {
             color: var(--latvija);
+        }
+
+        .venta .time-col {
+            color: var(--venta);
         }
 
         .location-col {
@@ -559,6 +397,70 @@
             margin-top: 10px;
         }
 
+        /* Route Options */
+        .route-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .route-option {
+            padding: 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid transparent;
+        }
+
+        .route-option.option1 {
+            background: linear-gradient(135deg, var(--option1-light), var(--option1));
+            color: white;
+        }
+
+        .route-option.option2 {
+            background: linear-gradient(135deg, var(--option2-light), var(--option2));
+            color: white;
+        }
+
+        .route-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .route-option.active {
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--venta);
+        }
+
+        .route-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .route-option p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .option-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
         /* Animacijos */
         @keyframes pulse {
             0% {
@@ -588,7 +490,7 @@
             }
         }
 
-        /* Nauji elementai */
+        /* Back to top */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -764,15 +666,17 @@
         <div class="header">
             <div class="logo"><i class="fas fa-route"></i></div>
             <h1>KELIONIŲ MARŠRUTAI</h1>
+            <p>Pasirinkite jus dominančią kelionę ir jos variantus</p>
         </div>
         <div class="content">
             <div class="intro">
                 <p>Sveiki,</p>
-                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos ir kaimyninių šalių
-                    regionus. Maršrutai apima įdomiausius gamtos objektus, pažintinius takus bei unikaliausias apžvalgos
-                    vietas. Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
+                <p>Šiame puslapyje rasite išsamius kelionių maršrutus po įvairius Lietuvos ir kaimyninių šalių regionus.
+                    Maršrutai apima įdomiausius gamtos objektus, pažintinius takus bei unikaliausias apžvalgos vietas.
+                    Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
             </div>
             <nav class="nav-tabs">
+                <!-- Pataisymas: paliekamas tik Anykščių-Zarasų maršrutas aktyvus pradžioje -->
                 <button class="tab-btn future active" data-tab="future">
                     <i class="fas fa-tree"></i>Anykščiai–Zarasai
                 </button>
@@ -780,83 +684,13 @@
                     <i class="fas fa-chess-rook"></i>Pietų Vidžemė
                 </button>
                 <button class="tab-btn venta" data-tab="venta">
-                    <i class="fas fa-church"></i>Palenkės apylinkės
-                </button>
-                <button class="tab-btn lenkija">
-                    <i class="fas fa-question"></i>
+                    <i class="fas fa-church"></i>Palenkės maršrutas
                 </button>
             </nav>
 
-                        <section id="venta" class="content-section">
-                <div class="route-card venta">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-church"></i></div>
-                        <h2 class="route-title">Palenkės maršrutas</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="time-col">6:50</td>
-                                        <td class="location-col">Išvykstame</td>
-                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                            viską pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:30<br>11:10</td>
-                                        <td class="location-col">Marijos Konopnickos muziejus</td>
-                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
-                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
-                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:35<br>12:35</td>
-                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
-                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūrę ant
-                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
-                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
-                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
-                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:10<br>13:25</td>
-                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
-                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
-                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
-                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:00<br>15:00<br><i>ARBA</i><br>14:50<br>15:50</td>
-                                        <td class="location-col">Druskininkų / Augustavo kurortas</td>
-                                        <td class="description-col">Augustavas – miestas apsuptas devynių ežerų ir didžiąja Augustavo giria. Šiaurės rytų Lenkijos vandens sostinė. Druskininkai – gausiai gamtos apdovanotas kurortas, jau ištisus šimtmečius vertinamas dėl gamtinių ir gydomųjų išteklių. Tai didžiausias šalies pietuose įsikūręs kurortas, kuriame dera miškų ramybė ir modernūs kurortinio gydymo metodai</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">19:20<br><i>ARBA</i><br>20:50</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="note"><i class="fas fa-info-circle"></i>
-                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
-                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <!-- Anykščių-Zarasų maršrutas (aktyvus pradžioje) -->
             <section id="future" class="content-section active">
-                <div class="route-card future">
+                <div class="route-card future active">
                     <div class="route-header">
                         <div class="route-icon"><i class="fas fa-tree"></i></div>
                         <h2 class="route-title">Anykščių–Zarasų maršrutas</h2>
@@ -897,7 +731,12 @@
                                         <tr>
                                             <td class="time-col">11:55<br>12:25</td>
                                             <td class="location-col">Šeimyniškėlių piliakalnio kompleksas</td>
-                                            <td class="description-col">Šeimyniškėlių piliakalnio istorinis kompleksas mena vienintelį Lietuvos karalių Mindaugą. Apžvalgos bokšto ekspozicija supažindina su buvusios Šeimyniškėlių (Vorutos) pilies – vienos didžiausių medinių pilių Rytų Europoje – istorija, archeologiniais radiniais, XIII–XIV a. kario ginkluote, pilėnų buities daiktais, pilies maketu.</td>
+                                            <td class="description-col">Šeimyniškėlių piliakalnio istorinis kompleksas
+                                                mena vienintelį Lietuvos karalių Mindaugą. Apžvalgos bokšto ekspozicija
+                                                supažindina su buvusios Šeimyniškėlių (Vorutos) pilies – vienos
+                                                didžiausių medinių pilių Rytų Europoje – istorija, archeologiniais
+                                                radiniais, XIII–XIV a. kario ginkluote, pilėnų buities daiktais, pilies
+                                                maketu.</td>
                                         </tr>
                                         <tr>
                                             <td class="time-col">12:50<br>13:05</td>
@@ -945,8 +784,9 @@
                 </div>
             </section>
 
+            <!-- Pietų Vidžemės maršrutas -->
             <section id="latvija" class="content-section">
-                <div class="route-card latvija">
+                <div class="route-card latvija active">
                     <div class="route-header">
                         <div class="route-icon"><i class="fas fa-chess-rook"></i></div>
                         <h2 class="route-title">Pietų Vidžemės maršrutas</h2>
@@ -998,9 +838,9 @@
                                     </tr>
                                     <tr>
                                         <td class="time-col">13:55<br>14:10</td>
-                                        <td class="location-col">Taborkalnio apžvalgos bokštas</td>
+                                        <td class="location-col">Taborkalno apžvalgos bokštas</td>
                                         <td class="description-col">Apžvalgos bokštas pastatytas 2021 m.
-                                            Taborkalnio viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio
+                                            Taborkalno viršūnėje, 157,8 m aukštyje, šalia Struvės geodezinio
                                             rato „Dabors-kalns“ taško. Bokšto aukštis - 28 metrai.
                                             Nuo bokšto atsiveria kvapą gniaužiantys vaizdai į Dauguvos upę
                                             ir Vikezerso ežerą.</td>
@@ -1016,7 +856,7 @@
                                     </tr>
                                     <tr>
                                         <td class="time-col">17:40<br>17:55</td>
-                                        <td class="location-col">Ložmetėjkalnio apžvalgos bokštas</td>
+                                        <td class="location-col">Ložmetėjkalno apžvalgos bokštas</td>
                                         <td class="description-col">Ložmetėjkalnis (Kulkosvaidžių
                                             kalnas) yra unikali vietovė, nes joje gausu Pirmojo pasaulinio karo
                                             ir Kalėdų mūšių liudijimų. Čia yra 27 metrų aukščio bokštas,
@@ -1039,19 +879,157 @@
                 </div>
             </section>
 
-            <section id="lenkija" class="content-section">
+            <!-- Palenkės maršrutas su pasirinkimais -->
+            <section id="venta" class="content-section">
                 <div class="route-options">
                     <div class="route-option option1 active" data-option="option1">
-                        <h3><i class="fas fa-person-military-rifle"></i> <i>???</i> </h3>
-                        <p></p>
+                        <h3><i class="fas fa-spa"></i> Druskininkų variacija</h3>
                     </div>
-
                     <div class="route-option option2" data-option="option2">
-                        <h3><i class="fas fa-church"></i> <i>???</i> </h3>
-                        <p></p>
+                        <h3><i class="fas fa-water"></i> Augustavo variacija</h3>
+                    </div>
+                </div>
+
+                <!-- Druskininkų variacija -->
+                <div class="route-card venta option1 active">
+                    <div class="route-header">
+                        <div class="route-icon"><i class="fas fa-spa"></i></div>
+                        <h2 class="route-title">Palenkės maršrutas (Druskininkų variantas)</h2>
+                    </div>
+                    <div class="route-content">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Laikas</th>
+                                        <th>Vieta</th>
+                                        <th>Aprašymas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="time-col">7:50</td>
+                                        <td class="location-col">Išvykstame</td>
+                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
+                                            viską pasiėmėte!</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">10:40<br>11:20</td>
+                                        <td class="location-col">Marijos Konopnickos muziejus</td>
+                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
+                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
+                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">11:45<br>12:45</td>
+                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
+                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūręs ant
+                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
+                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
+                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
+                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">13:20<br>13:35</td>
+                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
+                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
+                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
+                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">15:00<br>16:00</td>
+                                        <td class="location-col">Druskininkų kurortas</td>
+                                        <td class="description-col">Druskininkai – gausiai gamtos apdovanotas kurortas,
+                                            jau ištisus šimtmečius vertinamas dėl gamtinių ir gydomųjų išteklių. Tai
+                                            didžiausias šalies pietuose įsikūręs kurortas, kuriame dera miškų ramybė ir
+                                            modernūs kurortinio gydymo metodai.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">19:40</td>
+                                        <td class="location-col">Grįžimas namo</td>
+                                        <td class="description-col">Kelionės pabaiga.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="note"><i class="fas fa-info-circle"></i>
+                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
+                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Augustavo variacija -->
+                <div class="route-card venta option2">
+                    <div class="route-header">
+                        <div class="route-icon"><i class="fas fa-water"></i></div>
+                        <h2 class="route-title">Palenkės maršrutas (Augustavo variantas)</h2>
+                    </div>
+                    <div class="route-content">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Laikas</th>
+                                        <th>Vieta</th>
+                                        <th>Aprašymas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td class="time-col">7:00</td>
+                                    <td class="location-col">Išvykstame</td>
+                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
+                                        viską pasiėmėte!</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">10:40<br>11:20</td>
+                                        <td class="location-col">Marijos Konopnickos muziejus</td>
+                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
+                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
+                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">11:45<br>12:45</td>
+                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
+                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūręs ant
+                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
+                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
+                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
+                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">13:20<br>13:35</td>
+                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
+                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
+                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
+                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">14:20<br>15:20</td>
+                                        <td class="location-col">Augustavo kurortas</td>
+                                        <td class="description-col">Augustavas – miestas apsuptas devynių ežerų ir
+                                            didžiąja Augustavo giria. Šiaurės rytų Lenkijos vandens sostinė. Čia galima
+                                            pasivaikščioti po gražią senamiesčio dalį, pamatyti Augustavo kanalą ir
+                                            mėgautis nuostabiu gamtovaizdžiu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="time-col">19:50</td>
+                                        <td class="location-col">Grįžimas namo</td>
+                                        <td class="description-col">Kelionės pabaiga.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="note"><i class="fas fa-info-circle"></i>
+                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
+                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
+                        </div>
                     </div>
                 </div>
             </section>
+
             <div class="footer">
                 <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
             </div>
@@ -1062,59 +1040,50 @@
                 const tabBtns = document.querySelectorAll('.tab-btn');
                 const contentSections = document.querySelectorAll('.content-section');
 
+                // Tabų perjungimo funkcija
                 tabBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
-                        // Remove active class from all buttons and sections
+                        // Pašalinti aktyvumo klasę nuo visų mygtukų ir sekcijų
                         tabBtns.forEach(b => b.classList.remove('active'));
                         contentSections.forEach(section => section.classList.remove('active'));
 
-                        // Add active class to clicked button
+                        // Pridėti aktyvumo klasę paspaustam mygtukui
                         btn.classList.add('active');
 
-                        // Show corresponding section
+                        // Rodyti atitinkamą sekciją
                         const tabId = btn.getAttribute('data-tab');
                         const section = document.getElementById(tabId);
-                        section.classList.add('active');
-
-                        // Special handling for Lenkija tab
-                        if (tabId === 'lenkija') {
-                            // Activate the first option
-                            const firstOption = section.querySelector('.route-option.option1');
-                            if (firstOption) {
-                                firstOption.click();
-                            }
+                        if (section) {
+                            section.classList.add('active');
                         }
                     });
                 });
 
-                // Route options selection
+                // Maršruto variantų pasirinkimo funkcija
                 const routeOptions = document.querySelectorAll('.route-option');
-
                 routeOptions.forEach(option => {
                     option.addEventListener('click', () => {
-                        // Find the parent section
                         const section = option.closest('.content-section');
 
-                        // Only apply this logic for Lenkija section
-                        if (section && section.id === 'lenkija') {
-                            // Remove active class from all options and cards in this section
-                            section.querySelectorAll('.route-option').forEach(opt => opt.classList.remove('active'));
-                            section.querySelectorAll('.route-card').forEach(card => card.classList.remove('active'));
+                        // Pašalinti aktyvumo klasę visiems variantams šioje sekcijoje
+                        section.querySelectorAll('.route-option').forEach(opt => opt.classList.remove('active'));
 
-                            // Add active class to clicked option
-                            option.classList.add('active');
+                        // Pridėti aktyvumo klasę paspaustam variantui
+                        option.classList.add('active');
 
-                            // Show corresponding card
-                            const optionType = option.getAttribute('data-option');
-                            const card = section.querySelector(`.route-card.${optionType}`);
-                            if (card) card.classList.add('active');
-                        }
+                        // Rodyti tik pasirinktą maršruto variantą
+                        const optionType = option.getAttribute('data-option');
+                        section.querySelectorAll('.route-card').forEach(card => {
+                            card.classList.remove('active');
+                            if (card.classList.contains(optionType)) {
+                                card.classList.add('active');
+                            }
+                        });
                     });
                 });
 
-                // Grįžti į viršų mygtukas
+                // Grįžti į viršų mygtuko funkcija
                 const backToTopBtn = document.getElementById('backToTop');
-
                 window.addEventListener('scroll', () => {
                     if (window.pageYOffset > 300) {
                         backToTopBtn.classList.add('visible');
@@ -1131,6 +1100,7 @@
                 });
             });
         </script>
+    </div>
 </body>
 
 </html>
