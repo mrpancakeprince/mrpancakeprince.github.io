@@ -7,6 +7,7 @@
     <title>🗺️ KELIONĖS 🚗</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* VISAS CSS PALIKTAS BE PAKEITIMŲ */
         :root {
             --primary: #0d47a1;
             --primary-light: #5472d3;
@@ -681,15 +682,12 @@
                     Toliau galite pasirinkti jus dominantį maršrutą arba peržiūrėti visus.</p>
             </div>
             <nav class="nav-tabs">
-                <!-- Pataisymas: paliekamas tik Anykščių-Zarasų maršrutas aktyvus pradžioje -->
+                <!-- PALIKTI TIK ŠIUOS SKIRTUKUS (PALENKĖS PAŠALINTA) -->
                 <button class="tab-btn future active" data-tab="future">
                     <i class="fas fa-tree"></i>Anykščiai–Zarasai
                 </button>
                 <button class="tab-btn latvija" data-tab="latvija">
                     <i class="fas fa-chess-rook"></i>Pietų Vidžemė
-                </button>
-                <button class="tab-btn venta" data-tab="venta">
-                    <i class="fas fa-car-side"></i>Kurortiškoji Palenkė
                 </button>
             </nav>
 
@@ -885,249 +883,7 @@
                 </div>
             </section>
 
-            <!-- Palenkės maršrutas su pasirinkimais -->
-            <section id="venta" class="content-section">
-                <div class="route-options">
-                    <div class="route-option option1 active" data-option="option1">
-                        <h3><i class="fas fa-spa"></i> Druskininkų variacija</h3>
-                    </div>
-                    <div class="route-option option2" data-option="option2">
-                        <h3><i class="fas fa-water"></i> Augustavo variacija</h3>
-                    </div>
-                    <div class="route-option option3" data-option="option3">
-                        <h3><i class="fas fa-tree-city"></i> Geldapės variacija</h3>
-                    </div>
-                </div>
-
-                <!-- Druskininkų variacija -->
-                <div class="route-card venta option1 active">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-spa"></i></div>
-                        <h2 class="route-title">Palenkės maršrutas (Druskininkų variantas)</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="time-col">6:55</td>
-                                        <td class="location-col">Išvykstame</td>
-                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                            viską pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:40<br>11:20</td>
-                                        <td class="location-col">Marijos Konopnickos muziejus</td>
-                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
-                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
-                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:45<br>12:45</td>
-                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
-                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūręs ant
-                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
-                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
-                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
-                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:20<br>13:35</td>
-                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
-                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
-                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
-                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">15:00<br>16:00</td>
-                                        <td class="location-col">Druskininkų kurortas</td>
-                                        <td class="description-col">Druskininkai – gausiai gamtos apdovanotas kurortas,
-                                            jau ištisus šimtmečius vertinamas dėl gamtinių ir gydomųjų išteklių. Tai
-                                            didžiausias šalies pietuose įsikūręs kurortas, kuriame dera miškų ramybė ir
-                                            modernūs kurortinio gydymo metodai.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">19:45</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="warning-note"><i class="fas fa-info-circle"></i>
-                            <div>Būtina pasiimti asmens tapatybę patvirtinančius dokumentus!</div>
-                        </div>
-                        <div class="note"><i class="fas fa-info-circle"></i>
-                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
-                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Augustavo variacija -->
-                <div class="route-card venta option2">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-water"></i></div>
-                        <h2 class="route-title">Palenkės maršrutas (Augustavo variantas)</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <td class="time-col">6:55</td>
-                                    <td class="location-col">Išvykstame</td>
-                                    <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                        viską pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:40<br>11:20</td>
-                                        <td class="location-col">Marijos Konopnickos muziejus</td>
-                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
-                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
-                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:45<br>12:45</td>
-                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
-                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūręs ant
-                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
-                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
-                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
-                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:20<br>13:35</td>
-                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
-                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
-                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
-                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:20<br>15:20</td>
-                                        <td class="location-col">Augustavo kurortas</td>
-                                        <td class="description-col">Augustavas – miestas apsuptas devynių ežerų ir
-                                            didžiąja Augustavo giria. Šiaurės rytų Lenkijos vandens sostinė. Čia galima
-                                            pasivaikščioti po gražią senamiesčio dalį, pamatyti Augustavo kanalą ir
-                                            mėgautis nuostabiu gamtovaizdžiu.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">19:55</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="warning-note"><i class="fas fa-info-circle"></i>
-                            <div>Būtina pasiimti asmens tapatybę patvirtinančius dokumentus!</div>
-                        </div>
-                        <div class="note"><i class="fas fa-info-circle"></i>
-                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
-                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Geldapės variacija -->
-                <div class="route-card venta option3">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-tree-city"></i></div>
-                        <h2 class="route-title">Palenkės maršrutas (Geldapės variantas)</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="time-col">6:50</td>
-                                        <td class="location-col">Išvykstame</td>
-                                        <td class="description-col">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                            viską pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">10:40<br>11:20</td>
-                                        <td class="location-col">Marijos Konopnickos muziejus</td>
-                                        <td class="description-col">„Muziejus – tai kelionė per ne tokį lengvą poetės
-                                            gyvenimą, perfiltruotą per prisiminimus, eilėraščių fragmentus, laiškus,
-                                            paveikslus, vaizduotę. Ir visa tai pateikiama tikrai unikaliai“.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:45<br>12:45</td>
-                                        <td class="location-col">Vygrių kamaldulių vienuolynas</td>
-                                        <td class="description-col">Vienuolyno ir bažnyčios ansamblis įsikūręs ant
-                                            specialiai suformuoto, aukštomis sienomis įrėminto, viduramžių citadelę
-                                            primenančio pylimo. Šis religinis kompleksas yra tarsi atskiras miestelis su
-                                            akmenimis grįstomis gatvėmis, palei jas išsidėsčiusiais vienuolių namukais,
-                                            aikštėmis, erdvę skaidančiomis alėjomis ir kitais urbanistiniais elementais.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:20<br>13:35</td>
-                                        <td class="location-col">Krušniko apžvalgos bokštas</td>
-                                        <td class="description-col">Bokštas stovi prie Žaliojo kelio, ant aukštumos tarp
-                                            Mulačysko ir Vygrių ežerų. Nuo jo atsiveria vaizdas į pietinę Vygrių ežero
-                                            dalį iki pat Gawrych Ruda bažnyčios.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:55<br>15:20</td>
-                                        <td class="location-col">Geldapės sūrimo bokštai</td>
-                                        <td class="description-col">Tai 8 metrų aukščio ir 220 metrų ilgio sūrymo
-                                            bokštai,
-                                            ketvirti pagal dydį Lenkijoje. Erškėčiais apaugusiomis sienomis, iš 646
-                                            metrų gylio, teka sūrus vanduo, kurio dėka oras aplink bokštus prisipildo
-                                            naudingų medžiagų – jodo, bromo, magnio, kalcio, kalio, natrio ir fluoro.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">15:30<br>16:15</td>
-                                        <td class="location-col">Geldapės kurortas</td>
-                                        <td class="description-col">Geldapė – miestas šiaurės rytų Lenkijoje, Varmijos
-                                            Mozūrų vaivadijoje. Tai vienintelis sveikatingumo kurortas Varmijoje ir
-                                            Mozūrijoje. Geldapės miesto struktūra sukurta atgaivinti ne tik kūnui, bet
-                                            ir sielai.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">20:30</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="warning-note"><i class="fas fa-info-circle"></i>
-                            <div>Būtina pasiimti asmens tapatybę patvirtinančius dokumentus!</div>
-                        </div>
-                        <div class="note"><i class="fas fa-info-circle"></i>
-                            <div>Marijos Konopnickos muziejuje visa informacija pateikiama lenkų kalba, tačiau dėl savo
-                                itin interaktyvaus pobūdžio šis muziejus yra tikrai vertas apsilankymo.</div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
+            <!-- PALENKĖS MARŠRUTO SEKCIJA VISIŠKAI PAŠALINTA -->
 
             <div class="footer">
                 <p>„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
@@ -1155,29 +911,6 @@
                         if (section) {
                             section.classList.add('active');
                         }
-                    });
-                });
-
-                // Maršruto variantų pasirinkimo funkcija
-                const routeOptions = document.querySelectorAll('.route-option');
-                routeOptions.forEach(option => {
-                    option.addEventListener('click', () => {
-                        const section = option.closest('.content-section');
-
-                        // Pašalinti aktyvumo klasę visiems variantams šioje sekcijoje
-                        section.querySelectorAll('.route-option').forEach(opt => opt.classList.remove('active'));
-
-                        // Pridėti aktyvumo klasę paspaustam variantui
-                        option.classList.add('active');
-
-                        // Rodyti tik pasirinktą maršruto variantą
-                        const optionType = option.getAttribute('data-option');
-                        section.querySelectorAll('.route-card').forEach(card => {
-                            card.classList.remove('active');
-                            if (card.classList.contains(optionType)) {
-                                card.classList.add('active');
-                            }
-                        });
                     });
                 });
 
