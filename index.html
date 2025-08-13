@@ -42,6 +42,59 @@
             --option3-light: #BA68C8;
         }
 
+        /* Statybų lango stilius */
+        .construction-overlay {
+            position: absolute;
+            /* Pakeisti iš 'absolute' į 'fixed' */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--border-radius);
+        }
+
+        .construction-content {
+            max-width: 600px;
+        }
+
+        .construction-icon {
+            font-size: 112px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .construction-title {
+            font-size: 52px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .construction-message {
+            font-size: 22px;
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .construction-note {
+            background-color: #fff9e6;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -275,6 +328,8 @@
 
         .route-content {
             padding: 0;
+            position: relative;
+            /* Svarbu - leidžia riboti statybų langą */
         }
 
         .table-container {
@@ -720,7 +775,19 @@
                         <h2 class="route-title">Anykščių–Zarasų maršrutas</h2>
                     </div>
                     <div class="route-content">
-                        <div class="route-info">
+                        <div class="construction-overlay">
+                            <div class="construction-content">
+                                <div class="construction-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3 class="construction-title">REDAGAVIMAS</h3>
+                                <p class="construction-message">
+                                    Šiuo metu Anykščių–Zarasų maršrutas atnaujinamas, kad jis būtų dar įdomesnis ir
+                                    turiningesnis. Grįžkite vėliau!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="route-info" style="opacity: 7000; filter: blur(1px);">
                             <div class="table-container">
                                 <table>
                                     <thead>
@@ -762,13 +829,14 @@
                                                 informaciniai stendai.</td>
                                         </tr>
                                         <tr>
-                                            <td class="time-col">13:10<br>13:25</td> 
+                                            <td class="time-col">13:10<br>13:25</td>
                                             <td class="location-col">Šeimyniškių atodanga ir konglomerato uola</td>
                                             <td class="description-col">Anksčiau šioje vietoje buvo žvyro karjeras,
                                                 todėl vietiniams ši vieta geriau žinoma kaip Šeimyniškių karjeras.
                                                 Bekasant žvyrą buvo atkasti masyvūs iš molio, žvyro ir smulkių akmenukų
                                                 susiformavę luitai. Tokios uolos susiformuoja požemiuose vykstant
-                                                sudėtingiems hidrocheminiams procesams, kurių metu išsikristalizuoja kalcitas.
+                                                sudėtingiems hidrocheminiams procesams, kurių metu išsikristalizuoja
+                                                kalcitas.
                                                 Šalia konglomerato uolos įrengti laiptukai į Šeimyniškių atodangą.</td>
                                         </tr>
                                         <tr>
@@ -792,7 +860,7 @@
                                                 o Lietuvoje pats seniausias medis. Spėjama,
                                                 kad jo amžius yra apie 1000-1500 ar net 2000 metų.</td>
                                         </tr>
-                                         <tr>
+                                        <tr>
                                             <td class="time-col">---</td>
                                             <td class="location-col">---</td>
                                             <td class="description-col">---</td>
@@ -806,7 +874,7 @@
                                 </table>
                             </div>
                             <div class="warning-note"><i class="fas fa-info-circle"></i>
-                            <div>Šis maršrutas dar STIPRIAI REDAGUOJAMAS!</div>
+                                <div>Šis maršrutas dar STIPRIAI REDAGUOJAMAS!</div>
                             </div>
                         </div>
                     </div>
@@ -925,56 +993,80 @@
                                     </tr>
                                     <tr>
                                         <td class="time-col">10:25<br>11:55</td>
-                                        <td class="location-col">Laisvės kovų muziejaus pabėgimo kambarys „Surask Laisvę“</td>
-                                        <td class="description-col">Edukacijos dalyviai gauna pabėgimo planą iš  muziejaus rūsyje
-                                            esančio Lazdijų vidaus kalėjimo. Niekuo nepasitikėdami, jie turi atlikti įvairias
-                                            užduotis: ištyrinėti kalėjimo pertvarkymo planą ir sužinoti tam tikrus skaičius,
-                                            sienos angoje surasti pabirusius žodžius ir sudėti žodį, kameroje perskaityti svarbią
-                                            žinią, panaudojus veidrodėlį, išsiaiškinti dar daug kitų dalykų. Atlikę visas užduotis,
-                                            edukacijos dalyviai ieško durų su kodine spyna. Įvedę teisingą kodą, jas atidaro.
+                                        <td class="location-col">Laisvės kovų muziejaus pabėgimo kambarys „Surask
+                                            Laisvę“</td>
+                                        <td class="description-col">Edukacijos dalyviai gauna pabėgimo planą iš
+                                            muziejaus rūsyje
+                                            esančio Lazdijų vidaus kalėjimo. Niekuo nepasitikėdami, jie turi atlikti
+                                            įvairias
+                                            užduotis: ištyrinėti kalėjimo pertvarkymo planą ir sužinoti tam tikrus
+                                            skaičius,
+                                            sienos angoje surasti pabirusius žodžius ir sudėti žodį, kameroje
+                                            perskaityti svarbią
+                                            žinią, panaudojus veidrodėlį, išsiaiškinti dar daug kitų dalykų. Atlikę
+                                            visas užduotis,
+                                            edukacijos dalyviai ieško durų su kodine spyna. Įvedę teisingą kodą, jas
+                                            atidaro.
                                             Laisvė jau arti!</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">12:40<br>14:40</td>
                                         <td class="location-col">Druskininkų kurortas</td>
-                                        <td class="description-col">Švelniai tekančio Nemuno apsuptyje, tarp miškų ir ramybės,
+                                        <td class="description-col">Švelniai tekančio Nemuno apsuptyje, tarp miškų ir
+                                            ramybės,
                                             slepiasi kurortas, kuris ne tik gydo kūną, bet ir prikelia vidinį žvilgsnį.
-                                            Šis miestas nekalba garsiai, bet pasakoja daug. Jo takai veda ne tik per parkus ar
+                                            Šis miestas nekalba garsiai, bet pasakoja daug. Jo takai veda ne tik per
+                                            parkus ar
                                             muziejus, bet ir per laiko pojūtį – lėtą, bet intensyvų.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">14:50<br>15:05</td>
                                         <td class="location-col">Refleksoterapinis takas</td>
-                                        <td class="description-col">Vaikštant basomis refleksoterapiniu taku, įvairių dydžių
-                                            ir formų akmenukai spaudžia pėdose esančius biologiškai aktyvius taškus, kurie yra
-                                            susiję su mūsų vidaus organais. Kuo akmenukų spaudimo jėga švelnesnė, tuo labiau
+                                        <td class="description-col">Vaikštant basomis refleksoterapiniu taku, įvairių
+                                            dydžių
+                                            ir formų akmenukai spaudžia pėdose esančius biologiškai aktyvius taškus,
+                                            kurie yra
+                                            susiję su mūsų vidaus organais. Kuo akmenukų spaudimo jėga švelnesnė, tuo
+                                            labiau
                                             raminama ir atpalaiduojama centrinė nervų sistema, normalizuojama širdies ir
                                             kraujagyslių sistemos veikla.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">15:15<br>15:30</td>
                                         <td class="location-col">Liškiavos piliakalnis</td>
-                                        <td class="description-col">Liškiavos piliakalnis su išlikusiomis pietvakarinio bokšto 
-                                            liekanomis – vienas populiariausių ir lankomiausių Lietuvos piliakalnių. Metus čia
-                                            vyko tvarkybos darbai, šį kultūros paveldo objektą atvėrę visu jo grožiu. Iškirtus
-                                            krūmus, dalį medžių, nuo piliakalnio, dvarvietės kalno atsiverė įspūdingas panoraminis
-                                            vaizdas į tolumoje boluojantį nuostabaus grožio Liškiavos Švč. Trejybės bažnyčios ir
+                                        <td class="description-col">Liškiavos piliakalnis su išlikusiomis pietvakarinio
+                                            bokšto
+                                            liekanomis – vienas populiariausių ir lankomiausių Lietuvos piliakalnių.
+                                            Metus čia
+                                            vyko tvarkybos darbai, šį kultūros paveldo objektą atvėrę visu jo grožiu.
+                                            Iškirtus
+                                            krūmus, dalį medžių, nuo piliakalnio, dvarvietės kalno atsiverė įspūdingas
+                                            panoraminis
+                                            vaizdas į tolumoje boluojantį nuostabaus grožio Liškiavos Švč. Trejybės
+                                            bažnyčios ir
                                             dominikonų vienuolyno ansamblį bei šalia tekantį Nemuną.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">16:00<br>16:20</td>
                                         <td class="location-col">Merkinės piramidė</td>
-                                        <td class="description-col">Merkinės piramidė yra unikali bioenergetinė erdvė, įsikūrusi
-                                            Dzūkijos miškų apsuptyje, netoli Merkinės. Ją 2002 m. pastatė Povilas Žėkas, vedamas
-                                            aukštesniosios dvasios nurodymų. Piramidė sukonstruota iš metalo ir stiklo, jos aukštis
-                                            siekia 7 metrus, o viduje įrengta erdvė meditacijoms ir dvasiniam tobulėjimui.</td>
+                                        <td class="description-col">Merkinės piramidė yra unikali bioenergetinė erdvė,
+                                            įsikūrusi
+                                            Dzūkijos miškų apsuptyje, netoli Merkinės. Ją 2002 m. pastatė Povilas Žėkas,
+                                            vedamas
+                                            aukštesniosios dvasios nurodymų. Piramidė sukonstruota iš metalo ir stiklo,
+                                            jos aukštis
+                                            siekia 7 metrus, o viduje įrengta erdvė meditacijoms ir dvasiniam
+                                            tobulėjimui.</td>
                                     </tr>
                                     <tr>
                                         <td class="time-col">16:50<br>17:15</td>
                                         <td class="location-col">Alytaus piliakalnis</td>
-                                        <td class="description-col">Alytaus piliakalnis - tai šimtmečius menąs miesto įkūrimo liudininkas,
-                                            istorijos ir kultūros paminklas, kurio papėdę šiandien puošia skulptūrų ekspozicija „Alytaus
-                                            piliakalnio protėviai“. Piliakalnis apipintas nesuskaičiuojama gausybe legendų. 
+                                        <td class="description-col">Alytaus piliakalnis - tai šimtmečius menąs miesto
+                                            įkūrimo liudininkas,
+                                            istorijos ir kultūros paminklas, kurio papėdę šiandien puošia skulptūrų
+                                            ekspozicija „Alytaus
+                                            piliakalnio protėviai“. Piliakalnis apipintas nesuskaičiuojama gausybe
+                                            legendų.
                                             Netoli piliakalnio yra aukščiausias Lietuvoje (38,1 m) Baltosios
                                             rožės pėsčiųjų tiltas.</td>
                                     </tr>
@@ -987,10 +1079,11 @@
                             </table>
                         </div>
                         <div class="warning-note"><i class="fas fa-info-circle"></i>
-                                <div>Laisvės kovų muziejaus edukacijai būtina išankstinė registracija!</div>
+                            <div>Laisvės kovų muziejaus edukacijai būtina išankstinė registracija!</div>
                         </div>
                         <div class="note"><i class="fas fa-info-circle"></i>
-                                <div>Pasiūlymai Druskininkuose: Vilniaus alėja, muzikinis fontanas, cerkvė, M. K. Čiurlionio muziejus.</div>
+                            <div>Pasiūlymai Druskininkuose: Vilniaus alėja, muzikinis fontanas, cerkvė, M. K. Čiurlionio
+                                muziejus.</div>
                         </div>
                     </div>
                 </div>
