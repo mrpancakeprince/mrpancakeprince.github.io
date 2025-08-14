@@ -7,7 +7,6 @@
     <title>🗺️ KELIONĖS 🚗</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* VISAS CSS PALIKTAS BE PAKEITIMŲ */
         :root {
             --primary: #0d47a1;
             --primary-light: #5472d3;
@@ -67,9 +66,9 @@
         }
 
         /* Statybų lango stilius */
+
         .construction-overlay {
             position: absolute;
-            /* Pakeisti iš 'absolute' į 'fixed' */
             top: 0;
             left: 0;
             right: 0;
@@ -118,6 +117,8 @@
             margin-top: 15px;
             font-weight: 600;
         }
+
+        /* Statybų lango stilius */
 
         * {
             margin: 0;
@@ -215,7 +216,6 @@
             color: var(--gray);
         }
 
-        /* Tab Navigation */
         .nav-tabs {
             display: flex;
             justify-content: center;
@@ -271,7 +271,6 @@
             background: var(--venta-light);
         }
 
-        /* Content Sections */
         .content-section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -302,12 +301,10 @@
             border: 1px solid #eaeaea;
             transition: var(--transition);
             display: none;
-            /* Pakeista: visi maršrutai pradžioje paslėpti */
         }
 
         .route-card.active {
             display: block;
-            /* Rodyti tik aktyvų maršrutą */
         }
 
         .route-header {
@@ -497,7 +494,6 @@
             margin-top: 10px;
         }
 
-        /* Route Options */
         .route-options {
             display: flex;
             justify-content: center;
@@ -790,12 +786,12 @@
                 </button>
             </nav>
 
-            <!-- Anykščių-Zarasų maršrutas (aktyvus pradžioje) -->
+            <!-- Anykščių-Zarasų maršrutas -->
             <section id="future" class="content-section active">
                 <div class="route-card future active">
                     <div class="route-header">
                         <div class="route-icon"><i class="fas fa-tree"></i></div>
-                        <h2 class="route-title">PAVADINIMAS</h2>
+                        <h2 class="route-title">MARŠRUTO PAVADINIMAS</h2>
                     </div>
                     <div class="route-content">
                         <div class="construction-overlay">
@@ -911,8 +907,8 @@
                                 </table>
                             </div>
                             <div class="warning-note"><i class="fas fa-info-circle"></i>
-                                <div>Turai IAE informaciniai centre vyksta: pirmadieniais, trečiadieniais ir
-                                    penktadieniais.</div>
+                                <div>Turai IAE informaciniai centre vyksta:<b> pirmadieniais, trečiadieniais ir
+                                    penktadieniais.</b> Dėl laiko galima tartis.</div>
                             </div>
                         </div>
                     </div>
@@ -999,13 +995,13 @@
                         </div>
                         <div class="warning-note"><i class="fas fa-info-circle"></i>
                             <div>Kadangi didžioji dalis maršruto driekiasi per gamtos teritorijas – pelkes, miškus ir
-                                upių slėnius – būtina pasirūpinti apsauga nuo vabzdžių.</div>
+                                upių slėnius – <b>būtina</b> pasirūpinti apsauga nuo vabzdžių.</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Druskininkų maršrutas (naujai pridėtas) -->
+            <!-- Druskininkų maršrutas -->
             <section id="druskininkai" class="content-section">
                 <div class="route-card druskininkai active">
                     <div class="route-header">
@@ -1117,11 +1113,11 @@
                             </table>
                         </div>
                         <div class="warning-note"><i class="fas fa-info-circle"></i>
-                            <div>Laisvės kovų muziejaus edukacijai būtina išankstinė registracija!</div>
+                            <div>Laisvės kovų muziejaus edukacijai <b>būtina</b> išankstinė registracija!</div>
                         </div>
                         <div class="note"><i class="fas fa-info-circle"></i>
-                            <div>Pasiūlymai Druskininkuose: Vilniaus alėja, muzikinis fontanas, cerkvė, M. K. Čiurlionio
-                                muziejus.</div>
+                            <div>Pasiūlymai Druskininkuose: <b>Vilniaus alėja, muzikinis fontanas, cerkvė, M. K. Čiurlionio
+                                muziejus.</b></div>
                         </div>
                     </div>
                 </div>
@@ -1177,4 +1173,4 @@
     </div>
 </body>
 
-</html>
+</html>a
