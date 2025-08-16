@@ -10,10 +10,6 @@
         :root {
             --primary: #0d47a1;
             --primary-light: #5472d3;
-            --secondary: #4e342e;
-            --secondary-light: #7b5e57;
-            --tertiary: #2e7d32;
-            --tertiary-light: #4caf50;
             --accent: #ff6f00;
             --light: #f8f9fa;
             --dark: #212529;
@@ -25,40 +21,6 @@
             --future-light: #ba68c8;
             --latvija: #b71c1c;
             --latvija-light: #f44336;
-            --jura: #006064;
-            --jura-light: #00838f;
-            --venta: #ff8f00;
-            --venta-light: #ffb300;
-            --lenkija: #5d4037;
-            --lenkija-light: #8d6e63;
-            --druskininkai: #00695c;
-            --druskininkai-light: #00897b;
-            --option1: #3f51b5;
-            --option1-light: #7986cb;
-            --option2: #e91e63;
-            --option2-light: #f48fb1;
-            --option3: #9C27B0;
-            --option3-light: #BA68C8;
-        }
-
-        .dr-route-table {
-            display: none;
-        }
-
-        .dr-route-table.active {
-            display: block;
-        }
-
-        .new-badge {
-            background-color: #ff5722;
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 12px;
-            margin-left: 8px;
-            display: inline-block;
-            animation: pulse 2s infinite;
         }
 
         .update-badge {
@@ -72,8 +34,6 @@
             display: inline-block;
             animation: pulse 2s infinite;
         }
-
-        /* Statybų lango stilius */
 
         .construction-overlay {
             position: absolute;
@@ -115,18 +75,6 @@
             margin-bottom: 20px;
             line-height: 1.6;
         }
-
-        .construction-note {
-            background-color: #fff9e6;
-            border-left: 4px solid var(--accent);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            display: inline-block;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        /* Statybų lango stilius */
 
         * {
             margin: 0;
@@ -179,13 +127,6 @@
             margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: -0.5px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .logo {
@@ -267,18 +208,6 @@
             background: var(--latvija);
         }
 
-        .tab-btn.druskininkai.active {
-            background: var(--druskininkai);
-        }
-
-        .tab-btn.venta.active {
-            background: var(--venta);
-        }
-
-        .tab-btn.venta:hover {
-            background: var(--venta-light);
-        }
-
         .content-section {
             display: none;
             animation: fadeIn 0.5s ease;
@@ -293,7 +222,6 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -331,14 +259,6 @@
             background: linear-gradient(to right, var(--latvija), var(--latvija-light));
         }
 
-        .druskininkai .route-header {
-            background: linear-gradient(to right, var(--druskininkai), var(--druskininkai-light));
-        }
-
-        .venta .route-header {
-            background: linear-gradient(to right, var(--venta), var(--venta-light));
-        }
-
         .route-icon {
             width: 50px;
             height: 50px;
@@ -358,7 +278,6 @@
         .route-content {
             padding: 0;
             position: relative;
-            /* Svarbu - leidžia riboti statybų langą */
         }
 
         .table-container {
@@ -398,14 +317,6 @@
             border-left: 4px solid var(--latvija);
         }
 
-        .druskininkai th:first-child {
-            border-left: 4px solid var(--druskininkai);
-        }
-
-        .venta th:first-child {
-            border-left: 4px solid var(--venta);
-        }
-
         td {
             padding: 14px 20px;
             border-bottom: 1px solid #eaeaea;
@@ -432,14 +343,6 @@
 
         .latvija .time-col {
             color: var(--latvija);
-        }
-
-        .druskininkai .time-col {
-            color: var(--druskininkai);
-        }
-
-        .venta .time-col {
-            color: var(--venta);
         }
 
         .location-col {
@@ -502,84 +405,14 @@
             margin-top: 10px;
         }
 
-        .route-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .route-option {
-            padding: 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            border: 2px solid transparent;
-        }
-
-        .route-option.option1 {
-            background: linear-gradient(135deg, var(--option1-light), var(--option1));
-            color: white;
-        }
-
-        .route-option.option2 {
-            background: linear-gradient(135deg, var(--option2-light), var(--option2));
-            color: white;
-        }
-
-        .route-option.option3 {
-            background: linear-gradient(135deg, var(--option3-light), var(--option3));
-            color: white;
-        }
-
-        .route-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .route-option.active {
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--venta);
-        }
-
-        .route-option h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .route-option p {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .option-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
         /* Animacijos */
         @keyframes pulse {
             0% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.05);
             }
-
             100% {
                 transform: scale(1);
             }
@@ -589,11 +422,9 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
             }
-
             70% {
                 box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
             }
-
             100% {
                 box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
             }
@@ -634,51 +465,37 @@
             .header {
                 padding: 30px 20px 25px;
             }
-
             .header h1 {
                 font-size: 2rem;
             }
-
             .content {
                 padding: 25px 20px;
             }
-
             .route-title {
                 font-size: 1.5rem;
             }
-
             .route-header {
                 padding: 15px 20px;
             }
-
             th,
             td {
                 padding: 12px 15px;
             }
-
             .logo {
                 width: 50px;
                 height: 50px;
                 top: 15px;
                 right: 15px;
             }
-
             .nav-tabs {
                 flex-direction: column;
                 align-items: center;
             }
-
             .tab-btn {
                 width: 100%;
                 max-width: 300px;
                 margin-bottom: 10px;
             }
-
-            .route-options {
-                flex-direction: column;
-                align-items: center;
-            }
-
             /* Responsyvi lentelė */
             table,
             thead,
@@ -688,13 +505,11 @@
             tr {
                 display: block;
             }
-
             thead tr {
                 position: absolute;
                 top: -9999px;
                 left: -9999px;
             }
-
             tr {
                 border: 1px solid #ddd;
                 margin-bottom: 15px;
@@ -702,7 +517,6 @@
                 overflow: hidden;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             }
-
             td {
                 border: none;
                 border-bottom: 1px solid #eee;
@@ -710,7 +524,6 @@
                 padding-left: 50%;
                 width: 100%;
             }
-
             td:before {
                 position: absolute;
                 top: 12px;
@@ -720,19 +533,15 @@
                 white-space: nowrap;
                 font-weight: bold;
             }
-
             td:nth-of-type(1):before {
                 content: "Laikas";
             }
-
             td:nth-of-type(2):before {
                 content: "Vieta";
             }
-
             td:nth-of-type(3):before {
                 content: "Aprašymas";
             }
-
             .time-col,
             .location-col,
             .description-col {
@@ -744,25 +553,20 @@
             body {
                 padding: 10px;
             }
-
             .header {
                 padding: 25px 15px 20px;
             }
-
             .header h1 {
                 font-size: 1.7rem;
             }
-
             .content {
                 padding: 20px 15px;
             }
-
             .route-header {
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
             }
-
             table {
                 min-width: 100%;
             }
@@ -1049,27 +853,6 @@
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
-                    });
-                });
-
-                // Pridėta: Druskininkų maršruto parinkčių valdymas
-                const drOptions = document.querySelectorAll('#druskininkai .route-option');
-                drOptions.forEach(option => {
-                    option.addEventListener('click', function () {
-                        // Pašalinti aktyvumo klasę visoms parinktims
-                        drOptions.forEach(opt => opt.classList.remove('active'));
-
-                        // Pridėti aktyvumo klasę pasirinktai parinkčiai
-                        this.classList.add('active');
-
-                        // Paslėpti visas lenteles
-                        document.querySelectorAll('#druskininkai .dr-route-table').forEach(table => {
-                            table.classList.remove('active');
-                        });
-
-                        // Rodyti tik pasirinktą lentelę
-                        const routeId = this.getAttribute('data-route');
-                        document.getElementById(routeId).classList.add('active');
                     });
                 });
             });
