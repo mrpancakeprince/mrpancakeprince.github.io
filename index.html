@@ -23,24 +23,6 @@
             --latvija-light: #f44336;
             --lenkija: #5d4037;
             --lenkija-light: #8d6e63;
-            --kursiu-nerija: #2e7d32;
-            --kursiu-nerija-light: #4caf50;
-        }
-
-        tab-btn.kursiu-nerija.active {
-            background: var(--kursiu-nerija);
-        }
-
-        .kursiu-nerija .route-header {
-            background: linear-gradient(to right, var(--kursiu-nerija), var(--kursiu-nerija-light));
-        }
-
-        .kursiu-nerija .time-col {
-            color: var(--kursiu-nerija);
-        }
-
-        .kursiu-nerija th:first-child {
-            border-left: 4px solid var(--kursiu-nerija);
         }
 
         .update-badge {
@@ -811,11 +793,11 @@
                 <button class="tab-btn future active" data-tab="future">
                     <i class="fas fa-tree"></i>Anykščiai–Zarasai <span class="update-badge">ATNAUJINAMAS!</span>
                 </button>
-                <button class="tab-btn kursiu-nerija" data-tab="kursiu-nerija">
-                    <i class="fas fa-water"></i>Kuršių Nerija <span class="secret-badge">NAUJAS!</span>
-                </button>
                 <button class="tab-btn latvija" data-tab="latvija">
                     <i class="fas fa-chess-rook"></i>Pietų Vidžemė
+                </button>
+                <button class="tab-btn lenkija" data-tab="lenkija">
+                    <i class="fas fa-map-marked-alt"></i><span class="secret-badge">???</span>
                 </button>
             </nav>
 
@@ -1176,115 +1158,6 @@
                                     mažą dalį vidaus.
                                     Įprasta kaina – ~65 EUR (galima lankyti visą vidaus ekspoziciją).</b></div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Kuršių Nerijos maršrutas -->
-            <section id="kursiu-nerija" class="content-section">
-                <div class="route-card kursiu-nerija active">
-                    <div class="route-header">
-                        <div class="route-icon"><i class="fas fa-water"></i></div>
-                        <h2 class="route-title">Kuršių Nerijos maršrutas</h2>
-                    </div>
-                    <div class="route-content">
-                        <div class="table-container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Laikas</th>
-                                        <th>Vieta</th>
-                                        <th>Trumpas aprašymas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="time-col">09:50</td>
-                                        <td class="location-col">Išvykstame</td>
-                                        <td class="description-col">Prieš išeinant pro duris, svarbu
-                                            pasitikrinti,
-                                            ar viską pasiėmėte!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:50<br>11:55</td>
-                                        <td class="location-col">Kuršių nerijos nacionalinis parkas</td>
-                                        <td class="description-col">Antspaudas.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">11:55<br>12:45</td>
-                                        <td class="location-col">Raganų kalnas</td>
-                                        <td class="description-col">1979 m. sukviestus Raganų kalno kūrėjus – medžio
-                                            drožėjus ir kalvius iš visos Lietuvos, įkvėpė parabolinių kopų šlaitų
-                                            apaugusių šimtametėmis pušimis, eglėmis kraštovaizdžio grožis ir mistinė
-                                            atmosfera, paskatinusi įkūnyti medžio skulptūrose pasakų ir legendų
-                                            personažus. Šiandien Raganų kalno medinių skulptūrų ekspozicija Juodkrantėje
-                                            – vienas labiausiai lankomų turistinių objektų Neringoje.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">12:50<br>13:10</td>
-                                        <td class="location-col">Avikalnio apžvalgos aikštelė</td>
-                                        <td class="description-col">Kuršių nerijos nacionaliniame parke stūkso
-                                            Avikalnis. Čia įrengta apžvalgos aikštelė, nuo kurios atsiveria Avikalnio
-                                            rago palvės kompleksas bei viena įspūdingiausių Kuršių nerijos panoramų –
-                                            Naglių gamtinis rezervatas. Nuo Avikalnio regyklos puikiai matyti ir
-                                            parabolinių kopų pietinė dalis bei paprastųjų pušų senųjų medynų – sengirės
-                                            – fragmentų kraštovaizdžio paveikslas.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">13:20<br>14:20</td>
-                                        <td class="location-col">Naglių rezervato pažintinis takas</td>
-                                        <td class="description-col">Pažintinis takas su stulbinančio grožio Pilkųjų kopų
-                                            peizažu yra vienas
-                                            įdomiausių lankytinų objektų visame Kuršių nerijos nacionaliniame parke.
-                                            Tarsi boluojančiu kilimu uždengtas, kraštovaizdis susiformavo XVII-ajame
-                                            amžiuje, kai, iškirtus mišką, iš pajūrio smėlis ėmė keliauti marių link.
-                                            Unikaliame Naglių rezervato gamtiniame komplekse galite išvysti dėl stiprių
-                                            vėjų kopose susidarančias įspūdingas daubas ir išgraužas bei tik protarpiais
-                                            išlendančius, po smėliu palaidotus, šimtamečių miškų dirvožemius.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">14:35<br>15:00</td>
-                                        <td class="location-col">Menininkų (Preilos) kopa</td>
-                                        <td class="description-col">Nuo Preilos kopos atsiveria nuostabus vaizdas į
-                                            Baltijos jūrą ir marių pakrantę – toli pietuose netgi matosi jau Rusijos
-                                            Federacijai priklausantis Grobšto ragas. Arčiau kopos,
-                                            marių pakrantėje, vingiuoja Preilos ragas ir įlanka. Kitoje marių pusėje
-                                            aiškiai matosi Ventės ragas. Vaizdai labai gražūs į visas puses, o kelios
-                                            kreivos pušys ant kopos viršūnės padaro ją labai... menišką.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">15:10<br>15:40</td>
-                                        <td class="location-col">Vecekrugo kopa</td>
-                                        <td class="description-col">Tarp Preilos ir Nidos stūkso
-                                            aukščiausia Kuršių nerijos aukštikalnė. Tai Vecekrugo, kurios aukštis siekia
-                                            daugiau nei 67 metrus, tad nuo jos
-                                            atsiveria išties įspūdingas kraštovaizdis. Pasakojama, jog anksčiau kopos
-                                            papėdėje stovėjo smuklė, kuri, matyt, ir davė vardą aukštikalnei, kurios
-                                            pavadinimas kildinimas iš kuršiškų žodžių „vece“ (senas) ir „kruogs“
-                                            (smuklė). Vecekrugo kopos viršuje plyti nedidelė atvira aikštelė, kur
-                                            puikiai matyti banguojantys jūros ir marių vandenys, žmonių rankomis per
-                                            kalvas nutiestas žalias kalnapušių kilimas bei ties Bulvikio ragu
-                                            paplatėjusios Kuršių nerijos panorama.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">15:55<br>16:40</td>
-                                        <td class="location-col">Parnidžio kopa</td>
-                                        <td class="description-col">Ramybe alsuojančios Nidos pietuose kyšo Parnidžio
-                                            kopa, nuo kurios atsiveria ypatingi gamtos paveikslai, o laiko ir erdvės
-                                            misterijos užliūliuoti lankytojai visuomet pažada čia sugrįžti. Užkopę ant
-                                            52 metrus virš jūros lygio stūksančios Parnidžio kopos, pateksite į baltųjų
-                                            kopų buveinę. Tai vienintelė vieta Kuršių nerijos nacionaliniame parke, kur
-                                            lig šiol yra išlikusi pustomų kopų grandinė. Ant kopos viršūnės įrengta
-                                            regykla, kur atsiveria kvapą gniaužiantys vaizdai.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="time-col">19:15</td>
-                                        <td class="location-col">Grįžimas namo</td>
-                                        <td class="description-col">Kelionės pabaiga.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
