@@ -301,6 +301,18 @@
             border-radius: 2px;
         }
 
+        .timeline-item-with-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fbff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
         .timeline-item {
             position: relative;
             margin-bottom: 30px;
@@ -323,11 +335,54 @@
             box-shadow: 0 0 0 2px var(--primary);
         }
 
+        .timeline-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .timeline-price {
+            min-width: 100px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--lenkija);
+            padding-left: 20px;
+            border-left: 2px solid #eaeaea;
+        }
+
+        .timeline-item-with-price::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--lenkija);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--lenkija);
+        }
+
         .timeline-time {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 5px;
             font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item-with-price {
+                flex-direction: column;
+            }
+
+            .timeline-price {
+                width: 100%;
+                text-align: left;
+                padding-left: 0;
+                padding-top: 15px;
+                border-left: none;
+                border-top: 2px solid #eaeaea;
+                margin-top: 15px;
+            }
         }
 
         .timeline-location {
@@ -789,6 +844,7 @@
                     <h2 class="route-title">Slaptas Maršrutas</h2>
                 </div>
                 <div class="route-content">
+
                     <div class="construction-overlay">
                         <div class="construction-content">
                             <div class="construction-icon">
@@ -809,104 +865,136 @@
                     <div class="blur-content">
 
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-time">06:15</div>
-                                <div class="timeline-location">Išvykstame</div>
-                                <div class="timeline-description">Prieš išeinant pro duris, itin svarbu pasitikrinti, ar
-                                    viską pasiėmėte!</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">06:15</div>
+                                    <div class="timeline-location">Išvykstame</div>
+                                    <div class="timeline-description">Prieš išeinant pro duris, itin svarbu
+                                        pasitikrinti, ar viską pasiėmėte!</div>
+                                </div>
+                                <div class="timeline-price">---</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">12:15 - 14:10</div>
-                                <div class="timeline-location">Vilko irštva (guolis)</div>
-                                <div class="timeline-description">Tai viena įdomiausių Mozūrijos krašto vietų
-                                    istorijos mėgėjams. Tai buvęs Hitlerio karinis štabas, iš kurio Antrojo
-                                    pasaulinio karo metais Hitleris vadovavo Vokietijos ginkluotosioms
-                                    pajėgoms – Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis
-                                    bunkerių buvo sunaikinti paties Hitlerio įsakymu, tačiau šiandien čia
-                                    vis dar galime išvysti niūrią istoriją menančių pastatų.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">12:15 – 14:10</div>
+                                    <div class="timeline-location">Vilko irštva (guolis)</div>
+                                    <div class="timeline-description">Tai viena įdomiausių Mozūrijos krašto vietų
+                                        istorijos mėgėjams. Tai buvęs Hitlerio karinis štabas, iš kurio Antrojo
+                                        pasaulinio karo metais Hitleris vadovavo Vokietijos ginkluotosioms pajėgoms –
+                                        Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis bunkerių buvo
+                                        sunaikinti paties Hitlerio įsakymu, tačiau šiandien čia vis dar galime išvysti
+                                        niūrią istoriją menančių pastatų.</div>
+                                </div>
+                                <div class="timeline-price">40,00<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">14:50 - 15:10</div>
-                                <div class="timeline-location">Šventalieptės (Šv. Lipkos) ansamblis</div>
-                                <div class="timeline-description">Tai įspūdinga, stebuklais nuo viduramžių
-                                    garsėjanti barokinė bažnyčia. Pasak padavimo, čia apsireiškė Šv. Mergelė
-                                    Marija su kūdikiu rankose. Turistus bei piligrimus ši vieta traukia ne
-                                    tik savo šventumu, bet ir galimybe pasiklausyti ir pamatyti „šokančius
-                                    vargonus“. Iš vargonų sklinda Bacho, Šuberto ir Bethoveno melodijos, o
-                                    patys vargonai yra itin puošnūs, padabinti angelų ir šventųjų
-                                    skulptūromis.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">14:50 – 15:10</div>
+                                    <div class="timeline-location">Šventalieptės (Šv. Lipkos) ansamblis</div>
+                                    <div class="timeline-description">Tai įspūdinga, stebuklais nuo viduramžių
+                                        garsėjanti barokinė bažnyčia. Pasak padavimo, čia apsireiškė Šv. Mergelė Marija
+                                        su kūdikiu rankose. Turistus bei piligrimus ši vieta traukia ne tik savo
+                                        šventumu, bet ir galimybe pasiklausyti ir pamatyti „šokančius vargonus“. Iš
+                                        vargonų sklinda Bacho, Šuberto ir Bethoveno melodijos, o patys vargonai yra itin
+                                        puošnūs, padabinti angelų ir šventųjų skulptūromis.</div>
+                                </div>
+                                <div class="timeline-price">00,00<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">15:20 - 15:45</div>
-                                <div class="timeline-location">Rešliaus Šv. Petro ir Povilo bažnyčios bokštas</div>
-                                <div class="timeline-description">Ši XIV a. gotikinė bažnyčia turi tris navas ir
-                                    didingą bokštą, iš kurio galima grožėtis Rešliaus panorama. Interjeras
-                                    yra gražiai suderintas ir turtingai dekoruotas paveikslais bei šoniniais
-                                    altoriais. Pagrindinis altorius yra XIX a.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">15:20 – 15:45</div>
+                                    <div class="timeline-location">Rešliaus Šv. Petro ir Povilo bažnyčios bokštas</div>
+                                    <div class="timeline-description">Ši XIV a. gotikinė bažnyčia turi tris navas ir
+                                        didingą bokštą, iš kurio galima grožėtis Rešliaus panorama. Interjeras yra
+                                        gražiai suderintas ir turtingai dekoruotas paveikslais bei šoniniais altoriais.
+                                        Pagrindinis altorius yra XIX a.</div>
+                                </div>
+                                <div class="timeline-price">03,00<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">17:45 - 18:30</div>
-                                <div class="timeline-location">Fromborko miestas</div>
-                                <div class="timeline-description">XIV a. čia iškilo galinga katedros kalva su
-                                    gynybinėmis sienomis, bokštais ir gotikine katedra, tapusia pagrindine
-                                    Varmės vyskupų rezidencija. Aplink ją išsidėstęs didžiulis kiemas ir
-                                    gynybinė teritorija atvira lankytojams. Pasivaikščiojimas po šią
-                                    erdvę leidžia pajusti viduramžių dvasią ir pasigrožėti įspūdinga
-                                    gotikine architektūra iš išorės. Iš miesto atsiveria plati panorama į
-                                    Vyslos lagūną (Aistmares). Čia XVI a. Kopernikas parašė savo garsiausią
-                                    veikalą „Apie dangaus sferų sukimąsi“, pakeitusį viso pasaulio mokslo istoriją.
-                                    Šiandien Fromborkas laikomas vienu svarbiausių kultūros ir mokslo paveldo centrų
-                                    Lenkijoje.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">17:45 – 18:30</div>
+                                    <div class="timeline-location">Fromborko miestas</div>
+                                    <div class="timeline-description">XIV a. čia iškilo galinga katedros kalva su
+                                        gynybinėmis sienomis, bokštais ir gotikine katedra, tapusia pagrindine Varmės
+                                        vyskupų rezidencija. Aplink ją išsidėstęs didžiulis kiemas ir gynybinė
+                                        teritorija atvira lankytojams. Pasivaikščiojimas po šią erdvę leidžia pajusti
+                                        viduramžių dvasią ir pasigrožėti įspūdinga gotikine architektūra iš išorės. Iš
+                                        miesto atsiveria plati panorama į Vyslos lagūną (Aistmares). Čia XVI a.
+                                        Kopernikas parašė savo garsiausią veikalą „Apie dangaus sferų sukimąsi“,
+                                        pakeitusį viso pasaulio mokslo istoriją. Šiandien Fromborkas laikomas vienu
+                                        svarbiausių kultūros ir mokslo paveldo centrų Lenkijoje.</div>
+                                </div>
+                                <div class="timeline-price">00,00<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">---</div>
-                                <div class="timeline-location">NAKVYNĖ</div>
-                                <div class="timeline-description">---</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">---</div>
+                                    <div class="timeline-location">NAKVYNĖ</div>
+                                    <div class="timeline-description">Saldžių sapnų!</div>
+                                </div>
+                                <div class="timeline-price">---<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">---</div>
-                                <div class="timeline-location">Štuthofo koncentracijos stovykla</div>
-                                <div class="timeline-description">Tai viena iš
-                                    žymiausių nacių įkurtų stovyklų Antrojo pasaulinio karo metais.
-                                    Ji pradėjo veikti 1939 m. ir tapo pirmąja už Vokietijos ribų įsteigta
-                                    stovykla. Per visą jos egzistavimo laikotarpį čia buvo įkalinta apie 110
-                                    tūkstančių žmonių iš įvairių Europos šalių. Stovykloje kalėjo ir žinomi
-                                    Lietuvos inteligentai, tarp jų rašytojas Balys Sruoga, savo patirtis
-                                    aprašęs knygoje „Dievų miškas“. Lankant šią vietą galima išvysti
-                                    išlikusius barakus, krematoriumą, paminklus bei memorialines lentas,
-                                    įamžinančias čia kentėjusių ir žuvusiųjų atminimą.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">---</div>
+                                    <div class="timeline-location">2 DIENA</div>
+                                    <div class="timeline-description">Pabudome ir kelkimės!</div>
+                                </div>
+                                <div class="timeline-price">---</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">---</div>
-                                <div class="timeline-location">Malborko (Marienburgo) pilis</div>
-                                <div class="timeline-description">Malborko pilis – didžiausia plytinė pilis
-                                    pasaulyje, pastatyta XIII a. Kryžiuočių ordino po Senosios Prūsijos
-                                    užkariavimo. Per artimiausius šimtmečius pilis buvo plečiama,
-                                    sustiprinta ir tapo didžiojo magistro rezidencija bei vienu svarbiausių ordino
-                                    valdžios centrų. Kryžiuočiams pilis tarnavo apie pusantro šimto metų, kol 1457
-                                    m., vykstant Trylikos metų karui, ją užėmė Lenkijos kariuomenė. Nuo to
-                                    laiko pilis tris šimtmečius buvo Lenkijos karalių rezidencija. Šiandien
-                                    Malborko kompleksas yra vienas įspūdingiausių viduramžių gynybinės
-                                    architektūros pavyzdžių Europoje, o 1997 m. jis įtrauktas į UNESCO
-                                    pasaulio paveldo sąrašą.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">---</div>
+                                    <div class="timeline-location">Štuthofo koncentracijos stovykla</div>
+                                    <div class="timeline-description">Tai viena iš žymiausių nacių įkurtų stovyklų
+                                        Antrojo pasaulinio karo metais. Ji pradėjo veikti 1939 m. ir tapo pirmąja už
+                                        Vokietijos ribų įsteigta stovykla. Per visą jos egzistavimo laikotarpį čia buvo
+                                        įkalinta apie 110 tūkstančių žmonių iš įvairių Europos šalių. Stovykloje kalėjo
+                                        ir žinomi Lietuvos inteligentai, tarp jų rašytojas Balys Sruoga, savo patirtis
+                                        aprašęs knygoje „Dievų miškas“. Lankant šią vietą galima išvysti išlikusius
+                                        barakus, krematoriumą, paminklus bei memorialines lentas, įamžinančias čia
+                                        kentėjusių ir žuvusiųjų atminimą.</div>
+                                </div>
+                                <div class="timeline-price">03,50<br>EUR</div>
                             </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">---</div>
-                                <div class="timeline-location">Žalgirio mūšio laukas</div>
-                                <div class="timeline-description">Žalgirio mūšio laukas – vieta, menanti 1410 m.
-                                    įvykusį vieną didžiausių viduramžių mūšių Europoje. Čia jungtinės
-                                    Lietuvos Didžiosios Kunigaikštystės ir Lenkijos Karalystės
-                                    pajėgos sutriuškino Kryžiuočių ordiną, nulėmusios jo galybės saulėlydį.
-                                    Šiandien mūšio laukas tapęs lankomu istoriniu objektu: čia stovi
-                                    didžiulis obeliskas, puoštas ir lietuviškais simboliais.</div>
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">---</div>
+                                    <div class="timeline-location">Malborko (Marienburgo) pilis</div>
+                                    <div class="timeline-description">Malborko pilis – didžiausia plytinė pilis
+                                        pasaulyje, pastatyta XIII a. Kryžiuočių ordino po Senosios Prūsijos užkariavimo.
+                                        Per artimiausius šimtmečius pilis buvo plečiama, sustiprinta ir tapo didžiojo
+                                        magistro rezidencija bei vienu svarbiausių ordino valdžios centrų. Kryžiuočiams
+                                        pilis tarnavo apie pusantro šimto metų, kol 1457 m., vykstant Trylikos metų
+                                        karui, ją užėmė Lenkijos kariuomenė. Nuo to laiko pilis tris šimtmečius buvo
+                                        Lenkijos karalių rezidencija. Šiandien Malborko kompleksas yra vienas
+                                        įspūdingiausių viduramžių gynybinės architektūros pavyzdžių Europoje, o 1997 m.
+                                        jis įtrauktas į UNESCO pasaulio paveldo sąrašą.</div>
+                                </div>
+                                <div class="timeline-price">00,00<br>EUR</div>
+                            </div>
+
+                            <div class="timeline-item-with-price">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">---</div>
+                                    <div class="timeline-location">Žalgirio mūšio laukas</div>
+                                    <div class="timeline-description">Žalgirio mūšio laukas – vieta, menanti 1410 m.
+                                        įvykusį vieną didžiausių viduramžių mūšių Europoje. Čia jungtinės Lietuvos
+                                        Didžiosios Kunigaikštystės ir Lenkijos Karalystės pajėgos sutriuškino Kryžiuočių
+                                        ordiną, nulėmusios jo galybės saulėlydį. Šiandien mūšio laukas tapęs lankomu
+                                        istoriniu objektu: čia stovi didžiulis obeliskas, puoštas ir lietuviškais
+                                        simboliais.</div>
+                                </div>
+                                <div class="timeline-price">00,00<br>EUR</div>
                             </div>
                         </div>
                         <div class="route-notes">
