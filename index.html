@@ -279,6 +279,8 @@
         .route-content {
             padding: 30px;
             position: relative;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .blur-content {
@@ -290,8 +292,8 @@
         .timeline {
             position: relative;
             padding-left: 30px;
-                max-width: 100%;
-    overflow: visible;
+            max-width: 100%;
+            overflow: visible;
         }
 
         .timeline::before {
@@ -315,8 +317,8 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             position: relative;
-                max-width: 100%;
-    box-sizing: border-box;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .timeline-item {
@@ -326,8 +328,8 @@
             background: #f8fbff;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-                max-width: 100%;
-    box-sizing: border-box;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .timeline-item::before {
@@ -346,8 +348,8 @@
         .timeline-content {
             flex: 1;
             padding-right: 20px;
-                max-width: 100%;
-    overflow-wrap: break-word;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
         .timeline-price {
@@ -404,8 +406,8 @@
 
         .timeline-description {
             color: var(--gray);
-                max-width: 100%;
-    overflow-wrap: break-word;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
         .future .timeline-time {
@@ -427,7 +429,7 @@
 
         .latvija .timeline-item::before {
             background: var(--latvija);
-            box-shadow: 0 0 0 2px var(--latvija);
+            box-shadow: 0 0 0 极线 var(--latvija);
         }
 
         .lenkija .timeline-item::before {
@@ -569,18 +571,17 @@
                 padding-left: 20px;
             }
             
-                .route-content {
-        padding: 20px;
-    }
+            .route-content {
+                padding: 20px;
+            }
 
-                .timeline-item, 
-    .timeline-item-with-price {
-        padding: 15px;
-    }
+            .timeline-item, 
+            .timeline-item-with-price {
+                padding: 15px;
+            }
 
             .timeline-item::before {
                 left: -29px;
-                        padding: 15px;
             }
         }
 
@@ -609,10 +610,6 @@
 
             .construction-title {
                 font-size: 24px;
-            }
-
-            .family-title {
-                font-size: 1.6rem;
             }
         }
     </style>
@@ -652,75 +649,74 @@
                     <h2 class="route-title">Anykščių—Zarasų maršrutas</h2>
                 </div>
                 <div class="route-content">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-time">07:00</div>
-                                <div class="timeline-location">Išvykstame</div>
-                                <div class="timeline-description">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                    viską pasiėmėte!</div>
-                            </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">07:00</div>
+                            <div class="timeline-location">Išvykstame</div>
+                            <div class="timeline-description">Prieš išeinant pro duris, svarbu pasitikrinti, ar
+                                viską pasiėmėte!</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">10:40 – 10:55</div>
-                                <div class="timeline-location">Rubikių ežero apžvalgos bokštas</div>
-                                <div class="timeline-description">2011 metais prie Bijeikių kaimo buvo pastatytas
-                                    15 metrų aukščio apžvalgos bokštas. Tipinės konstrukcijos skirtas
-                                    apžvelgti Anykščių regioninio parko gamtovaizdį, su kuriuo supažindina
-                                    apžvalgos aikštelėje įrengti informaciniai stendai.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:40 – 10:55</div>
+                            <div class="timeline-location">Rubikių ežero apžvalgos bokštas</div>
+                            <div class="timeline-description">2011 metais prie Bijeikių kaimo buvo pastatytas
+                                15 metrų aukščio apžvalgos bokštas. Tipinės konstrukcijos skirtas
+                                apžvelgti Anykščių regioninio parko gamtovaizdį, su kuriuo supažindina
+                                apžvalgos aikštelėje įrengti informaciniai stendai.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">12:30 – 13:30</div>
-                                <div class="timeline-location">IAE informacijos centras</div>
-                                <div class="timeline-description">Informacijos centro ekspoziciją sudaro: Atominės
-                                    elektrinės reaktoriaus bloko maketas, kuro rinklės ir panaudoto branduolinio kuro
-                                    konteinerių maketai, radioaktyviųjų atliekų atliekynų maketai, virtualios realybės
-                                    turas, interaktyvus edukacinis žaidimas #energosauga.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:30 – 13:30</div>
+                            <div class="timeline-location">IAE informacijos centras</div>
+                            <div class="timeline-description">Informacijos centro ekspoziciją sudaro: Atominės
+                                elektrinės reaktoriaus bloko maketas, kuro rinklės ir panaudoto branduolinio kuro
+                                konteinerių maketai, radioaktyviųjų atliekų atliekynų maketai, virtualios realybės
+                                turas, interaktyvus edukacinis žaidimas #energosauga.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">14:10 - 14:25</div>
-                                <div class="timeline-location">Zarasų apžvalgos ratas</div>
-                                <div class="timeline-description">2011 m. atidarytas apžvalgos ratas – analogo
-                                    Lietuvoje neturintis architektūros statinys. Praeinantiems 17 m. aukščio
-                                    ratu atsiveria Zaraso ežero panorama.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:10 - 14:25</div>
+                            <div class="timeline-location">Zarasų apžvalgos ratas</div>
+                            <div class="timeline-description">2011 m. atidarytas apžvalgos ratas – analogo
+                                Lietuvoje neturintis architektūros statinys. Praeinantiems 17 m. aukščio
+                                ratu atsiveria Zaraso ežero panorama.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">14:45 - 15:00</div>
-                                <div class="timeline-location">Stelmužės ąžuolas</div>
-                                <div class="timeline-description">Lietuvos gamtos paminklas, vienas iš seniausių
-                                    ąžuolų Europoje, o Lietuvoje pats seniausias medis. Spėjama, kad jo
-                                    amžius yra apie 1000-1500 ar net 2000 metų.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:45 - 15:00</div>
+                            <div class="timeline-location">Stelmužės ąžuolas</div>
+                            <div class="timeline-description">Lietuvos gamtos paminklas, vienas iš seniausių
+                                ąžuolų Europoje, o Lietuvoje pats seniausias medis. Spėjama, kad jo
+                                amžius yra apie 1000-1500 ar net 2000 metų.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">15:40 - 15:45</div>
-                                <div class="timeline-location">Sartų regioninis parkas</div>
-                                <div class="timeline-description">Antspaudas.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:40 - 15:45</div>
+                            <div class="timeline-location">Sartų regioninis parkas</div>
+                            <div class="timeline-description">Antspaudas.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">17:00 - 17:05</div>
-                                <div class="timeline-location">Anykščių regioninis parkas</div>
-                                <div class="timeline-description">Antspaudas.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:00 - 17:05</div>
+                            <div class="timeline-location">Anykščių regioninis parkas</div>
+                            <div class="timeline-description">Antspaudas.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">17:05 - 17:15</div>
-                                <div class="timeline-location">„Cosmos” paukščių takas</div>
-                                <div class="timeline-description">Veidrodžių kambarys nukels Tave į beribį
-                                    kosmosą! Patirk begalybės pojūtį, susipažink su žvaigždėmis iš arti. Tai
-                                    unikali ir vienintelė vieta Baltijos šalyse, kur galima panirti į
-                                    kosmosą, sustoti akimirkai ant galaktikos krašto ir pažvelgti į begalę
-                                    žvaigždžių.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:05 - 17:15</div>
+                            <div class="timeline-location">„Cosmos” paukščių takas</div>
+                            <div class="timeline-description">Veidrodžių kambarys nukels Tave į beribį
+                                kosmosą! Patirk begalybės pojūtį, susipažink su žvaigždėmis iš arti. Tai
+                                unikali ir vienintelė vieta Baltijos šalyse, kur galima panirti į
+                                kosmosą, sustoti akimirkai ant galaktikos krašto ir pažvelgti į begalę
+                                žvaigždžių.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">20:45</div>
-                                <div class="timeline-location">Grįžimas namo</div>
-                                <div class="timeline-description">Kelionės pabaiga.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">20:45</div>
+                            <div class="timeline-location">Grįžimas namo</div>
+                            <div class="timeline-description">Kelionės pabaiga.</div>
                         </div>
                     </div>
                 </div>
@@ -735,7 +731,6 @@
                     <h2 class="route-title">Pietų Vidžemės maršrutas</h2>
                 </div>
                 <div class="route-content">
-
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-time">06:50</div>
@@ -784,7 +779,7 @@
                             <div class="timeline-time">16:30 - 17:40</div>
                             <div class="timeline-location">Cenos pelkės takas</div>
                             <div class="timeline-description">Cenos pelkė yra antroji pagal dydį Latvijos pelkė,
-                                ypač saugoma gamtos teritorija – draustinis ir „Natura 2000“ teritorija.
+                                ypač saugoma gamtos teritorija – draustinis ir „Natura 2000" teritorija.
                                 Cenos pelkėje įrengtas 5 km ilgio pėsčiųjų takas, o jo viduryje stovi
                                 apžvalgos bokštas, iš kurio galima apžiūrėti pelkę iš viršaus.</div>
                         </div>
@@ -806,10 +801,10 @@
                                 pasirūpinti apsauga nuo vabzdžių.
                             </div>
                         </div>
-                        </div>
-</div>
-</div>
-</section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Slaptas maršrutas -->
         <section id="lenkija" class="content-section">
@@ -819,7 +814,6 @@
                     <h2 class="route-title">Slaptas Maršrutas</h2>
                 </div>
                 <div class="route-content">
-
                     <div class="construction-overlay">
                         <div class="construction-content">
                             <div class="construction-icon">
@@ -838,7 +832,6 @@
                     </div>
 
                     <div class="blur-content">
-
                         <div class="timeline">
                             <div class="timeline-item-with-price">
                                 <div class="timeline-content">
@@ -884,7 +877,7 @@
                                     <div class="timeline-location">Rešliaus Šv. Petro ir Povilo bažnyčios bokštas</div>
                                     <div class="timeline-description">Ši XIV a. gotikinė bažnyčia turi tris navas ir
                                         didingą bokštą, iš kurio galima grožėtis Rešliaus panorama. Interjeras yra
-                                        gražiai suderintas ir turtingai dekoruotas paveikslais bei šoniniais altoriais.
+                                        gražiai suderintas ir turringai dekoruotas paveikslais bei šoniniais altoriais.
                                         Pagrindinis altorius yra XIX a.</div>
                                 </div>
                                 <div class="timeline-price">03,00<br>EUR</div>
@@ -992,11 +985,11 @@
                                     mažą dalį vidaus. Įprasta kaina – ~65 EUR (galima lankyti visą vidaus ekspoziciją).
                                 </div>
                             </div>
-                            </div>
                         </div>
-</div>
-</div>
-</section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="footer">
             <p class="quote">„Kelionės – tai vienintelis dalykas, kurį pirkdamas tampi turtingesnis“</p>
