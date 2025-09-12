@@ -230,6 +230,8 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             position: relative;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .route-card:hover {
@@ -288,6 +290,8 @@
         .timeline {
             position: relative;
             padding-left: 30px;
+                max-width: 100%;
+    overflow: visible;
         }
 
         .timeline::before {
@@ -311,6 +315,8 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             position: relative;
+                max-width: 100%;
+    box-sizing: border-box;
         }
 
         .timeline-item {
@@ -320,6 +326,8 @@
             background: #f8fbff;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                max-width: 100%;
+    box-sizing: border-box;
         }
 
         .timeline-item::before {
@@ -338,6 +346,8 @@
         .timeline-content {
             flex: 1;
             padding-right: 20px;
+                max-width: 100%;
+    overflow-wrap: break-word;
         }
 
         .timeline-price {
@@ -394,6 +404,8 @@
 
         .timeline-description {
             color: var(--gray);
+                max-width: 100%;
+    overflow-wrap: break-word;
         }
 
         .future .timeline-time {
@@ -556,19 +568,19 @@
             .timeline {
                 padding-left: 20px;
             }
+            
+                .route-content {
+        padding: 20px;
+    }
+
+                .timeline-item, 
+    .timeline-item-with-price {
+        padding: 15px;
+    }
 
             .timeline-item::before {
                 left: -29px;
-            }
-
-            .family-members {
-                gap: 20px;
-            }
-
-            .member-avatar {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
+                        padding: 15px;
             }
         }
 
