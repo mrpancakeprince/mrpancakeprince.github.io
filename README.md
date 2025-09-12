@@ -1,3 +1,9 @@
 # mrpancakeprince.github.io
 
-This a family trip planning website. 
+FOR PRIVATE USE ONLY
+
+SIMPLE FAMILY TRAVEL WEBSITE WITH:
+// TIMELINE LAYOUT
+// DIFFERENT PLAN SELECTION
+// NOTES SECTION
+// EASY ADJUSTMENTS
