@@ -160,6 +160,23 @@
             flex-wrap: wrap;
             gap: 15px;
             margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            background: var(--light);
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .timeline-item:hover,
+        .timeline-item-with-price:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background: var(--primary-light);
         }
 
         .tab-btn {
