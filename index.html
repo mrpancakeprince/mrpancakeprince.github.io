@@ -20,6 +20,7 @@
             --future: #9c27b0;
             --latvija: #b71c1c;
             --lenkija: #5d4037;
+            --gauja: #2e7d32;
             --bg-gradient: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
             --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
@@ -562,6 +563,23 @@
             margin-top: 10px;
         }
 
+        .tab-btn.gauja.active {
+            background: var(--gauja);
+        }
+
+        .gauja .route-header {
+            background: linear-gradient(135deg, var(--gauja), #4caf50);
+        }
+
+        .gauja .timeline-time {
+            color: var(--gauja);
+        }
+
+        .gauja .timeline-item::before {
+            background: var(--gauja);
+            box-shadow: 0 0 0 2px var(--gauja);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -690,6 +708,9 @@
             </button>
             <button class="tab-btn latvija" data-tab="latvija">
                 <i class="fas fa-chess-rook"></i>Pietų Vidžemė
+            </button>
+            <button class="tab-btn gauja" data-tab="gauja">
+                <i class="fas fa-mountain"></i>Gaujos NP
             </button>
             <button class="tab-btn lenkija" data-tab="lenkija">
                 <i class="fas fa-map-marked-alt"></i>???
@@ -892,6 +913,98 @@
                                 Kadangi didžioji dalis maršruto driekiasi per gamtos teritorijas – <b>būtina</b>
                                 pasirūpinti apsauga nuo vabzdžių.
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gaujos NP maršrutas -->
+        <section id="gauja" class="content-section">
+            <div class="route-card gauja">
+                <div class="route-header">
+                    <div class="route-icon"><i class="fas fa-mountain"></i></div>
+                    <h2 class="route-title">Gaujos NP maršrutas</h2>
+                </div>
+                <div class="route-content">
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">06:50</div>
+                            <div class="timeline-location">Išvykstame</div>
+                            <div class="timeline-description">Prieš išeinant pro duris, svarbu pasitikrinti, ar viską
+                                pasiėmėte!</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:45 – 11:00 </div>
+                            <div class="timeline-location">Imperatoriaus sostas (Ķeizarkrēsls)</div>
+                            <div class="timeline-description">Šis krėslas stovi Gaujos slėnio kairiajame
+                                krante. 1862 m. Rusijos caras Aleksandras II su savo žmonos drauge apsilankė Siguldoje.
+                                Vizito metu jie pasodino po
+                                vieną medį specialiai paruoštame apžvalgos taške netoli Laurenci. Nuo to laiko apžvalgos
+                                taškas buvo vadinamas „imperatoriaus sostu“, nes Rusijos caras buvo sužavėtas
+                                nuostabiu Gaujos slėnio vaizdu.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:15 – 12:00</div>
+                            <div class="timeline-location">Siguldos senoji pilis</div>
+                            <div class="timeline-description">1207 m. pastatyta Livonijos ordino pilis iš
+                                pradžių buvo suprojektuota kaip „castellum“ tipo tvirtovė, bet vėliau buvo perstatyta į
+                                vienuolyno tipo pastatą. Su šaunamųjų ginklų plėtra viduramžių tvirtovės palaipsniui
+                                prarado savo pirminę reikšmę ir buvo sunaikintos XVIII a. pradžioje per Šiaurės karą.
+                                Nuo 2011 m. rekonstrukcijos pilis yra atvira lankytojams.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:10 – 12:45</div>
+                            <div class="timeline-location">Rojaus kalnas (Paradīzes kalns)</div>
+                            <div class="timeline-description">Nuostabus Rojaus kalno kraštovaizdis, kuris atsiveria nuo
+                                uolos iki senovinės Gaujos upės slėnio, yra atvaizduotas tokių žymių latvių dailininkai
+                                kaip J. Feders, J. Rozentāls ir V. Purvītis, todėl kalnas dar vadinamas Dailininkų
+                                kalnu. Kalnas yra lengvai pasiekiamas lankytojams,
+                                mėgstantiems gražius vaizdus, iš Siguldos miesto.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:50 – 13:20</div>
+                            <div class="timeline-location">Petro urvas (Pētera ala)</div>
+                            <div class="timeline-description">Tai siauri įtrūkimai smiltainio sienoje,
+                                kuriuos sukūrė gamta. Urvo ilgis – 6,5 m, aukštis – 5,3 m.
+                                Pasakojama, kad švedų laikais (XVII–XVIII a.), kai prasidėjo karas, ūkininkas Petras čia
+                                slėpėsi, kad nebūtų paimtas į nelaisvę. Kita legenda pasakoja, kad čia nuo karo pavojaus
+                                slėpėsi vietos klebonas ir urve krikštijo vaikus.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:40 – 14:10</div>
+                            <div class="timeline-location">Lustuzio skardis (Lustūzis)</div>
+                            <div class="timeline-description">Tai itin vaizdingas smiltainio uolynas Ligatnės miesto
+                                centre; kitoje pusėje yra apžvalgos platforma, iš kurios geriau matomas uolynas, kuris
+                                turi 28 dirbtinius rūsius (kai kurie net dviejų
+                                lygių), kuriuose laikomi daržovės ir vaisiai.
+                                Mediniai laiptai veda į skardžio viršūnę. Iš čia atsiveria nuostabus vaizdas į miestelį.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:50 – 15:10</div>
+                            <div class="timeline-location">Raunos pilies griuvėsiai</div>
+                            <div class="timeline-description">Raunos pilis, arba Ronneburgas, buvo viena pagrindinių
+                                Rygos arkivyskupo rezidencijų. Ji įsikūrusi ant didelio šlaito Raunos centre, Cėsio
+                                regione. Pilis pradėta statyti 1262 m. Iki XVII a. tvirtovė buvo sunaikinta ir nuo to
+                                laiko stūksojo suniokota. Dabar galite užlipti į vienintelį restauruotą bokštą.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:15 – 16:35</div>
+                            <div class="timeline-location">Velnio urvas (Inčukalna Velnala)</div>
+                            <div class="timeline-description">Kelias į Inčukalno Velnio urvą veda per plačias pievas su
+                                dideliais nudžiūvusiais medžiais. Jie išsiskiria keistomis formomis ir atrodo tarsi
+                                užburti... Velnio urvo atmosfera taip pat yra bauginanti. Urvas visada paskendęs pusiau
+                                tamsoje, o po žeme nuolat girdimas tylus vandens tekėjimas. Atrodo, kad urvas vengia
+                                lankytojų žvilgsnių!</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">20:40</div>
+                            <div class="timeline-location">Grįžimas namo</div>
+                            <div class="timeline-description">Kelionės pabaiga.</div>
                         </div>
                     </div>
                 </div>
@@ -1118,7 +1231,7 @@
                                 <div class="note-title">Įėjimo kaina</div>
                             </div>
                             <div class="note-content">
-U2FsdGVkX1+aHjlvYaztCBjUONymPAPIJZAK2KaNSqJct4lc6tprSOewwqgdrH66i44Gwh/aGbdjDSZSXbDq8RgkH+/AeZoKwKGhEU7+WAcmnBJVgpUFzYDnukYMsyrHF8YTGZTxx5xFuN4lPUwEF7CCB5w+0PJqlBCEAUtvfvQBMWApDDl042MUZMtB0mXOEnRfsmvQPrNCxpEzEXchBkJ0Qg/nXfFCt+JN5stpB/gpzGszXQcs2jzqSegasWP5/iwpQ8pSv5oW9DtjJNPAnFkdfinz7KwtfKuOF4e1cfte8jX1/oZShFaGXKxtxqmWmYloHLqs5v4VByVrdYom1FGOxIr8h2hLDTUkL9y3xiecHYm1JLrW6Pwn+ueNWIWk0ObYV2L/cbtXTzeIx8Y4qvOLVVCgjQC7wPf9dSkvbmo=
+                                U2FsdGVkX1+aHjlvYaztCBjUONymPAPIJZAK2KaNSqJct4lc6tprSOewwqgdrH66i44Gwh/aGbdjDSZSXbDq8RgkH+/AeZoKwKGhEU7+WAcmnBJVgpUFzYDnukYMsyrHF8YTGZTxx5xFuN4lPUwEF7CCB5w+0PJqlBCEAUtvfvQBMWApDDl042MUZMtB0mXOEnRfsmvQPrNCxpEzEXchBkJ0Qg/nXfFCt+JN5stpB/gpzGszXQcs2jzqSegasWP5/iwpQ8pSv5oW9DtjJNPAnFkdfinz7KwtfKuOF4e1cfte8jX1/oZShFaGXKxtxqmWmYloHLqs5v4VByVrdYom1FGOxIr8h2hLDTUkL9y3xiecHYm1JLrW6Pwn+ueNWIWk0ObYV2L/cbtXTzeIx8Y4qvOLVVCgjQC7wPf9dSkvbmo=
                             </div>
                         </div>
                         <div class="note warning">
@@ -1127,7 +1240,7 @@ U2FsdGVkX1+aHjlvYaztCBjUONymPAPIJZAK2KaNSqJct4lc6tprSOewwqgdrH66i44Gwh/aGbdjDSZS
                                 <div class="note-title">Sustojimai</div>
                             </div>
                             <div class="note-content">
-U2FsdGVkX1/XHwRKrwNtHSV5tEXIGZ4aLKKA7rbYQpVThOv3OGQj6+/Kr75HQlR71pZER6Hz1kcZEAGqv2T3m9bxdok/ZexsFtT016RzRLNnZF66PyC4A2BDq3dbIfTmiliy4a31uSqE+B0N9u4Tdxo5kUtVMkN1mk9Q2c4plU13vvezW+o+HYVD1lnyQfcN2EkGknUmZv5vRgxGU/pbyE7GXLcec6P3/kZCyBjt/WtTlD79Cz2yRUAzotdZbzvQoX/Yw8qnsilGq0QtUmN1jJbj83hxBpZgZroPkc6Q3VkudKtTAPtjbb3qIttQNcDBTjDt2378r6KA7isAfoBVTptRN87ynpiiey+53M2gS30Sz6R/tqH/Ey8NBX5fOPuI
+                                U2FsdGVkX1/XHwRKrwNtHSV5tEXIGZ4aLKKA7rbYQpVThOv3OGQj6+/Kr75HQlR71pZER6Hz1kcZEAGqv2T3m9bxdok/ZexsFtT016RzRLNnZF66PyC4A2BDq3dbIfTmiliy4a31uSqE+B0N9u4Tdxo5kUtVMkN1mk9Q2c4plU13vvezW+o+HYVD1lnyQfcN2EkGknUmZv5vRgxGU/pbyE7GXLcec6P3/kZCyBjt/WtTlD79Cz2yRUAzotdZbzvQoX/Yw8qnsilGq0QtUmN1jJbj83hxBpZgZroPkc6Q3VkudKtTAPtjbb3qIttQNcDBTjDt2378r6KA7isAfoBVTptRN87ynpiiey+53M2gS30Sz6R/tqH/Ey8NBX5fOPuI
                             </div>
                         </div>
                     </div>
