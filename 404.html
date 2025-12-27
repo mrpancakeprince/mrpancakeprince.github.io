@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Progress | Polish Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f8f9fa;
+            --secondary: #e9ecef;
+            --accent: #212529;
+            --accent-orange: #f97316;
+            --text: #212529;
+            --text-light: #6c757d;
+            --border: #dee2e6;
+            --construction-yellow: #ffd700;
+            --construction-orange: #ff6b35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Construction Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--primary);
+        }
+
+        .construction-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, var(--border) 1px, transparent 1px),
+                linear-gradient(var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.15;
+        }
+
+        .construction-tape {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--construction-yellow),
+                var(--construction-yellow) 20px,
+                var(--accent) 20px,
+                var(--accent) 40px
+            );
+            transform: rotate(-5deg) translateY(-50%);
+            opacity: 0.1;
+            animation: tapeFloat 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes tapeFloat {
+            0% { transform: rotate(-5deg) translateY(-50%); }
+            100% { transform: rotate(-5deg) translateY(-50%) translateX(20px); }
+        }
+
+        .construction-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(var(--construction-orange) 1px, transparent 2px),
+                radial-gradient(var(--construction-orange) 1px, transparent 2px);
+            background-size: 100px 100px, 50px 50px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.03;
+            animation: dotsMove 20s linear infinite;
+        }
+
+        @keyframes dotsMove {
+            0% { background-position: 0 0, 50px 50px; }
+            100% { background-position: 100px 100px, 150px 150px; }
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 2rem auto;
+            padding: 0.75rem 1.5rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .badge-icon {
+            width: 10px;
+            height: 10px;
+            background: var(--construction-orange);
+            border-radius: 50%;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 0 8px rgba(249, 115, 22, 0);
+                transform: scale(1.2);
+            }
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--construction-orange);
+            transform: scaleX(0.3);
+            transform-origin: left;
+            animation: titleLine 2s ease-out forwards;
+        }
+
+        @keyframes titleLine {
+            to { transform: scaleX(1); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        /* Construction Visual */
+        .construction-visual {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 3rem 0;
+            perspective: 1000px;
+        }
+
+        .crane-arm {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 4px;
+            background: var(--accent);
+            transform-origin: left center;
+            animation: craneSwing 6s ease-in-out infinite;
+        }
+
+        .crane-arm::before {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            width: 20px;
+            height: 20px;
+            background: var(--construction-orange);
+            border-radius: 50%;
+        }
+
+        .crane-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 150px;
+            background: var(--accent);
+        }
+
+        .crane-base::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 20px;
+            background: var(--accent);
+        }
+
+        .construction-block {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background: var(--construction-orange);
+            transform: translateX(-50%);
+            animation: blockBuild 6s ease-in-out infinite;
+        }
+
+        @keyframes craneSwing {
+            0%, 100% { transform: rotate(-30deg); }
+            50% { transform: rotate(30deg); }
+        }
+
+        @keyframes blockBuild {
+            0%, 100% { 
+                opacity: 0;
+                transform: translateX(-50%) translateY(0);
+            }
+            25%, 75% { 
+                opacity: 1;
+                transform: translateX(-50%) translateY(-150px);
+            }
+        }
+
+        /* Progress */
+        .progress-section {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .label-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-percentage {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--construction-orange);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 71%;
+            background: linear-gradient(90deg, 
+                var(--construction-orange), 
+                var(--construction-yellow));
+            border-radius: 4px;
+            position: relative;
+            animation: fillProgress 2s ease-out forwards;
+        }
+
+        @keyframes fillProgress {
+            from { width: 0; }
+            to { width: 71%; }
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.4) 50%, 
+                transparent 100%);
+            animation: progressShimmer 2s infinite;
+        }
+
+        @keyframes progressShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Message */
+        .construction-message {
+            background: var(--secondary);
+            border-left: 4px solid var(--construction-orange);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .message-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .message-title i {
+            color: var(--construction-orange);
+        }
+
+        .message-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            border: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-button:hover {
+            background: var(--construction-orange);
+            border-color: var(--construction-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                transparent 100%);
+            transition: left 0.5s;
+        }
+
+        .back-button:hover::after {
+            left: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .construction-visual {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .crane-arm {
+                width: 160px;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .construction-visual {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .crane-arm {
+                width: 130px;
+            }
+            
+            .progress-percentage {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="construction-grid"></div>
+        <div class="construction-tape"></div>
+        <div class="construction-dots"></div>
+    </div>
+
+    <div class="container">
+        <main class="content">
+            <div class="status-badge">
+                <div class="badge-icon"></div>
+                <span>Under Construction</span>
+            </div>
+
+            <h1 class="title">Polish Journey</h1>
+            <p class="subtitle">
+                We're currently building something special.<br>
+                Every detail is being crafted with precision and care.
+            </p>
+
+            <div class="construction-visual">
+                <div class="crane-base"></div>
+                <div class="crane-arm"></div>
+                <div class="construction-block"></div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span class="label-text">Construction Progress</span>
+                    <span class="progress-percentage">71%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <div class="construction-message">
+                <div class="message-title">
+                    <i class="fas fa-hard-hat"></i>
+                    Important Notice
+                </div>
+                <p class="message-text">
+                    This journey is currently being assembled. We're working diligently to ensure 
+                    every element meets our high standards. The complete experience will be 
+                    available soon. Thank you for your patience.
+                </p>
+            </div>
+    </div>
+
+    <script>
+        // Progress bar animation on scroll
+        const progressBar = document.querySelector('.progress-bar');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        progressBar.style.animation = 'fillProgress 2s ease-out forwards';
+                    }, 500);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(progressBar);
+
+        // Title line animation
+        const titleLine = document.querySelector('.title::after');
+        if (titleLine) {
+            setTimeout(() => {
+                titleLine.style.animation = 'titleLine 2s ease-out forwards';
+            }, 1000);
+        }
+
+        // Add some random construction noises (just visual feedback)
+        const craneArm = document.querySelector('.crane-arm');
+        let swingCount = 0;
+        craneArm.addEventListener('animationiteration', () => {
+            swingCount++;
+            // Subtle visual feedback every few swings
+            if (swingCount % 3 === 0) {
+                craneArm.style.background = '#f97316';
+                setTimeout(() => {
+                    craneArm.style.background = '#212529';
+                }, 300);
+            }
+        });
+
+        // Parallax effect on mouse move for construction tape
+        document.addEventListener('mousemove', (e) => {
+            const tape = document.querySelector('.construction-tape');
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            tape.style.transform = `rotate(-5deg) translateY(-50%) translateX(${x}px)`;
+        });
+
+        // Random construction block drops
+        setInterval(() => {
+            const block = document.querySelector('.construction-block');
+            block.style.animation = 'none';
+            setTimeout(() => {
+                block.style.animation = 'blockBuild 6s ease-in-out infinite';
+            }, 10);
+        }, 6000);
+    </script>
+</body>
+</html>
