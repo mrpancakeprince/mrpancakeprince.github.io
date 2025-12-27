@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Istorinė Lenkija 🏰</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .scroll-section {
+      scroll-snap-align: start;
+    }
+
+    .scroll-container {
+      scroll-snap-type: y mandatory;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(30deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(30deg);
+      }
+    }
+
+    .video-overlay {
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.7) 50%,
+          rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+      top: 20%;
+      left: 10%;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+      bottom: 20%;
+      right: 10%;
+    }
+
+    .day-1-bg {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    }
+
+    .day-2-bg {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
+    }
+
+    .day-3-bg {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+      border-radius: 3px;
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .nav-btn {
+      padding: 12px 24px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: white;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+    }
+
+    .nav-btn:not(.active) {
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-btn:not(.active):hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* New styles for the expandable section */
+    .details-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .details-container.expanded {
+      max-height: 2000px;
+      margin-top: 1.5rem;
+    }
+
+    .expand-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #06b6d4;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .expand-btn:hover {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(6, 182, 212, 0.2);
+    }
+
+    .expand-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .expand-icon.rotated {
+      transform: rotate(180deg);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .location-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .location-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+
+    .location-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.875rem;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.5rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #06b6d4;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-time {
+      color: #06b6d4;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-desc {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+
+<body class="relative">
+  <!-- Background Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- Grid Background -->
+  <div class="fixed inset-0 grid-bg opacity-20"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 pt-6">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-center">
+        <div class="glass rounded-2xl px-6 py-3" id="navigation-container">
+          <div class="flex gap-2">
+            <button onclick="scrollToDay(0)" class="nav-btn active" id="nav-day-1">1 Diena</button>
+            <button onclick="scrollToDay(1)" class="nav-btn" id="nav-day-2">2 Diena</button>
+            <button onclick="scrollToDay(2)" class="nav-btn" id="nav-day-3">3 Diena</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen relative flex items-center justify-center overflow-hidden scroll-section">
+    <div class="absolute inset-0 video-overlay"></div>
+
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-the-beach-5016-large.mp4"
+        type="video/mp4">
+    </video>
+
+    <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+      <div class="inline-block p-4 rounded-2xl glass mb-8">
+        <div class="text-cyan-400" id="wind-icon"></div>
+      </div>
+
+      <h1 class="text-5xl sm:text-7xl md:text-8xl font-black mb-6">
+        <span class="gradient-text">ISTORINĖ</span>
+        <br>
+        <span class="text-white">LENKIJA 2025</span>
+      </h1>
+
+      <p class="text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Kelionė per Lenkijos istorijos pėdsakus.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 mb-12">
+        <div class="flex items-center gap-2">
+          <div class="text-cyan-400" id="calendar-icon"></div>
+          <span>3 Dienos</span>
+        </div>
+        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+        <div class="flex items-center gap-2">
+          <div class="text-cyan-400" id="map-icon"></div>
+          <span>Šeimos kelionė</span>
+        </div>
+        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+        <div class="flex items-center gap-2">
+          <div class="text-cyan-400" id="compass-icon"></div>
+          <span>20+ Objektų</span>
+        </div>
+      </div>
+
+      <button onclick="scrollToDay(0)"
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-full glass hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all group">
+        <span class="text-white font-semibold">Pradėti Kelionę</span>
+        <div class="text-cyan-400 group-hover:translate-x-2 transition-transform" id="chevron-icon"></div>
+      </button>
+
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div class="animate-bounce">
+          <div class="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center">
+            <div class="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 1 Section -->
+  <section id="day-1" class="min-h-screen py-20 px-4 scroll-section">
+    <div class="max-w-6xl mx-auto">
+      <div class="day-1-bg rounded-3xl p-8 md:p-12 mb-16">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
+          <div class="text-cyan-400" id="castle-icon"></div>
+          <span class="text-gray-300 font-medium">1 DIENA</span>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
+          <span class="gradient-text">Varmijos Mozūrų</span>
+          <br>
+          <span class="text-white">Vaivadija</span>
+        </h2>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400">
+          <div class="flex items-center gap-2">
+            <div class="text-cyan-400" id="pin-icon"></div>
+            <span>Šiaurinė Lenkija</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 1 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">🪖</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Vilko Irštva</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Tai viena įdomiausių Mozūrijos krašto vietų
+              istorijos mėgėjams. Tai buvęs Hitlerio karinis štabas, iš kurio
+              Antrojo pasaulinio karo metais Hitleris vadovavo Vokietijos ginkluotosioms
+              pajėgoms – Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis
+              bunkerių buvo sunaikinti paties Hitlerio įsakymu, tačiau šiandien čia vis
+              dar galime išvysti niūrią istoriją menančių pastatų.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Hitlerio Bunkerių Kompleksas</span>
+            </div>
+            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+              <p class="text-cyan-300 text-sm">
+                <span class="font-semibold">Pastaba:</span> Į kainą įskaičiuotas audio gidas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">12:15 – 14:15</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">~40,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 2 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">⛪</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Šventalieptės (Šv. Lipkos) ansamblis</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Tai įspūdinga, stebuklais nuo viduramžių
+              garsėjanti barokinė bažnyčia. Pasak padavimo, čia apsireiškė Šv. Mergelė
+              Marija su kūdikiu rankose. Turistus bei piligrimus ši vieta traukia ne tik
+              savo šventumu, bet ir galimybe pasiklausyti ir pamatyti „šokančius
+              vargonus". Iš vargonų sklinda Bacho, Šuberto ir Bethoveno melodijos,
+              o patys vargonai yra itin puošnūs, padabinti angelų ir šventųjų
+              skulptūromis.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Gyvas Vargonų Koncertas</span>
+            </div>
+            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+              <p class="text-cyan-300 text-sm">
+                <span class="font-semibold">Pastaba:</span> Šventalieptės „šokančiuosius vargonus" galima išgirsti
+                sekmadienį 15 valandą.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">14:50 – 15:10</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 3 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">🪜</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Rešliaus Šv. Petro ir Povilo bažnyčia</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Ši XIV a. gotikinė bažnyčia turi tris navas ir
+              didingą bokštą, iš kurio 52 metrų aukštyje galima grožėtis Rešliaus panorama.
+              Interjeras yra gražiai suderintas ir turtingai dekoruotas paveikslais bei
+              šoniniais altoriais. Pagrindinis altorius yra XIX a.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Aukštasis Gotikos Perlas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">15:20 – 15:45</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">~03,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 4 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">🏰</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Varmės Lidzbarkas</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Kadaise Varmės Lidzbarkas buvo Varmijos
+              sostinė. Pirmieji įrašai apie šią vietovę rasti nuo 1240 metų, kuomet
+              Lecbargas (dab. Lidzbarkas) buvo užkariautas kryžiuočių. Lidzbarkas turėjo
+              net trejus miesto vartus, tačiau iki šių dienų yra išlikę
+              Viršutiniai. 1315 metais čia įkurta Šv. Apaštalų Petro ir Povilo
+              kolegijos bažnyčia. Miesto pilis pastatyta 1350–1401 metais
+              vietoje prūsų pilies, buvusios Alnos ir Simsarnos upių santakoje. Ilgą laiką
+              čia buvo Varmijos vyskupijos kapitulos rezidencija.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Vyskupų Tvirtovės Miestas</span>
+            </div>
+            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+              <p class="text-cyan-300 text-sm">
+                <span class="font-semibold">Pastaba:</span> Mieste aplankysime Viršutinius vartus, Šv. Apaštalų Petro ir
+                Povilo kolegijos bažnyčią, iš lauko apžiūrėsime pilį. Netoli miesto stovi vandens sūrimo sveikatingumo
+                bokštai.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">16:30 – Pagal Situaciją</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 5 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">🌙</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Nakvynė</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              NEAIŠKU
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Saldžių Sapnų!</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">- - -</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">- - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Progress -->
+      <div class="mt-16 pt-8 border-t border-gray-800">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-sm">Pirmosios dienos pabaiga...</span>
+          <span class="text-sm">1 iš 3</span>
+        </div>
+        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div class="h-full w-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 2 Section -->
+  <section id="day-2" class="min-h-screen py-20 px-4 scroll-section">
+    <div class="max-w-6xl mx-auto">
+      <div class="day-2-bg rounded-3xl p-8 md:p-12 mb-16">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
+          <div class="text-emerald-400" id="mountain-icon"></div>
+          <span class="text-gray-300 font-medium">2 DIENA</span>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
+          <span class="gradient-text">Pamario</span>
+          <br>
+          <span class="text-white">Vaivadija</span>
+        </h2>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400">
+          <div class="flex items-center gap-2">
+            <div class="text-emerald-400" id="pin-icon-5"></div>
+            <span>Rytinė Pomeranija, Gdanskas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 1 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">☠️</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Štuthofo koncentracijos stovykla</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Tai viena iš žymiausių nacių įkurtų
+              stovyklų Antrojo pasaulinio karo metais. Ji pradėjo veikti 1939 m.
+              ir tapo pirmąja už Vokietijos ribų įsteigta stovykla. Per visą jos
+              egzistavimo laikotarpį čia buvo įkalinta apie 110 tūkstančių žmonių iš
+              įvairių Europos šalių. Stovykloje kalėjo ir žinomi Lietuvos inteligentai,
+              tarp jų rašytojas Balys Sruoga, savo patirtis aprašęs knygoje „Dievų
+              miškas“. Lankant šią vietą galima išvysti išlikusius barakus, krematoriumą,
+              paminklus bei memorialines lentas, įamžinančias čia kentėjusių ir žuvusiųjų
+              atminimą.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Dievų Miškas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">08:05 – 09:00</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">03,50 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 2 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">👑</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Marienburgo pilis</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Malborko pilis – didžiausia plytinė pilis
+              pasaulyje, pastatyta XIII a. Kryžiuočių ordino po Senosios Prūsijos
+              užkariavimo. Per artimiausius šimtmečius pilis buvo plečiama, sustiprinta ir
+              tapo didžiojo magistro rezidencija bei vienu svarbiausių ordino valdžios
+              centrų. Kryžiuočiams pilis tarnavo apie pusantro šimto metų, kol 1457 m.,
+              vykstant Trylikos metų karui, ją užėmė Lenkijos kariuomenė. Nuo to laiko
+              pilis tris šimtmečius buvo Lenkijos karalių rezidencija. Šiandien Malborko
+              kompleksas yra vienas įspūdingiausių viduramžių gynybinės architektūros
+              pavyzdžių Europoje, o 1997 m. jis įtrauktas į UNESCO pasaulio paveldo
+              sąrašą.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Didžiausia Pilis Pasaulyje</span>
+            </div>
+            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
+              <p class="text-cyan-300 text-sm">
+                <span class="font-semibold">Pastaba:</span> Malborko pilis nemokama tik pirmadieniais, galima
+                lankyti išorinę ekspoziciją ir mažą dalį vidaus. Įprasta kaina (kitomis dienomis) – apie 80 EUR (galima
+                lankyti visą vidaus ekspoziciją).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">09:50 – 11:55</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 3 - GDANSK WITH EXPANDABLE SECTION -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">⚓</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Gdanskas</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Gdanskas – vienas iš seniausių Lenkijos miestų buvo svarbus prekybos centras Hanzos laikais tarp Lenkijos
+              ir Vokietijos, todėl turi lenkų ir vokiečių kultūros pėdsakų. Antrojo pasaulinio karo metu miestas patyrė
+              didžiulius nuostolius, tačiau buvo atkurtas. Mieste gausu gotikinės ir renesansinės architektūros pastatų,
+              vyksta daugybė meno parodų, muzikos festivalių ir kitų kultūrinių renginių.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Hanzos Miestų Perlas</span>
+            </div>
+
+            <!-- Expand Button -->
+            <button onclick="toggleGdanskDetails()" class="expand-btn" id="expand-btn">
+              <span id="expand-text">Lankytini Objektai Gdanske</span>
+              <div class="expand-icon" id="expand-icon">▼</div>
+            </button>
+
+            <!-- Expandable Content -->
+            <div class="details-container" id="gdansk-details">
+              <!-- Timeline View -->
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Žalieji Vartai</div>
+                  <div class="timeline-desc">Tai renesansinis miesto akcentas, kadaise buvęs reprezentaciniu įėjimu į
+                    Karališkąjį kelią. Šiandien jie sujungia senamiestį su Motlavos upe, suteikdami puikią erdvę
+                    pasivaikščiojimams. Pastatas išsiskiria dekoratyvine manierizmo architektūra ir įspūdingomis
+                    arkadomis.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Neptūno Fontanas</div>
+                  <div class="timeline-desc">Fontanas yra vienas žymiausių Gdansko simbolių, vaizduojantis jūros valdovą
+                    ir miesto ryšį su Baltijos regionu. Jis buvo pastatytas XVII a. ir ilgus amžius puošė miesto širdį.
+                    Fontanas traukia turistus savo elegantiška bronzos skulptūra ir istorine aura. Tai neatsiejama
+                    Ilgojo Turgaus puošmena.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Artuso Teismas</div>
+                  <div class="timeline-desc">Tai buvusi pirklių susirinkimų salė ir miesto socialinio gyvenimo centras.
+                    Viduje išlikę turtingi gotikiniai ir renesansiniai interjerai, dekoruoti laivų modeliais,
+                    skulptūromis ir medžio raižiniais. Ši vieta pasakoja apie Gdansko pirklių galią ir Hanzos sąjungos
+                    įtaką. Tai viena prabangiausių istorinių erdvių mieste.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Gdansko Rotušė</div>
+                  <div class="timeline-desc">Rotušė yra įspūdingas gotikinis ir renesansinis pastatas, išsiskiriantis
+                    aukštu
+                    bokštu ir turtingais interjerais. Jo salėse kadaise posėdžiavo miesto valdžia, o šiandien čia veikia
+                    muziejus. Rotušės bokštas suteikia vieną gražiausių senamiesčio panoramų. Tai tikras architektūrinis
+                    perlas miesto širdyje.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Ilgoji Gatvė</div>
+                  <div class="timeline-desc">Viena elegantiškiausių Gdansko miesto arterijų, vedanti Karališkuoju keliu.
+                    Gatvę puošia spalvingi istoriniai mūriniai namai su siaurais, aukštais fasadais. Čia gausu kavinių,
+                    istorinių vietų ir gyvybės. Tai ideali vieta pajusti tikrąją Gdansko dvasią.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Auksiniai Vartai</div>
+                  <div class="timeline-desc">Istoriniai miesto vartai, ženklinantys įėjimą į Karališkąjį kelią. Jie buvo
+                    pastatyti XVII a. ir dekoruoti alegorinėmis dorybių skulptūromis. Vartai simbolizavo miesto
+                    ambicijas ir jo norą pademonstruoti turtą bei kultūrą. Tai vienas žaviausių renesansinių statinių
+                    Gdanske.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Šv. Marijos Katedra</div>
+                  <div class="timeline-desc">Tai didžiausia plytų gotikos bažnyčia pasaulyje. Jos
+                    vidus talpina 20 tūkstančių žmonių, o interjeras stebina monumentalumu ir šviesos žaismu. Viduje
+                    galima išvysti garsųjį astronominį laikrodį. Tai vienas svarbiausių viso Baltijos regiono
+                    architektūrinių šedevrų.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Marijos Gatvė</div>
+                  <div class="timeline-desc">Turbūt romantiškiausia Gdansko gatvelė su gotikiniais namais ir
+                    dekoruotomis terasomis. Čia kadaise gyveno gintaro meistrai, todėl ir šiandien gausu gintaro
+                    parduotuvėlių. Gatvelė žavi savo jaukia, viduramžiška atmosfera. Vakarais ji tampa ypatingai
+                    fotogeniška.</div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-time">- - -</div>
+                  <div class="timeline-title">Krantinės Kranas</div>
+                  <div class="timeline-desc">Seniausias išlikęs viduramžių uosto kranas visoje Europoje. Jis atliko tiek
+                    gynybinę, tiek pakėlimo funkciją, keldamas krovinius ir saugodamas miestą. Kranas simbolizuoja
+                    Gdansko prekybinę galią Hanzos laikais. Tai unikalus technologinis ir istorinis paminklas.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">13:15 – Iki Nakties</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Progress -->
+      <div class="mt-16 pt-8 border-t border-gray-800">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-sm">Antrosios dienos pabaiga...</span>
+          <span class="text-sm">2 iš 3</span>
+        </div>
+        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div class="h-full w-2/3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 3 Section -->
+  <section id="day-3" class="min-h-screen py-20 px-4 scroll-section">
+    <div class="max-w-6xl mx-auto">
+      <div class="day-3-bg rounded-3xl p-8 md:p-12 mb-16">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
+          <div class="text-violet-400" id="anchor-icon"></div>
+          <span class="text-gray-300 font-medium">3 DIENA</span>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
+          <span class="gradient-text">Grįžimas</span>
+          <br>
+          <span class="text-white">Namo</span>
+        </h2>
+
+        <div class="flex flex-wrap items-center gap-6 text-gray-400">
+          <div class="flex items-center gap-2">
+            <div class="text-violet-400" id="pin-icon-8"></div>
+            <span>Visur gerai, bet namuose geriausia...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 1 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">⚔️</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Žalgirio mūšio laukas</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Žalgirio mūšio laukas – vieta, menanti 1410 m.
+              įvykusį vieną didžiausių viduramžių mūšių Europoje. Čia jungtinės
+              Lietuvos Didžiosios Kunigaikštystės ir Lenkijos Karalystės pajėgos
+              sutriuškino Kryžiuočių ordiną, nulėmusios jo galybės saulėlydį. Šiandien
+              mūšio laukas tapęs lankomu istoriniu objektu: čia stovi didžiulis obeliskas,
+              puoštas ir lietuviškais simboliais.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Lemtinga Pergalė</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">- - -</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity 2 -->
+      <div class="glass rounded-2xl p-6 mb-8 card-hover">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-3xl">😇</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="text-cyan-400" id="pin-icon-2"></div>
+              <h3 class="text-2xl font-bold text-white">Šv. Brunono kalnas</h3>
+            </div>
+            <p class="text-gray-300 text-lg mb-4">
+              Pasak daugelio istorikų, būtent šioje vietoje buvo
+              nukirsdintas Šv. Brunonas. Lietuviams tai simbolizuoja pirmąjį Lietuvos paminėjimą
+              rašytiniuose šaltiniuose (1009 m.). Prieš porą metų kalnas buvo praturtintas moderniu apžvalgos bokštu
+              (15 m), kuris greitai tapo vienu iš pagrindinių Lėciaus (Gižycko) turistų traukos objektų.
+              Iš medžio ir plieno pagaminta konstrukcija harmoningai įsilieja į kalvos kraštovaizdį
+              ir puikiai papildo šios vietos dvasinį charakterį.
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+              <div class="text-cyan-400" id="sparkle-icon"></div>
+              <span class="text-cyan-300 text-sm font-medium">Lietuvos Istorijos Pradžia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="clock-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Laikas</div>
+              <div class="text-white font-semibold">- - -</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+            <div class="text-gray-400" id="wallet-icon"></div>
+            <div>
+              <div class="text-sm text-gray-400">Kaina</div>
+              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Progress -->
+      <div class="mt-16 pt-8 border-t border-gray-800">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-sm">Trečiosios dienos pabaiga...</span>
+          <span class="text-sm">3 iš 3</span>
+        </div>
+        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+          <div class="h-full w-full rounded-full bg-gradient-to-r from-violet-500 to-purple-500"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Section -->
+  <section class="min-h-screen py-20 px-4 scroll-section relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-80"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="mb-12">
+        <div class="inline-block p-4 rounded-full glass">
+          <div class="text-cyan-400" id="sparkle-icon-8"></div>
+        </div>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-8">
+        <span class="gradient-text">KELIONĖS</span>
+        <br>
+        <span class="text-white">PABAIGA</span>
+      </h2>
+
+      <p class="text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl mx-auto">
+        Įamžinti prisiminimai.
+      </p>
+
+      <div
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-full glass hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all cursor-pointer group"
+        onclick="scrollToTop()">
+        <span class="text-white font-semibold">↑ Į pradžią ↑</span>
+        <div class="text-cyan-400 group-hover:translate-x-2 transition-transform" id="chevron-icon-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function () {
+      // Create Lucide icons
+      const icons = {
+        'wind-icon': lucideReact.Wind,
+        'calendar-icon': lucideReact.Calendar,
+        'map-icon': lucideReact.MapPin,
+        'compass-icon': lucideReact.Compass,
+        'chevron-icon': lucideReact.ChevronRight,
+        'castle-icon': lucideReact.Castle,
+        'pin-icon': lucideReact.MapPin,
+        'pin-icon-2': lucideReact.MapPin,
+        'sparkle-icon': lucideReact.Sparkles,
+        'clock-icon': lucideReact.Clock,
+        'wallet-icon': lucideReact.Wallet,
+        'pin-icon-3': lucideReact.MapPin,
+        'sparkle-icon-2': lucideReact.Sparkles,
+        'clock-icon-2': lucideReact.Clock,
+        'wallet-icon-2': lucideReact.Wallet,
+        'pin-icon-4': lucideReact.MapPin,
+        'sparkle-icon-3': lucideReact.Sparkles,
+        'clock-icon-3': lucideReact.Clock,
+        'wallet-icon-3': lucideReact.Wallet,
+        'mountain-icon': lucideReact.Mountain,
+        'pin-icon-5': lucideReact.MapPin,
+        'pin-icon-6': lucideReact.MapPin,
+        'sparkle-icon-4': lucideReact.Sparkles,
+        'clock-icon-4': lucideReact.Clock,
+        'wallet-icon-4': lucideReact.Wallet,
+        'pin-icon-7': lucideReact.MapPin,
+        'sparkle-icon-5': lucideReact.Sparkles,
+        'clock-icon-5': lucideReact.Clock,
+        'wallet-icon-5': lucideReact.Wallet,
+        'anchor-icon': lucideReact.Anchor,
+        'pin-icon-8': lucideReact.MapPin,
+        'pin-icon-9': lucideReact.MapPin,
+        'sparkle-icon-6': lucideReact.Sparkles,
+        'clock-icon-6': lucideReact.Clock,
+        'wallet-icon-6': lucideReact.Wallet,
+        'pin-icon-10': lucideReact.MapPin,
+        'sparkle-icon-7': lucideReact.Sparkles,
+        'clock-icon-7': lucideReact.Clock,
+        'wallet-icon-7': lucideReact.Wallet,
+        'sparkle-icon-8': lucideReact.Sparkles,
+        'chevron-icon-2': lucideReact.ChevronRight
+      };
+
+      // Render all icons
+      Object.keys(icons).forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const Icon = icons[id];
+          const iconElement = Icon({ size: 24 });
+          element.innerHTML = iconElement.outerHTML || '';
+        }
+      });
+
+      // Create particles
+      createParticles();
+
+      // Mouse parallax effect
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+        const orbs = document.querySelectorAll('.orb');
+        orbs.forEach(orb => {
+          orb.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        const grid = document.querySelector('.grid-bg');
+        if (grid) {
+          grid.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+        }
+      });
+
+      // Set up Intersection Observer for navigation highlighting
+      setupNavigationObserver();
+    });
+
+    // Gdansk expandable section function
+    function toggleGdanskDetails() {
+      const details = document.getElementById('gdansk-details');
+      const expandIcon = document.getElementById('expand-icon');
+      const expandText = document.getElementById('expand-text');
+      const expandBtn = document.getElementById('expand-btn');
+
+      if (details.classList.contains('expanded')) {
+        details.classList.remove('expanded');
+        expandIcon.classList.remove('rotated');
+        expandText.textContent = 'Peržiūrėti Gdansko Maršrutą';
+        expandBtn.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2))';
+      } else {
+        details.classList.add('expanded');
+        expandIcon.classList.add('rotated');
+        expandText.textContent = 'Paslėpti Detales';
+        expandBtn.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3))';
+
+        // Smooth scroll to show the expanded content
+        setTimeout(() => {
+          details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 300);
+      }
+    }
+
+    function createParticles() {
+      const container = document.querySelector('body');
+      if (!container) return;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random() * 3 + 1}px;
+                    height: ${Math.random() * 3 + 1}px;
+                    background: rgba(255, 255, 255, ${0.05 + Math.random() * 0.1});
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}vh;
+                    left: ${Math.random() * 100}vw;
+                    pointer-events: none;
+                    z-index: -1;
+                `;
+
+        // Animation
+        particle.animate([
+          { transform: 'translateY(0) translateX(0)', opacity: 0 },
+          { transform: `translateY(${Math.random() * -1000}px) translateX(${(Math.random() - 0.5) * 200}px)`, opacity: 1 },
+          { transform: `translateY(${Math.random() * -1000}px) translateX(${(Math.random() - 0.5) * 200}px)`, opacity: 0 }
+        ], {
+          duration: Math.random() * 10000 + 10000,
+          delay: Math.random() * 5000,
+          iterations: Infinity
+        });
+
+        container.appendChild(particle);
+      }
+    }
+
+    function setupNavigationObserver() {
+      // Create observer to track which day is in view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const sectionId = entry.target.id;
+              const dayNumber = sectionId.split('-')[1];
+
+              // Update navigation buttons
+              updateNavigation(parseInt(dayNumber) - 1);
+            }
+          });
+        },
+        {
+          threshold: 0.5, // When 50% of the section is visible
+          rootMargin: '-20% 0px -20% 0px' // Adjust the viewport area
+        }
+      );
+
+      // Observe all day sections
+      ['day-1', 'day-2', 'day-3'].forEach(id => {
+        const section = document.getElementById(id);
+        if (section) {
+          observer.observe(section);
+        }
+      });
+    }
+
+    function updateNavigation(activeIndex) {
+      // Remove active class from all buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('text-gray-400');
+      });
+
+      // Add active class to current button
+      const activeButton = document.getElementById(`nav-day-${activeIndex + 1}`);
+      if (activeButton) {
+        activeButton.classList.add('active');
+        activeButton.classList.remove('text-gray-400');
+      }
+    }
+
+    function scrollToDay(dayIndex) {
+      const daySections = ['day-1', 'day-2', 'day-3'];
+      const section = document.getElementById(daySections[dayIndex]);
+      if (section) {
+        // Update navigation immediately
+        updateNavigation(dayIndex);
+
+        // Scroll to section
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Add CSS animation for fade-in
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.6s ease-out forwards;
+            }
+            .particle {
+                position: fixed;
+                pointer-events: none;
+                z-index: -1;
+            }
+        `;
+    document.head.appendChild(style);
+  </script>
+</body>
+
+</html>
