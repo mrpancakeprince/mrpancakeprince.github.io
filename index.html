@@ -580,6 +580,85 @@
             box-shadow: 0 0 0 2px var(--gauja);
         }
 
+        /* Gateway styles */
+        .gateway-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 30px;
+            text-align: center;
+            min-height: 400px;
+        }
+
+        .gateway-icon {
+            font-size: 80px;
+            color: var(--lenkija);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .gateway-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .gateway-message {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .gateway-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--lenkija), #8d6e63);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(93, 64, 55, 0.3);
+        }
+
+        .gateway-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.4);
+            background: linear-gradient(135deg, #6d4c41, #8d6e63);
+        }
+
+        .gateway-note {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f5f2ef;
+            border-radius: 12px;
+            max-width: 600px;
+            border-left: 4px solid var(--lenkija);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -657,6 +736,19 @@
             .timeline-item::before {
                 left: -29px;
             }
+
+            .gateway-title {
+                font-size: 2rem;
+            }
+
+            .gateway-icon {
+                font-size: 60px;
+            }
+
+            .gateway-button {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -684,6 +776,14 @@
 
             .construction-title {
                 font-size: 24px;
+            }
+
+            .gateway-title {
+                font-size: 1.8rem;
+            }
+
+            .gateway-message {
+                font-size: 1rem;
             }
         }
     </style>
@@ -713,7 +813,7 @@
                 <i class="fas fa-mountain"></i>Gaujos NP
             </button>
             <button class="tab-btn lenkija" data-tab="lenkija">
-                <i class="fas fa-map-marked-alt"></i>???
+                <i class="fas fa-external-link-alt"></i>PLACEHOLDER
             </button>
         </nav>
 
@@ -791,7 +891,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-time">17:05 - 17:15</div>
-                                <div class="timeline-location">„Cosmos“ paukščių takas</div>
+                                <div class="timeline-location">„Cosmos" paukščių takas</div>
                                 <div class="timeline-description">Veidrodžių kambarys nukels Tave į beribį
                                     kosmosą! Patirk begalybės pojūtį, susipažink su žvaigždėmis iš arti. Tai
                                     unikali ir vienintelė vieta Baltijos šalyse, kur galima panirti į
@@ -840,12 +940,13 @@
                         <div class="timeline-item">
                             <div class="timeline-time">10:00 - 10:30</div>
                             <div class="timeline-location">Jelgavos smėlio skulptūrų parkas</div>
-                            <div class="timeline-description"><s>Šių metų smėlio skulptūrų festivalio tema – „Mitinės
-                                būtybės“, suteikia lankytojams galimybę susipažinti su mitinėmis būtybėmis iš įvairių
-                                pasaulio kultūrų – nuo senovės graikų iki Azijos legendų. Festivalyje dalyvavo 17
-                                skulptorių iš 11 šalių, kurie sukūrė unikalius meno kūrinius iš smėlio. Be konkurso
-                                skulptūrų, parke taip pat eksponuojama didžiausia metų skulptūra – „Medūza“, kurią
-                                sukūrė du menininkai iš Latvijos.</s>
+                            <div class="timeline-description"><s>Šių metų smėlio skulptūrų festivalio tema – "Mitinės
+                                    būtybės", suteikia lankytojams galimybę susipažinti su mitinėmis būtybėmis iš
+                                    įvairių
+                                    pasaulio kultūrų – nuo senovės graikų iki Azijos legendų. Festivalyje dalyvavo 17
+                                    skulptorių iš 11 šalių, kurie sukūrė unikalius meno kūrinius iš smėlio. Be konkurso
+                                    skulptūrų, parke taip pat eksponuojama didžiausia metų skulptūra – "Medūza", kurią
+                                    sukūrė du menininkai iš Latvijos.</s>
                             </div>
                         </div>
 
@@ -872,7 +973,8 @@
                             <div class="timeline-description">Šis piliakalnis yra senas Dauguvos lyvių
                                 piliakalnis su senoviniu miestu Dauguvos dešiniajame krante. Jis yra strategiškai
                                 patogioje vietoje – tarp dviejų į Dauguvą įtekančių upelių, didžiausias iš kurių
-                                vadinamas Aškere. Statūs Aizkrauklės piliakalnio šlaitai užtikrino gerą jo apginamumą. 1279 metų
+                                vadinamas Aškere. Statūs Aizkrauklės piliakalnio šlaitai užtikrino gerą jo apginamumą.
+                                1279 metų
                                 kovo 5 d. Lietuvos didysis kunigaikštis Traidenis su žiemgalių karių pulkais čia sumušė
                                 kryžiuočių pajėgas.</div>
                         </div>
@@ -881,7 +983,7 @@
                             <div class="timeline-time">16:00 - 17:20</div>
                             <div class="timeline-location">Cenos pelkės takas</div>
                             <div class="timeline-description">Cenos pelkė yra antroji pagal dydį Latvijos pelkė,
-                                ypač saugoma gamtos teritorija – draustinis ir „Natura 2000" teritorija.
+                                ypač saugoma gamtos teritorija – draustinis ir "Natura 2000" teritorija.
                                 Cenos pelkėje įrengtas 5 km ilgio pėsčiųjų takas, o jo viduryje stovi
                                 apžvalgos bokštas, iš kurio galima apžiūrėti pelkę iš viršaus.</div>
                         </div>
@@ -932,14 +1034,14 @@
                                 krante. 1862 m. Rusijos caras Aleksandras II su savo žmonos drauge apsilankė Siguldoje.
                                 Vizito metu jie pasodino po
                                 vieną medį specialiai paruoštame apžvalgos taške netoli Laurenci. Nuo to laiko apžvalgos
-                                taškas buvo vadinamas „imperatoriaus sostu“, nes Rusijos caras buvo sužavėtas
+                                taškas buvo vadinamas "imperatoriaus sostu", nes Rusijos caras buvo sužavėtas
                                 nuostabiu Gaujos slėnio vaizdu.</div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">11:15 – 12:00</div>
                             <div class="timeline-location">Siguldos senoji pilis</div>
                             <div class="timeline-description">1207 m. pastatyta Livonijos ordino pilis iš
-                                pradžių buvo suprojektuota kaip „castellum“ tipo tvirtovė, bet vėliau buvo perstatyta į
+                                pradžių buvo suprojektuota kaip "castellum" tipo tvirtovė, bet vėliau buvo perstatyta į
                                 vienuolyno tipo pastatą. Su šaunamųjų ginklų plėtra viduramžių tvirtovės palaipsniui
                                 prarado savo pirminę reikšmę ir buvo sunaikintos XVIII a. pradžioje per Šiaurės karą.
                                 Nuo 2011 m. rekonstrukcijos pilis yra atvira lankytojams.</div>
@@ -969,7 +1071,7 @@
                                 centre; kitoje pusėje yra apžvalgos platforma, iš kurios geriau matomas uolynas, kuris
                                 turi 28 dirbtinius rūsius (kai kurie net dviejų
                                 lygių), kuriuose laikomi daržovės ir vaisiai.
-                                Mediniai laiptai veda į skardžio viršūnę. Iš čia atsiveria nuostabus vaizdas į miestelį.
+                                Mediniai laiptai veda į skardžio viršūnė. Iš čia atsiveria nuostabus vaizdas į miestelį.
                             </div>
                         </div>
                         <div class="timeline-item">
@@ -1000,318 +1102,26 @@
             </div>
         </section>
 
-        <!-- Slaptas maršrutas -->
+        <!-- Lenkijos kelionės vartai -->
         <section id="lenkija" class="content-section">
             <div class="route-card lenkija">
                 <div class="route-header">
-                    <div class="route-icon"><i class="fas fa-map-marked-alt"></i></div>
-                    <h2 class="route-title">Slaptas Maršrutas</h2>
+                    <div class="route-icon"><i class="fas fa-external-link-alt"></i></div>
+                    <h2 class="route-title">PLACEHOLDER</h2>
                 </div>
                 <div class="route-content">
-
-                    <div class="day-tabs">
-                        <button class="day-tab active" data-day="1">1 diena</button>
-                        <button class="day-tab" data-day="2">2 diena</button>
-                    </div>
-
-                    <div class="construction-overlay">
-                        <div class="construction-content">
-                            <div class="construction-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <h3 class="construction-title">KELIONĖ RUOŠIAMA</h3>
-                            <p class="construction-message">
-                                Ši kelionė bus kupina atradimų, istorijos ir nepamirštamų akimirkų! <br>
-                                <b>UŽUOMINOS: 🙋‍♂️ ⛪ 💀 🏰 ⚔️ 😇</b>
-                            </p>
-
-                            <div class="progress-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                            <div class="progress-text">Maršruto planavimo pažanga: 71%</div>
+                    <div class="gateway-container">
+                        <div class="gateway-icon">
+                            <i class="fas fa-door-open"></i>
                         </div>
-                    </div>
-
-                    <div class="blur-content">
-                        <div class="timeline-day active" data-day="1">
-                            <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">06:25</div>
-                                        <div class="timeline-location">Išvykstame</div>
-                                        <div class="timeline-description">Prieš išeinant pro duris, <b>itin svarbu
-                                        pasitikrinti,</b> ar viską pasiėmėte ir galite palikti namus porai dienų!</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                </div>
-
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">06:50 – 06:55</div>
-                                        <div class="timeline-location">Circle K (Rietavas)</div>
-                                        <div class="timeline-description">Degalai / Greita kava</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">08:30 – 08:35</div>
-                                        <div class="timeline-location">Circle K (IX Fortas)</div>
-                                        <div class="timeline-description">Degalai / Tualetas</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">10:30 – 10:35</div>
-                                        <div class="timeline-location">Circle K Express (Lukas)</div>
-                                        <div class="timeline-description">Degalai / Tualetas</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">12:15 – 14:15</div>
-                                        <div class="timeline-location">Vilko irštva</div>
-                                        <div class="timeline-description">Tai viena įdomiausių Mozūrijos krašto vietų
-                                            istorijos mėgėjams. Tai buvęs <b>Hitlerio karinis štabas,</b> iš kurio
-                                            Antrojo pasaulinio karo metais Hitleris vadovavo Vokietijos ginkluotosioms
-                                            pajėgoms – Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis
-                                            bunkerių buvo sunaikinti paties Hitlerio įsakymu, tačiau šiandien čia vis
-                                            dar galime išvysti niūrią istoriją menančių pastatų.</div>
-                                    </div>
-                                    <div class="timeline-price">40,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">14:50 – 15:10</div>
-                                        <div class="timeline-location">Šventalieptės (Šv. Lipkos) ansamblis</div>
-                                        <div class="timeline-description">Tai įspūdinga, stebuklais nuo viduramžių
-                                            garsėjanti barokinė bažnyčia. Pasak padavimo, čia apsireiškė Šv. Mergelė
-                                            Marija su kūdikiu rankose. Turistus bei piligrimus ši vieta traukia ne tik
-                                            savo šventumu, bet ir galimybe <b>pasiklausyti ir pamatyti „šokančius
-                                            vargonus“.</b> Iš vargonų sklinda Bacho, Šuberto ir Bethoveno melodijos,
-                                            o patys vargonai yra itin puošnūs, padabinti angelų ir šventųjų
-                                            skulptūromis.</div>
-                                    </div>
-                                    <div class="timeline-price">00,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">15:20 – 15:45</div>
-                                        <div class="timeline-location">Rešliaus Šv. Petro ir Povilo bažnyčios bokštas
-                                        </div>
-                                        <div class="timeline-description">Ši XIV a. gotikinė bažnyčia turi tris navas ir
-                                            didingą bokštą, iš kurio <b>52 metrų aukštyje galima grožėtis Rešliaus panorama.</b>
-                                            Interjeras yra gražiai suderintas ir turtingai dekoruotas paveikslais bei
-                                            šoniniais altoriais. Pagrindinis altorius yra XIX a.</div>
-                                    </div>
-                                    <div class="timeline-price">03,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">16:30 – 17:15</div>
-                                        <div class="timeline-location">Varmės Lidzbarkas</div>
-                                        <div class="timeline-description">Kadaise Varmės Lidzbarkas buvo Varmijos
-                                            sostinė. Pirmieji įrašai apie šią vietovę rasti nuo 1240 metų, kuomet
-                                            Lecbargas (dab. Lidzbarkas) buvo užkariautas kryžiuočių. Lidzbarkas turėjo
-                                            net trejus miesto vartus, tačiau iki šių dienų yra išlikę
-                                            <b>Viršutiniai.</b> 1315 metais čia įkurta <b>šv. Apaštalų Petro ir Povilo
-                                                kolegijos bažnyčia.</b> <b>Miesto pilis</b> pastatyta 1350-1401 metais
-                                            vietoje prūsų pilies, buvusios Alnos ir Simsarnos upių santakoje. Ilgą laiką
-                                            čia buvo Varmijos vyskupijos kapitulos rezidencija.
-                                        </div>
-                                    </div>
-                                    <div class="timeline-price">00,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">18:35 – 18:40</div>
-                                        <div class="timeline-location">Circle K (Elblagas)</div>
-                                        <div class="timeline-description">Degalai / Tualetas</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">~19:15</div>
-                                        <div class="timeline-location">Nakvynė (TIK PASIŪLYMAS)</div>
-                                        <div class="timeline-description">
-                                            Svečių namai „Dom Goscinny Luna“ įsikūrę Stegnoje. Visuose numeriuose yra
-                                            virduliai, spintos, plokščiaekraniai televizoriai ir vonios kambariai. 
-                                            Svečių įvertinimas – labai geras (8,9 balo iš 10).
-                                            Netoliese – kurortinis Stegnos Morskos paplūdimys. 
-                                            Numerio tipas – Šeimyninis (1 kambarys ir vonia). 
-                                            Lovos: viena dvigulė lova + viena dviaukštė lova + viena miegamoji
-                                            sofa.
-                                        </div>
-                                    </div>
-                                    <div class="timeline-price">55,00 EUR</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="timeline-day" data-day="2">
-                            <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">08:05 – 08:55</div>
-                                        <div class="timeline-location">Štuthofo koncentracijos stovykla</div>
-                                        <div class="timeline-description">Tai viena iš žymiausių <b>nacių įkurtų
-                                                stovyklų Antrojo pasaulinio karo metais.</b> Ji pradėjo veikti 1939 m.
-                                            ir tapo pirmąja už Vokietijos ribų įsteigta stovykla. Per visą jos
-                                            egzistavimo laikotarpį čia buvo įkalinta apie 110 tūkstančių žmonių iš
-                                            įvairių Europos šalių. Stovykloje kalėjo ir žinomi Lietuvos inteligentai,
-                                            tarp jų rašytojas Balys Sruoga, savo patirtis aprašęs knygoje „Dievų
-                                            miškas“. Lankant šią vietą galima išvysti išlikusius barakus, krematoriumą,
-                                            paminklus bei memorialines lentas, įamžinančias čia kentėjusių ir žuvusiųjų
-                                            atminimą.</div>
-                                    </div>
-                                    <div class="timeline-price">03,50<br>EUR</div>
-                                </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">09:45 – 11:50</div>
-                                        <div class="timeline-location">Marienburgo pilis</div>
-                                        <div class="timeline-description">Malborko pilis – <b>didžiausia plytinė pilis
-                                                pasaulyje,</b> pastatyta XIII a. Kryžiuočių ordino po Senosios Prūsijos
-                                            užkariavimo. Per artimiausius šimtmečius pilis buvo plečiama, sustiprinta ir
-                                            tapo didžiojo magistro rezidencija bei vienu svarbiausių ordino valdžios
-                                            centrų. Kryžiuočiams pilis tarnavo apie pusantro šimto metų, kol 1457 m.,
-                                            vykstant Trylikos metų karui, ją užėmė Lenkijos kariuomenė. Nuo to laiko
-                                            pilis tris šimtmečius buvo Lenkijos karalių rezidencija. Šiandien Malborko
-                                            kompleksas yra vienas įspūdingiausių viduramžių gynybinės architektūros
-                                            pavyzdžių Europoje, o 1997 m. jis įtrauktas į UNESCO pasaulio paveldo
-                                            sąrašą.</div>
-                                    </div>
-                                    <div class="timeline-price">00,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">11:55 – 12:00</div>
-                                        <div class="timeline-location">Circle K (Malborkas)</div>
-                                        <div class="timeline-description">Degalai / Tualetas</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">13:30 – 14:00</div>
-                                        <div class="timeline-location">Žalgirio mūšio laukas</div>
-                                        <div class="timeline-description">Žalgirio mūšio laukas – vieta, menanti 1410 m.
-                                            įvykusį <b>vieną didžiausių viduramžių mūšių Europoje.</b> Čia jungtinės
-                                            Lietuvos Didžiosios Kunigaikštystės ir Lenkijos Karalystės pajėgos
-                                            sutriuškino Kryžiuočių ordiną, nulėmusios jo galybės saulėlydį. Šiandien
-                                            mūšio laukas tapęs lankomu istoriniu objektu: čia stovi didžiulis obeliskas,
-                                            puoštas ir lietuviškais simboliais.</div>
-                                    </div>
-                                    <div class="timeline-price">00,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">15:15 – 15:20</div>
-                                        <div class="timeline-location">Circle K Express (Mrongovas)</div>
-                                        <div class="timeline-description">Degalai / Tualetas / Užkandžiai</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">16:05 – 16:25</div>
-                                        <div class="timeline-location">Šv. Brunono kalnas</div>
-                                        <div class="timeline-description">Pasak daugelio istorikų, būtent šioje vietoje buvo
-                                            nukirsdintas Šv. Brunonas. Lietuviams tai simbolizuoja pirmąjį Lietuvos paminėjimą
-                                            rašytiniuose šaltiniuose. 2023 metais kalnas buvo praturtintas moderniu apžvalgos bokštu
-                                            (15 m), kuris greitai tapo vienu iš pagrindinių Lėciaus (Gižycko) turistų traukos objektų.
-                                            Iš medžio ir plieno pagaminta konstrukcija harmoningai įsilieja į kalvos kraštovaizdį
-                                            ir puikiai papildo šios vietos dvasinį charakterį.</div>
-                                    </div>
-                                    <div class="timeline-price">00,00<br>EUR</div>
-                                </div>
-
-                                <div class="timeline">
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">19:10 – 19:15</div>
-                                        <div class="timeline-location">Circle K (Garliava)</div>
-                                        <div class="timeline-description">Degalai / Tualetas / Užkandžiai</div>
-                                    </div>
-                                    <div class="timeline-price">–––</div>
-                                </div>
-                                    </div>
-
-                                <div class="timeline-item-with-price">
-                                    <div class="timeline-content">
-                                        <div class="timeline-time">21:50</div>
-                                        <div class="timeline-location">Namai</div>
-                                        <div class="timeline-description">Kelionės pabaiga.</div>
-                                    </div>
-                                    <div class="timeline-price">–––<br>EUR</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="blur-content">
-                        <div class="route-notes">
-                            <div class="note info">
-                                <div class="note-header">
-                                    <i class="fas fa-info-circle note-icon"></i>
-                                    <div class="note-title">Planavimo detalės</div>
-                                </div>
-                                <div class="note-content">
-                                    Šventalieptės „šokančiuosius vargonus“ galima išgirsti <b>sekmadienį 15 valandą.</b></b>
-                                </div>
-                            </div>
-                            <div class="note info">
-                                <div class="note-header">
-                                    <i class="fas fa-info-circle note-icon"></i>
-                                    <div class="note-title">Detalus maršrutas</div>
-                                </div>
-                                <div class="note-content">
-                                    Objektai, kuriuos aplankysime Varmės Lidzbarke, yra <b>paryškinti.</b> Pilį
-                                    apžiūrėsime tik iš išorės.
-                                </div>
-                            </div>
-                            <div class="note info">
-                                <div class="note-header">
-                                    <i class="fas fa-info-circle note-icon"></i>
-                                    <div class="note-title">Įėjimo kaina</div>
-                                </div>
-                                <div class="note-content">
-                                    Malborko pilis nemokama <b>tik pirmadieniais,</b> galima lankyti išorinę ekspoziciją
-                                    ir mažą dalį vidaus. Įprasta kaina (kitomis dienomis) – apie 80 EUR (galima lankyti visą
-                                    vidaus ekspoziciją).
-                                </div>
-                            </div>
-                        </div>
+                        <p class="gateway-message">
+                            Ši kelionė dabar turi savo atskirą, išsamią svetainę!<br>
+                            Ten rasite pilną maršrutą, dienų planavimą, kainas ir visas reikalingas detales.
+                        </p>
+                        <a href="[PLACEHOLDER]" target="_blank" class="gateway-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Eiti į [PLACEHOLDER] kelionės puslapį
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1340,23 +1150,6 @@
                     btn.classList.add('active');
                     const tabId = btn.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
-                });
-            });
-
-            // Day tabs functionality
-            const dayTabs = document.querySelectorAll('.day-tab');
-            const dayContents = document.querySelectorAll('.timeline-day');
-
-            dayTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active from all tabs and contents
-                    dayTabs.forEach(t => t.classList.remove('active'));
-                    dayContents.forEach(content => content.classList.remove('active'));
-
-                    // Add active to clicked tab and corresponding content
-                    tab.classList.add('active');
-                    const day = tab.getAttribute('data-day');
-                    document.querySelector(`.timeline-day[data-day="${day}"]`).classList.add('active');
                 });
             });
 
