@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="lt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In Progress | Polish Journey</title>
+    <title>Odisėja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #f8f9fa;
@@ -49,7 +52,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(90deg, var(--border) 1px, transparent 1px),
                 linear-gradient(var(--border) 1px, transparent 1px);
             background-size: 60px 60px;
@@ -62,28 +65,31 @@
             left: 0;
             right: 0;
             height: 80px;
-            background: repeating-linear-gradient(
-                45deg,
-                var(--construction-yellow),
-                var(--construction-yellow) 20px,
-                var(--accent) 20px,
-                var(--accent) 40px
-            );
+            background: repeating-linear-gradient(45deg,
+                    var(--construction-yellow),
+                    var(--construction-yellow) 20px,
+                    var(--accent) 20px,
+                    var(--accent) 40px);
             transform: rotate(-5deg) translateY(-50%);
             opacity: 0.1;
             animation: tapeFloat 4s ease-in-out infinite alternate;
         }
 
         @keyframes tapeFloat {
-            0% { transform: rotate(-5deg) translateY(-50%); }
-            100% { transform: rotate(-5deg) translateY(-50%) translateX(20px); }
+            0% {
+                transform: rotate(-5deg) translateY(-50%);
+            }
+
+            100% {
+                transform: rotate(-5deg) translateY(-50%) translateX(20px);
+            }
         }
 
         .construction-dots {
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(var(--construction-orange) 1px, transparent 2px),
                 radial-gradient(var(--construction-orange) 1px, transparent 2px);
             background-size: 100px 100px, 50px 50px;
@@ -93,8 +99,13 @@
         }
 
         @keyframes dotsMove {
-            0% { background-position: 0 0, 50px 50px; }
-            100% { background-position: 100px 100px, 150px 150px; }
+            0% {
+                background-position: 0 0, 50px 50px;
+            }
+
+            100% {
+                background-position: 100px 100px, 150px 150px;
+            }
         }
 
         /* Main Container */
@@ -132,11 +143,14 @@
         }
 
         @keyframes badgePulse {
-            0%, 100% { 
+
+            0%,
+            100% {
                 box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
                 transform: scale(1);
             }
-            50% { 
+
+            50% {
                 box-shadow: 0 0 0 8px rgba(249, 115, 22, 0);
                 transform: scale(1.2);
             }
@@ -181,7 +195,9 @@
         }
 
         @keyframes titleLine {
-            to { transform: scaleX(1); }
+            to {
+                transform: scaleX(1);
+            }
         }
 
         .subtitle {
@@ -255,16 +271,27 @@
         }
 
         @keyframes craneSwing {
-            0%, 100% { transform: rotate(-30deg); }
-            50% { transform: rotate(30deg); }
+
+            0%,
+            100% {
+                transform: rotate(-30deg);
+            }
+
+            50% {
+                transform: rotate(30deg);
+            }
         }
 
         @keyframes blockBuild {
-            0%, 100% { 
+
+            0%,
+            100% {
                 opacity: 0;
                 transform: translateX(-50%) translateY(0);
             }
-            25%, 75% { 
+
+            25%,
+            75% {
                 opacity: 1;
                 transform: translateX(-50%) translateY(-150px);
             }
@@ -309,17 +336,22 @@
         .progress-bar {
             height: 100%;
             width: 71%;
-            background: linear-gradient(90deg, 
-                var(--construction-orange), 
-                var(--construction-yellow));
+            background: linear-gradient(90deg,
+                    var(--construction-orange),
+                    var(--construction-yellow));
             border-radius: 4px;
             position: relative;
             animation: fillProgress 2s ease-out forwards;
         }
 
         @keyframes fillProgress {
-            from { width: 0; }
-            to { width: 71%; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 71%;
+            }
         }
 
         .progress-bar::after {
@@ -329,16 +361,21 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.4) 50%, 
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    transparent 100%);
             animation: progressShimmer 2s infinite;
         }
 
         @keyframes progressShimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         /* Message */
@@ -403,10 +440,10 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.2) 50%, 
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    transparent 100%);
             transition: left 0.5s;
         }
 
@@ -429,16 +466,16 @@
             .title {
                 font-size: 3rem;
             }
-            
+
             .construction-visual {
                 width: 250px;
                 height: 250px;
             }
-            
+
             .crane-arm {
                 width: 160px;
             }
-            
+
             .content {
                 padding: 1rem;
             }
@@ -448,30 +485,31 @@
             .title {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1rem;
             }
-            
+
             .container {
                 padding: 2rem 1rem;
             }
-            
+
             .construction-visual {
                 width: 200px;
                 height: 200px;
             }
-            
+
             .crane-arm {
                 width: 130px;
             }
-            
+
             .progress-percentage {
                 font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="background">
         <div class="construction-grid"></div>
@@ -483,14 +521,10 @@
         <main class="content">
             <div class="status-badge">
                 <div class="badge-icon"></div>
-                <span>Under Construction</span>
+                <span>Statybos darbai</span>
             </div>
 
-            <h1 class="title">Polish Journey</h1>
-            <p class="subtitle">
-                We're currently building something special.<br>
-                Every detail is being crafted with precision and care.
-            </p>
+            <h1 class="title">Odisėja</h1>
 
             <div class="construction-visual">
                 <div class="crane-base"></div>
@@ -500,7 +534,7 @@
 
             <div class="progress-section">
                 <div class="progress-label">
-                    <span class="label-text">Construction Progress</span>
+                    <span class="label-text">Pažanga</span>
                     <span class="progress-percentage">71%</span>
                 </div>
                 <div class="progress-track">
@@ -511,12 +545,11 @@
             <div class="construction-message">
                 <div class="message-title">
                     <i class="fas fa-hard-hat"></i>
-                    Important Notice
+                    Svarbus Pranešimas
                 </div>
                 <p class="message-text">
-                    This journey is currently being assembled. We're working diligently to ensure 
-                    every element meets our high standards. The complete experience will be 
-                    available soon. Thank you for your patience.
+                    Ši kelionė šiuo metu dar yra rengiama. Uoliai dirbama, kad kiekvienas elementas atitiktų
+                    aukštus standartus. Visą planą galėsite rasti netrukus.
                 </p>
             </div>
     </div>
@@ -563,7 +596,7 @@
             const tape = document.querySelector('.construction-tape');
             const x = (e.clientX / window.innerWidth - 0.5) * 20;
             const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            
+
             tape.style.transform = `rotate(-5deg) translateY(-50%) translateX(${x}px)`;
         });
 
@@ -577,4 +610,5 @@
         }, 6000);
     </script>
 </body>
+
 </html>
