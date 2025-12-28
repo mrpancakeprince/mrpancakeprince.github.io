@@ -786,10 +786,380 @@
                 font-size: 1rem;
             }
         }
+
+        /* ===== GLOBAL CONSTRUCTION BARRIER ===== */
+        .global-construction-barrier {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        .global-construction-barrier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(90deg, rgba(33, 37, 41, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(33, 37, 41, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 40s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(40px);
+            }
+        }
+
+        .construction-frame {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 2px solid #212529;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .construction-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 4px solid transparent;
+            background: repeating-linear-gradient(45deg,
+                    #f97316,
+                    #f97316 20px,
+                    #212529 20px,
+                    #212529 40px);
+            background-clip: padding-box;
+            border-radius: 24px;
+            animation: tapeRotate 4s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes tapeRotate {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 80px 0;
+            }
+        }
+
+        .construction-tape {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            width: 120%;
+            height: 40px;
+            background: repeating-linear-gradient(45deg,
+                    #f97316,
+                    #f97316 20px,
+                    #212529 20px,
+                    #212529 40px);
+            opacity: 0.2;
+        }
+
+        .barrier-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .construction-icon {
+            font-size: 64px;
+            color: #f97316;
+            margin-bottom: 20px;
+            animation: hammerSwing 2s ease-in-out infinite;
+        }
+
+        @keyframes hammerSwing {
+
+            0%,
+            100% {
+                transform: rotate(-15deg);
+            }
+
+            50% {
+                transform: rotate(15deg);
+            }
+        }
+
+        .construction-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .construction-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .construction-progress {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .progress-percentage {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .progress-track {
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #f97316, #ffb347);
+            border-radius: 6px;
+            position: relative;
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .progress-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            font-size: 0.9rem;
+        }
+
+        .detail-percentage {
+            font-weight: 600;
+            color: #f97316;
+        }
+
+        .enter-site-btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 40px;
+            background: #212529;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(33, 37, 41, 0.3);
+        }
+
+        .enter-site-btn:hover {
+            background: #f97316;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .enter-site-btn small {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .construction-notice {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #f97316;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Initially hide main content */
+        .app-container {
+            opacity: 0;
+            filter: blur(10px);
+            transition: all 0.5s ease 0.3s;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .construction-frame {
+                padding: 25px;
+                width: 95%;
+            }
+
+            .construction-title {
+                font-size: 2rem;
+            }
+
+            .construction-subtitle {
+                font-size: 1rem;
+            }
+
+            .progress-details {
+                grid-template-columns: 1fr;
+            }
+
+            .construction-progress {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .construction-title {
+                font-size: 1.7rem;
+            }
+
+            .construction-icon {
+                font-size: 48px;
+            }
+
+            .enter-site-btn {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Simple hide class */
+        .global-construction-barrier.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Initially hide main content */
+        .app-container {
+            opacity: 0;
+            filter: blur(10px);
+            transition: all 0.5s ease 0.3s;
+        }
     </style>
 </head>
 
 <body>
+
+
+    <!-- MODERN CONSTRUCTION BARRIER -->
+    <div class="global-construction-barrier">
+        <div class="construction-frame">
+            <div class="construction-border"></div>
+            <div class="construction-tape"></div>
+            <div class="barrier-content">
+                <div class="construction-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h1 class="construction-title">ATLASAS REDAGUOJAMAS</h1>
+                <p class="construction-subtitle">
+                    Visos kelionės ruošiamos 2026 metų sezonui!
+                </p>
+
+                <div class="construction-progress">
+                    <div class="progress-label">
+                        <span>Bendras progresas</span>
+                        <span class="progress-percentage">76%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" style="width: 76%"></div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="detail-item">
+                            <span>Anykščiai–Zarasai</span>
+                            <span class="detail-percentage">63%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Pietų Vidžemė</span>
+                            <span class="detail-percentage">85%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Gaujos NP</span>
+                            <span class="detail-percentage">92%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>???</span>
+                            <span class="detail-percentage">71%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="enter-site-btn" id="enterSiteBtn">
+                    <i class="fas fa-unlock"></i>
+                    <span>ĮEITI Į ATLASĄ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- CONSTR-->
+
     <div class="app-container">
         <!-- Header -->
         <header class="main-header">
@@ -1170,6 +1540,58 @@
                 });
             });
         });
+
+        // Construction Barrier Functionality
+        const constructionBarrier = document.querySelector('.global-construction-barrier');
+        const enterSiteBtn = document.getElementById('enterSiteBtn');
+        const appContainer = document.querySelector('.app-container');
+
+        // Enter site button handler
+        enterSiteBtn.addEventListener('click', function () {
+            // Hide barrier with animation
+            constructionBarrier.style.opacity = '0';
+            constructionBarrier.style.visibility = 'hidden';
+            constructionBarrier.style.pointerEvents = 'none';
+
+            // Show main content
+            setTimeout(() => {
+                appContainer.style.opacity = '1';
+                appContainer.style.filter = 'none';
+            }, 300);
+        });
+
+        // Optional: Add construction sound effect (click on hammer)
+        const constructionIcon = document.querySelector('.construction-icon');
+        constructionIcon.addEventListener('click', function () {
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-construction-hammer-impact-887.mp3');
+            audio.volume = 0.3;
+            audio.play().catch(e => console.log("Audio play failed:", e));
+        });
+
+        // Animate progress bar numbers
+        function animateProgressNumbers() {
+            const percentage = document.querySelector('.progress-percentage');
+            const detailPercentages = document.querySelectorAll('.detail-percentage');
+
+            let start = 0;
+            const end = 76;
+            const duration = 2000;
+            const increment = 1;
+            const step = duration / (end / increment);
+
+            const timer = setInterval(() => {
+                start += increment;
+                percentage.textContent = start + '%';
+
+                if (start >= end) {
+                    clearInterval(timer);
+                    percentage.textContent = end + '%';
+                }
+            }, step);
+        }
+
+        // Start animation
+        setTimeout(animateProgressNumbers, 500);  
     </script>
 </body>
 
