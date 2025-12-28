@@ -1,1343 +1,1443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Istorinė Lenkija 🏰</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.min.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisėja 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f8f9fa;
+            --secondary: #e9ecef;
+            --accent: #212529;
+            --accent-orange: #f97316;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-violet: #8b5cf6;
+            --text: #212529;
+            --text-light: #6c757d;
+            --border: #dee2e6;
+            --grid-opacity: 0.06;
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --section-spacing: 8rem;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #000;
-      color: white;
-      overflow-x: hidden;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
 
-    .gradient-text {
-      background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        /* Construction-inspired Background */
+        .construction-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--primary);
+        }
 
-    .scroll-section {
-      scroll-snap-align: start;
-    }
+        .construction-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(90deg, var(--accent) 1px, transparent 1px),
+                linear-gradient(var(--accent) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: var(--grid-opacity);
+        }
 
-    .scroll-container {
-      scroll-snap-type: y mandatory;
-    }
+        .construction-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(249, 115, 22, 0.03) 29px,
+                    rgba(249, 115, 22, 0.03) 30px);
+        }
 
-    .card-hover {
-      transition: all 0.3s ease;
-    }
+        /* Modern Navigation */
+        .modern-nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border);
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
 
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
+        .nav-btn {
+            padding: 0.85rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    .float {
-      animation: float 6s ease-in-out infinite;
-    }
+        .nav-btn.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(33, 37, 41, 0.15);
+        }
 
-    @keyframes float {
+        .nav-btn:not(.active):hover {
+            color: var(--accent);
+            background: var(--secondary);
+        }
 
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
+        /* Main Container - More Spacious */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 12rem;
+        }
 
-      50% {
-        transform: translateY(-20px);
-      }
-    }
+        /* Hero Section - More Open */
+        .hero {
+            text-align: center;
+            margin-bottom: var(--section-spacing);
+            position: relative;
+        }
 
-    .pulse {
-      animation: pulse 2s infinite;
-    }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 2.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-    @keyframes pulse {
+        .badge-icon {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            animation: badgePulse 2s infinite;
+        }
 
-      0%,
-      100% {
-        opacity: 1;
-      }
+        @keyframes badgePulse {
 
-      50% {
-        opacity: 0.5;
-      }
-    }
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+                transform: scale(1);
+            }
 
-    .shine {
-      position: relative;
-      overflow: hidden;
-    }
+            50% {
+                box-shadow: 0 0 0 12px rgba(249, 115, 22, 0);
+                transform: scale(1.2);
+            }
+        }
 
-    .shine::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.1) 50%,
-          rgba(255, 255, 255, 0) 100%);
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
 
-    @keyframes shine {
-      0% {
-        transform: translateX(-100%) translateY(-100%) rotate(30deg);
-      }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
 
-      100% {
-        transform: translateX(100%) translateY(100%) rotate(30deg);
-      }
-    }
+        /* Hero Stats - More Balanced */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
 
-    .video-overlay {
-      background: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.9) 0%,
-          rgba(0, 0, 0, 0.7) 50%,
-          rgba(0, 0, 0, 0.9) 100%);
-    }
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            min-width: 180px;
+        }
 
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.2;
-      z-index: -1;
-    }
+        .stat-icon {
+            width: 64px;
+            height: 64px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
 
-    .orb-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
-      top: 20%;
-      left: 10%;
-    }
+        .stat-item:hover .stat-icon {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent-orange);
+        }
 
-    .orb-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
-      bottom: 20%;
-      right: 10%;
-    }
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
 
-    .day-1-bg {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
-    }
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--accent);
+            line-height: 1;
+        }
 
-    .day-2-bg {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
-    }
+        /* Day Sections - More Spacious */
+        .day-section {
+            margin-bottom: var(--section-spacing);
+            position: relative;
+        }
 
-    .day-3-bg {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
-    }
+        .day-header {
+            position: relative;
+            margin-bottom: 5rem;
+            padding: 4rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            overflow: hidden;
+        }
 
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
-    }
+        .day-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-orange);
+        }
 
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-    }
+        .day-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(249, 115, 22, 0.1);
+            border-radius: 2rem;
+        }
 
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, #06b6d4, #3b82f6);
-      border-radius: 3px;
-    }
+        .day-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
 
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
+        .day-location {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    .nav-btn {
-      padding: 12px 24px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      cursor: pointer;
-    }
+        .day-location i {
+            color: var(--accent-orange);
+        }
 
-    .nav-btn.active {
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
-      color: white;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-    }
+        /* Activity Cards - Vertical Flow */
+        .activity-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
 
-    .nav-btn:not(.active) {
-      color: rgba(255, 255, 255, 0.6);
-      background: rgba(255, 255, 255, 0.05);
-    }
+        .activity-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
 
-    .nav-btn:not(.active):hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-    }
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-orange);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-    /* New styles for the expandable section */
-    .details-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent-orange);
+        }
 
-    .details-container.expanded {
-      max-height: 2000px;
-      margin-top: 1.5rem;
-    }
+        .activity-card:hover::before {
+            opacity: 1;
+        }
 
-    .expand-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      color: #06b6d4;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-    }
+        .activity-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
 
-    .expand-btn:hover {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(6, 182, 212, 0.2);
-    }
+        .activity-emoji {
+            font-size: 3.5rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
 
-    .expand-icon {
-      transition: transform 0.4s ease;
-    }
+        .activity-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
 
-    .expand-icon.rotated {
-      transform: rotate(180deg);
-    }
+        .activity-description {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
 
-    .location-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+        .activity-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 2rem;
+        }
 
-    .location-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      transition: all 0.3s ease;
-    }
+        .activity-highlight i {
+            color: var(--accent-orange);
+        }
 
-    .location-item:hover {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
-      border-color: rgba(6, 182, 212, 0.3);
-    }
+        .activity-details {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
 
-    .location-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
-      color: white;
-      border-radius: 50%;
-      font-size: 0.875rem;
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
+        .activity-details p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0;
+        }
 
-    .timeline {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-top: 1.5rem;
-    }
+        .activity-details strong {
+            color: var(--accent);
+        }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #06b6d4, #3b82f6);
-    }
+        .activity-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 1.5rem;
-      padding-left: 1rem;
-    }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
 
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -0.5rem;
-      top: 0.25rem;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #06b6d4;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
+        .info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent-orange);
+        }
 
-    .timeline-time {
-      color: #06b6d4;
-      font-weight: 600;
-      font-size: 0.875rem;
-      margin-bottom: 0.25rem;
-    }
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
 
-    .timeline-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
+        .info-content {
+            flex: 1;
+        }
 
-    .timeline-desc {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.875rem;
-    }
-  </style>
+        .info-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        .price {
+            color: var(--accent-emerald) !important;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            margin-top: 2rem;
+        }
+
+        .timeline-toggle {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-toggle:hover {
+            background: var(--accent-orange);
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .timeline-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 1rem;
+        }
+
+        .timeline-container.expanded {
+            max-height: 2000px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 3rem 0 1rem 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                    var(--accent-orange) 0%,
+                    var(--accent-cyan) 50%,
+                    var(--accent-violet) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.25rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--accent-orange);
+            z-index: 1;
+            box-shadow: 0 0 0 4px white;
+        }
+
+        .timeline-time {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            color: var(--accent-orange);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Day Progress */
+        .day-progress {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .progress-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-bar.day-1 {
+            width: 33%;
+            background: linear-gradient(90deg, var(--accent-orange), #ffb347);
+        }
+
+        .progress-bar.day-2 {
+            width: 66%;
+            background: linear-gradient(90deg, var(--accent-cyan), #67e8f9);
+        }
+
+        .progress-bar.day-3 {
+            width: 100%;
+            background: linear-gradient(90deg, var(--accent-violet), #c4b5fd);
+        }
+
+        /* Final Section */
+        .final-section {
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            margin-top: 6rem;
+        }
+
+        .final-emoji {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .final-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .final-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 3rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                padding-top: 10rem;
+            }
+
+            .modern-nav {
+                padding: 0.5rem;
+            }
+
+            .nav-btn {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem;
+            }
+
+            .day-header {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .day-title {
+                font-size: 2.5rem;
+            }
+
+            .activity-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .activity-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .activity-emoji {
+                font-size: 3rem;
+            }
+
+            .activity-title {
+                font-size: 1.75rem;
+            }
+
+            .final-title {
+                font-size: 3rem;
+            }
+
+            .final-section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .modern-nav {
+                padding: 0.5rem;
+                border-radius: 1rem;
+            }
+
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .day-title {
+                font-size: 2rem;
+            }
+
+            .activity-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body class="relative">
-  <!-- Background Orbs -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <!-- Grid Background -->
-  <div class="fixed inset-0 grid-bg opacity-20"></div>
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 pt-6">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex items-center justify-center">
-        <div class="glass rounded-2xl px-6 py-3" id="navigation-container">
-          <div class="flex gap-2">
-            <button onclick="scrollToDay(0)" class="nav-btn active" id="nav-day-1">1 Diena</button>
-            <button onclick="scrollToDay(1)" class="nav-btn" id="nav-day-2">2 Diena</button>
-            <button onclick="scrollToDay(2)" class="nav-btn" id="nav-day-3">3 Diena</button>
-          </div>
-        </div>
-      </div>
+<body>
+    <!-- Modern Background -->
+    <div class="construction-bg">
+        <div class="construction-grid"></div>
+        <div class="construction-lines"></div>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen relative flex items-center justify-center overflow-hidden scroll-section">
-    <div class="absolute inset-0 video-overlay"></div>
+    <!-- Navigation - Only 3 Days -->
+    <nav class="modern-nav">
+        <button class="nav-btn active" onclick="scrollToDay(1)">1 Diena</button>
+        <button class="nav-btn" onclick="scrollToDay(2)">2 Diena</button>
+        <button class="nav-btn" onclick="scrollToDay(3)">3 Diena</button>
+    </nav>
 
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-the-beach-5016-large.mp4"
-        type="video/mp4">
-    </video>
-
-    <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
-      <div class="inline-block p-4 rounded-2xl glass mb-8">
-        <div class="text-cyan-400" id="wind-icon"></div>
-      </div>
-
-      <h1 class="text-5xl sm:text-7xl md:text-8xl font-black mb-6">
-        <span class="gradient-text">ISTORINĖ</span>
-        <br>
-        <span class="text-white">LENKIJA 2025</span>
-      </h1>
-
-      <p class="text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto mb-8">
-        Kelionė per Lenkijos istorijos pėdsakus.
-      </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400 mb-12">
-        <div class="flex items-center gap-2">
-          <div class="text-cyan-400" id="calendar-icon"></div>
-          <span>3 Dienos</span>
-        </div>
-        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-        <div class="flex items-center gap-2">
-          <div class="text-cyan-400" id="map-icon"></div>
-          <span>Šeimos kelionė</span>
-        </div>
-        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
-        <div class="flex items-center gap-2">
-          <div class="text-cyan-400" id="compass-icon"></div>
-          <span>20+ Objektų</span>
-        </div>
-      </div>
-
-      <button onclick="scrollToDay(0)"
-        class="inline-flex items-center gap-2 px-8 py-4 rounded-full glass hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all group">
-        <span class="text-white font-semibold">Pradėti Kelionę</span>
-        <div class="text-cyan-400 group-hover:translate-x-2 transition-transform" id="chevron-icon"></div>
-      </button>
-
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div class="animate-bounce">
-          <div class="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center">
-            <div class="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Day 1 Section -->
-  <section id="day-1" class="min-h-screen py-20 px-4 scroll-section">
-    <div class="max-w-6xl mx-auto">
-      <div class="day-1-bg rounded-3xl p-8 md:p-12 mb-16">
-        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
-          <div class="text-cyan-400" id="castle-icon"></div>
-          <span class="text-gray-300 font-medium">1 DIENA</span>
-        </div>
-
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
-          <span class="gradient-text">Varmijos Mozūrų</span>
-          <br>
-          <span class="text-white">Vaivadija</span>
-        </h2>
-
-        <div class="flex flex-wrap items-center gap-6 text-gray-400">
-          <div class="flex items-center gap-2">
-            <div class="text-cyan-400" id="pin-icon"></div>
-            <span>Šiaurinė Lenkija</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 1 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">🪖</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Vilko Irštva</h3>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <div class="badge-icon"></div>
+                <span>Odisėja • 2026
+                </span>
             </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Tai viena įdomiausių Mozūrijos krašto vietų
-              istorijos mėgėjams. Tai buvęs Hitlerio karinis štabas, iš kurio
-              Antrojo pasaulinio karo metais Hitleris vadovavo Vokietijos ginkluotosioms
-              pajėgoms – Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis
-              bunkerių buvo sunaikinti paties Hitlerio įsakymu, tačiau šiandien čia vis
-              dar galime išvysti niūrią istoriją menančių pastatų.
+
+            <h1 class="hero-title">Istorinė Lenkija</h1>
+            <p class="hero-subtitle">
+                3 dienų kelionė istorijos pėdsakais...
             </p>
 
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Hitlerio Bunkerių Kompleksas</span>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">🗓️</div>
+                    <div>
+                        <div class="stat-label">Trukmė</div>
+                        <div class="stat-value">3 Dienos</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🏛️</div>
+                    <div>
+                        <div class="stat-label">Objektai</div>
+                        <div class="stat-value">20+</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">📍</div>
+                    <div>
+                        <div class="stat-label">Maršrutas</div>
+                        <div class="stat-value">3 Regionai</div>
+                    </div>
+                </div>
             </div>
-            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-              <p class="text-cyan-300 text-sm">
-                <span class="font-semibold">Pastaba:</span> Į kainą įskaičiuotas audio gidas.
-              </p>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">12:15 – 14:15</div>
+        <!-- Day 1 -->
+        <section id="day-1" class="day-section">
+            <div class="day-header">
+                <div class="day-number">Diena 1</div>
+                <h2 class="day-title">Varmijos Mozūrų Vaivadija</h2>
+                <div class="day-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Šiaurinė Lenkija</span>
+                </div>
             </div>
-          </div>
 
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">~40,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div class="activity-flow">
+                <!-- Activity 1 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">🪖</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Vilko Irštva</h3>
+                            <p class="activity-description">
+                                Tai viena įdomiausių Mozūrijos krašto vietų istorijos mėgėjams.
+                                Tai buvęs Hitlerio karinis štabas, iš kurio Antrojo pasaulinio karo
+                                metais Hitleris vadovavo Vokietijos ginkluotosioms pajėgoms –
+                                Vermachtui. Nors artėjant Raudonajai armijai, didžioji dalis
+                                bunkerių buvo sunaikinti paties Hitlerio įsakymu, tačiau šiandien
+                                čia vis dar galime išvysti niūrią istoriją menančių pastatų.
+                            </p>
+                        </div>
+                    </div>
 
-      <!-- Activity 2 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">⛪</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Šventalieptės (Šv. Lipkos) ansamblis</h3>
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Hitlerio Bunkerių Kompleksas
+                    </div>
+
+                    <div class="activity-details">
+                        <p><strong>Pastaba:</strong> Į kainą įskaičiuotas audio gidas.</p>
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">12:15 – 14:15</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">~40,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">⛪</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Šventalieptės (Šv. Lipkos) ansamblis</h3>
+                            <p class="activity-description">
+                                Tai įspūdinga, stebuklais nuo viduramžių garsėjanti barokinė bažnyčia.
+                                Pasak padavimo, čia apsireiškė Šv. Mergelė Marija su kūdikiu rankose.
+                                Turistus bei piligrimus ši vieta traukia ne tik savo šventumu, bet ir
+                                galimybe pasiklausyti ir pamatyti „šokančius vargonus“. Iš vargonų
+                                sklinda Bacho, Šuberto ir Bethoveno melodijos, o patys vargonai yra
+                                itin puošnūs, padabinti angelų ir šventųjų skulptūromis.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Gyvas Vargonų Koncertas
+                    </div>
+
+                    <div class="activity-details">
+                        <p><strong>Pastaba:</strong> Šventalieptės „šokančiuosius vargonus“ galima išgirsti sekmadienį
+                            15 valandą.</p>
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">14:50 – 15:10</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">00,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">🪜</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Rešliaus Šv. Petro ir Povilo bažnyčia</h3>
+                            <p class="activity-description">
+                                Ši XIV a. gotikinė bažnyčia turi tris navas ir didingą bokštą,
+                                iš kurio 52 metrų aukštyje galima grožėtis Rešliaus panorama.
+                                Interjeras yra gražiai suderintas ir turtingai dekoruotas paveikslais
+                                bei šoniniais altoriais. Pagrindinis altorius yra XIX a.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Aukštasis Gotikos Perlas
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">15:20 – 15:45</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">~03,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Tai įspūdinga, stebuklais nuo viduramžių
-              garsėjanti barokinė bažnyčia. Pasak padavimo, čia apsireiškė Šv. Mergelė
-              Marija su kūdikiu rankose. Turistus bei piligrimus ši vieta traukia ne tik
-              savo šventumu, bet ir galimybe pasiklausyti ir pamatyti „šokančius
-              vargonus". Iš vargonų sklinda Bacho, Šuberto ir Bethoveno melodijos,
-              o patys vargonai yra itin puošnūs, padabinti angelų ir šventųjų
-              skulptūromis.
+
+            <div class="day-progress">
+                <div class="progress-label">
+                    <span class="progress-text">Pirmosios dienos pabaiga</span>
+                    <span class="progress-number">1 iš 3</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-bar day-1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day 2 -->
+        <section id="day-2" class="day-section">
+            <div class="day-header">
+                <div class="day-number">Diena 2</div>
+                <h2 class="day-title">Pamario Vaivadija</h2>
+                <div class="day-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rytinė Pomeranija, Gdanskas</span>
+                </div>
+            </div>
+
+            <div class="activity-flow">
+                <!-- Activity 1 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">☠️</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Štuthofo koncentracijos stovykla</h3>
+                            <p class="activity-description">
+                                Tai viena iš žymiausių nacių įkurtų stovyklų Antrojo pasaulinio karo metais.
+                                Ji pradėjo veikti 1939 m. ir tapo pirmąja už Vokietijos ribų įsteigta stovykla.
+                                Per visą jos egzistavimo laikotarpį čia buvo įkalinta apie 110 tūkstančių žmonių
+                                iš įvairių Europos šalių. Stovykloje kalėjo ir žinomi Lietuvos inteligentai,
+                                tarp jų rašytojas Balys Sruoga, savo patirtis aprašęs knygoje „Dievų miškas“.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Dievų Miškas
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">08:05 – 09:00</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">03,50 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">👑</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Marienburgo pilis</h3>
+                            <p class="activity-description">
+                                Malborko pilis – didžiausia plytinė pilis pasaulyje, pastatyta XIII a.
+                                Kryžiuočių ordino po Senosios Prūsijos užkariavimo. Per artimiausius
+                                šimtmečius pilis buvo plečiama, sustiprinta ir tapo didžiojo magistro
+                                rezidencija bei vienu svarbiausių ordino valdžios centrų. Kryžiuočiams
+                                pilis tarnavo apie pusantro šimto metų, kol 1457 m., vykstant Trylikos
+                                metų karui, ją užėmė Lenkijos kariuomenė.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Didžiausia Pilis Pasaulyje
+                    </div>
+
+                    <div class="activity-details">
+                        <p><strong>Pastaba:</strong> Malborko pilis nemokama tik pirmadieniais, galima lankyti išorinę
+                            ekspoziciją ir mažą dalį vidaus. Įprasta kaina (kitomis dienomis) – apie 80 EUR (galima
+                            lankyti visą ekspoziciją).</p>
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">09:50 – 11:55</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">00,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 3 with Timeline -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">⚓</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Gdanskas</h3>
+                            <p class="activity-description">
+                                Gdanskas – vienas iš seniausių Lenkijos miestų buvo svarbus prekybos
+                                centras Hanzos laikais tarp Lenkijos ir Vokietijos, todėl turi lenkų ir
+                                vokiečių kultūros pėdsakų. Antrojo pasaulinio karo metu miestas patyrė
+                                didžiulius nuostolius, tačiau buvo atkurtas. Mieste gausu gotikinės ir
+                                renesansinės architektūros pastatų, vyksta daugybė meno parodų, muzikos
+                                festivalių ir kitų kultūrinių renginių.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Hanzos Miestų Perlas
+                    </div>
+
+                    <div class="timeline-section">
+                        <button class="timeline-toggle" onclick="toggleGdanskTimeline()">
+                            <span>Peržiūrėti Gdansko Maršrutą</span>
+                            <i class="fas fa-chevron-down" id="timeline-icon"></i>
+                        </button>
+
+                        <div class="timeline-container" id="gdansk-timeline">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-time">- - -</div>
+                                    <div class="timeline-title">Žalieji Vartai</div>
+                                    <div class="timeline-desc">Renesansinis miesto akcentas, kadaise buvęs
+                                        reprezentaciniu įėjimu į Karališkąjį kelią.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">- - -</div>
+                                    <div class="timeline-title">Neptūno Fontanas</div>
+                                    <div class="timeline-desc">Fontanas yra vienas žymiausių Gdansko simbolių,
+                                        vaizduojantis jūros valdovą ir miesto ryšį su Baltijos regionu.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">- - -</div>
+                                    <div class="timeline-title">Artuso Teismas</div>
+                                    <div class="timeline-desc">Tai buvusi pirklių susirinkimų salė ir miesto socialinio
+                                        gyvenimo centras.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">- - -</div>
+                                    <div class="timeline-title">Gdansko Rotušė</div>
+                                    <div class="timeline-desc">Rotušė yra įspūdingas gotikinis ir renesansinis pastatas,
+                                        išsiskiriantis aukštu bokštu ir turtingais interjerais.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-time">- - -</div>
+                                    <div class="timeline-title">Šv. Marijos Katedra</div>
+                                    <div class="timeline-desc">Tai didžiausia plytų gotikos bažnyčia pasaulyje. Jos
+                                        vidus talpina 20 tūkstančių žmonių.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">Visą Dieną</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">00,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-progress">
+                <div class="progress-label">
+                    <span class="progress-text">Antrosios dienos pabaiga</span>
+                    <span class="progress-number">2 iš 3</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-bar day-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Day 3 -->
+        <section id="day-3" class="day-section">
+            <div class="day-header">
+                <div class="day-number">Diena 3</div>
+                <h2 class="day-title">Grįžimas Namo</h2>
+                <div class="day-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Visur gerai, bet namuose geriausia...</span>
+                </div>
+            </div>
+
+            <div class="activity-flow">
+                <!-- Activity 1 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">⚔️</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Žalgirio mūšio laukas</h3>
+                            <p class="activity-description">
+                                Žalgirio mūšio laukas – vieta, menanti 1410 m. įvykusį vieną
+                                didžiausių viduramžių mūšių Europoje. Čia jungtinės Lietuvos
+                                Didžiosios Kunigaikštystės ir Lenkijos Karalystės pajėgos
+                                sutriuškino Kryžiuočių ordiną, nulėmusios jo galybės saulėlydį.
+                                Šiandien mūšio laukas tapęs lankomu istoriniu objektu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Lemtinga Pergalė
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">- - -</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">00,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-emoji">😇</div>
+                        <div style="flex: 1;">
+                            <h3 class="activity-title">Šv. Brunono kalnas</h3>
+                            <p class="activity-description">
+                                Pasak daugelio istorikų, būtent šioje vietoje buvo nukirsdintas
+                                Šv. Brunonas. Lietuviams tai simbolizuoja pirmąjį Lietuvos
+                                paminėjimą rašytiniuose šaltiniuose (1009 m.). Prieš porą metų
+                                kalnas buvo praturtintas moderniu apžvalgos bokštu (15 m), kuris
+                                greitai tapo vienu iš pagrindinių Lėciaus (Gižycko) turistų
+                                traukos objektų.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="activity-highlight">
+                        <i class="fas fa-star"></i>
+                        Lietuvos Istorijos Pradžia
+                    </div>
+
+                    <div class="activity-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Laikas</div>
+                                <div class="info-value">- - -</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="info-content">
+                                <div class="info-label">Kaina</div>
+                                <div class="info-value price">00,00 EUR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-progress">
+                <div class="progress-label">
+                    <span class="progress-text">Trečiosios dienos pabaiga</span>
+                    <span class="progress-number">3 iš 3</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-bar day-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Section -->
+        <section class="final-section">
+            <div class="final-emoji">⭐</div>
+            <h2 class="final-title">Kelionės Pabaiga</h2>
+            <p class="final-subtitle">
+                Įamžinti prisiminimai ir nuostabios patirtys su šeima.
             </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Gyvas Vargonų Koncertas</span>
-            </div>
-            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-              <p class="text-cyan-300 text-sm">
-                <span class="font-semibold">Pastaba:</span> Šventalieptės „šokančiuosius vargonus" galima išgirsti
-                sekmadienį 15 valandą.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">14:50 – 15:10</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 3 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">🪜</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Rešliaus Šv. Petro ir Povilo bažnyčia</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Ši XIV a. gotikinė bažnyčia turi tris navas ir
-              didingą bokštą, iš kurio 52 metrų aukštyje galima grožėtis Rešliaus panorama.
-              Interjeras yra gražiai suderintas ir turtingai dekoruotas paveikslais bei
-              šoniniais altoriais. Pagrindinis altorius yra XIX a.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Aukštasis Gotikos Perlas</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">15:20 – 15:45</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">~03,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 4 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">🏰</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Varmės Lidzbarkas</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Kadaise Varmės Lidzbarkas buvo Varmijos
-              sostinė. Pirmieji įrašai apie šią vietovę rasti nuo 1240 metų, kuomet
-              Lecbargas (dab. Lidzbarkas) buvo užkariautas kryžiuočių. Lidzbarkas turėjo
-              net trejus miesto vartus, tačiau iki šių dienų yra išlikę
-              Viršutiniai. 1315 metais čia įkurta Šv. Apaštalų Petro ir Povilo
-              kolegijos bažnyčia. Miesto pilis pastatyta 1350–1401 metais
-              vietoje prūsų pilies, buvusios Alnos ir Simsarnos upių santakoje. Ilgą laiką
-              čia buvo Varmijos vyskupijos kapitulos rezidencija.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Vyskupų Tvirtovės Miestas</span>
-            </div>
-            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-              <p class="text-cyan-300 text-sm">
-                <span class="font-semibold">Pastaba:</span> Mieste aplankysime Viršutinius vartus, Šv. Apaštalų Petro ir
-                Povilo kolegijos bažnyčią, iš lauko apžiūrėsime pilį. Netoli miesto stovi vandens sūrimo sveikatingumo
-                bokštai.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">16:30 – Pagal Situaciją</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 5 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">🌙</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Nakvynė</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              NEAIŠKU
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Saldžių Sapnų!</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">- - -</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">- - -</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Day Progress -->
-      <div class="mt-16 pt-8 border-t border-gray-800">
-        <div class="flex items-center justify-between text-gray-400 mb-2">
-          <span class="text-sm">Pirmosios dienos pabaiga...</span>
-          <span class="text-sm">1 iš 3</span>
-        </div>
-        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-          <div class="h-full w-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Day 2 Section -->
-  <section id="day-2" class="min-h-screen py-20 px-4 scroll-section">
-    <div class="max-w-6xl mx-auto">
-      <div class="day-2-bg rounded-3xl p-8 md:p-12 mb-16">
-        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
-          <div class="text-emerald-400" id="mountain-icon"></div>
-          <span class="text-gray-300 font-medium">2 DIENA</span>
-        </div>
-
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
-          <span class="gradient-text">Pamario</span>
-          <br>
-          <span class="text-white">Vaivadija</span>
-        </h2>
-
-        <div class="flex flex-wrap items-center gap-6 text-gray-400">
-          <div class="flex items-center gap-2">
-            <div class="text-emerald-400" id="pin-icon-5"></div>
-            <span>Rytinė Pomeranija, Gdanskas</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 1 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">☠️</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Štuthofo koncentracijos stovykla</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Tai viena iš žymiausių nacių įkurtų
-              stovyklų Antrojo pasaulinio karo metais. Ji pradėjo veikti 1939 m.
-              ir tapo pirmąja už Vokietijos ribų įsteigta stovykla. Per visą jos
-              egzistavimo laikotarpį čia buvo įkalinta apie 110 tūkstančių žmonių iš
-              įvairių Europos šalių. Stovykloje kalėjo ir žinomi Lietuvos inteligentai,
-              tarp jų rašytojas Balys Sruoga, savo patirtis aprašęs knygoje „Dievų
-              miškas“. Lankant šią vietą galima išvysti išlikusius barakus, krematoriumą,
-              paminklus bei memorialines lentas, įamžinančias čia kentėjusių ir žuvusiųjų
-              atminimą.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Dievų Miškas</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">08:05 – 09:00</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">03,50 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 2 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">👑</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Marienburgo pilis</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Malborko pilis – didžiausia plytinė pilis
-              pasaulyje, pastatyta XIII a. Kryžiuočių ordino po Senosios Prūsijos
-              užkariavimo. Per artimiausius šimtmečius pilis buvo plečiama, sustiprinta ir
-              tapo didžiojo magistro rezidencija bei vienu svarbiausių ordino valdžios
-              centrų. Kryžiuočiams pilis tarnavo apie pusantro šimto metų, kol 1457 m.,
-              vykstant Trylikos metų karui, ją užėmė Lenkijos kariuomenė. Nuo to laiko
-              pilis tris šimtmečius buvo Lenkijos karalių rezidencija. Šiandien Malborko
-              kompleksas yra vienas įspūdingiausių viduramžių gynybinės architektūros
-              pavyzdžių Europoje, o 1997 m. jis įtrauktas į UNESCO pasaulio paveldo
-              sąrašą.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Didžiausia Pilis Pasaulyje</span>
-            </div>
-            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-              <p class="text-cyan-300 text-sm">
-                <span class="font-semibold">Pastaba:</span> Malborko pilis nemokama tik pirmadieniais, galima
-                lankyti išorinę ekspoziciją ir mažą dalį vidaus. Įprasta kaina (kitomis dienomis) – apie 80 EUR (galima
-                lankyti visą vidaus ekspoziciją).
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">09:50 – 11:55</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 3 - GDANSK WITH EXPANDABLE SECTION -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">⚓</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Gdanskas</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Gdanskas – vienas iš seniausių Lenkijos miestų buvo svarbus prekybos centras Hanzos laikais tarp Lenkijos
-              ir Vokietijos, todėl turi lenkų ir vokiečių kultūros pėdsakų. Antrojo pasaulinio karo metu miestas patyrė
-              didžiulius nuostolius, tačiau buvo atkurtas. Mieste gausu gotikinės ir renesansinės architektūros pastatų,
-              vyksta daugybė meno parodų, muzikos festivalių ir kitų kultūrinių renginių.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Hanzos Miestų Perlas</span>
-            </div>
-
-            <!-- Expand Button -->
-            <button onclick="toggleGdanskDetails()" class="expand-btn" id="expand-btn">
-              <span id="expand-text">Lankytini Objektai Gdanske</span>
-              <div class="expand-icon" id="expand-icon">▼</div>
+            <button class="back-to-top" onclick="scrollToTop()">
+                <span>Grįžti į pradžią</span>
+                <i class="fas fa-arrow-up"></i>
             </button>
-
-            <!-- Expandable Content -->
-            <div class="details-container" id="gdansk-details">
-              <!-- Timeline View -->
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Žalieji Vartai</div>
-                  <div class="timeline-desc">Tai renesansinis miesto akcentas, kadaise buvęs reprezentaciniu įėjimu į
-                    Karališkąjį kelią. Šiandien jie sujungia senamiestį su Motlavos upe, suteikdami puikią erdvę
-                    pasivaikščiojimams. Pastatas išsiskiria dekoratyvine manierizmo architektūra ir įspūdingomis
-                    arkadomis.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Neptūno Fontanas</div>
-                  <div class="timeline-desc">Fontanas yra vienas žymiausių Gdansko simbolių, vaizduojantis jūros valdovą
-                    ir miesto ryšį su Baltijos regionu. Jis buvo pastatytas XVII a. ir ilgus amžius puošė miesto širdį.
-                    Fontanas traukia turistus savo elegantiška bronzos skulptūra ir istorine aura. Tai neatsiejama
-                    Ilgojo Turgaus puošmena.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Artuso Teismas</div>
-                  <div class="timeline-desc">Tai buvusi pirklių susirinkimų salė ir miesto socialinio gyvenimo centras.
-                    Viduje išlikę turtingi gotikiniai ir renesansiniai interjerai, dekoruoti laivų modeliais,
-                    skulptūromis ir medžio raižiniais. Ši vieta pasakoja apie Gdansko pirklių galią ir Hanzos sąjungos
-                    įtaką. Tai viena prabangiausių istorinių erdvių mieste.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Gdansko Rotušė</div>
-                  <div class="timeline-desc">Rotušė yra įspūdingas gotikinis ir renesansinis pastatas, išsiskiriantis
-                    aukštu
-                    bokštu ir turtingais interjerais. Jo salėse kadaise posėdžiavo miesto valdžia, o šiandien čia veikia
-                    muziejus. Rotušės bokštas suteikia vieną gražiausių senamiesčio panoramų. Tai tikras architektūrinis
-                    perlas miesto širdyje.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Ilgoji Gatvė</div>
-                  <div class="timeline-desc">Viena elegantiškiausių Gdansko miesto arterijų, vedanti Karališkuoju keliu.
-                    Gatvę puošia spalvingi istoriniai mūriniai namai su siaurais, aukštais fasadais. Čia gausu kavinių,
-                    istorinių vietų ir gyvybės. Tai ideali vieta pajusti tikrąją Gdansko dvasią.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Auksiniai Vartai</div>
-                  <div class="timeline-desc">Istoriniai miesto vartai, ženklinantys įėjimą į Karališkąjį kelią. Jie buvo
-                    pastatyti XVII a. ir dekoruoti alegorinėmis dorybių skulptūromis. Vartai simbolizavo miesto
-                    ambicijas ir jo norą pademonstruoti turtą bei kultūrą. Tai vienas žaviausių renesansinių statinių
-                    Gdanske.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Šv. Marijos Katedra</div>
-                  <div class="timeline-desc">Tai didžiausia plytų gotikos bažnyčia pasaulyje. Jos
-                    vidus talpina 20 tūkstančių žmonių, o interjeras stebina monumentalumu ir šviesos žaismu. Viduje
-                    galima išvysti garsųjį astronominį laikrodį. Tai vienas svarbiausių viso Baltijos regiono
-                    architektūrinių šedevrų.
-                  </div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Marijos Gatvė</div>
-                  <div class="timeline-desc">Turbūt romantiškiausia Gdansko gatvelė su gotikiniais namais ir
-                    dekoruotomis terasomis. Čia kadaise gyveno gintaro meistrai, todėl ir šiandien gausu gintaro
-                    parduotuvėlių. Gatvelė žavi savo jaukia, viduramžiška atmosfera. Vakarais ji tampa ypatingai
-                    fotogeniška.</div>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-time">- - -</div>
-                  <div class="timeline-title">Krantinės Kranas</div>
-                  <div class="timeline-desc">Seniausias išlikęs viduramžių uosto kranas visoje Europoje. Jis atliko tiek
-                    gynybinę, tiek pakėlimo funkciją, keldamas krovinius ir saugodamas miestą. Kranas simbolizuoja
-                    Gdansko prekybinę galią Hanzos laikais. Tai unikalus technologinis ir istorinis paminklas.</div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">13:15 – Iki Nakties</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Day Progress -->
-      <div class="mt-16 pt-8 border-t border-gray-800">
-        <div class="flex items-center justify-between text-gray-400 mb-2">
-          <span class="text-sm">Antrosios dienos pabaiga...</span>
-          <span class="text-sm">2 iš 3</span>
-        </div>
-        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-          <div class="h-full w-2/3 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"></div>
-        </div>
-      </div>
+        </section>
     </div>
-  </section>
 
-  <!-- Day 3 Section -->
-  <section id="day-3" class="min-h-screen py-20 px-4 scroll-section">
-    <div class="max-w-6xl mx-auto">
-      <div class="day-3-bg rounded-3xl p-8 md:p-12 mb-16">
-        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass mb-6">
-          <div class="text-violet-400" id="anchor-icon"></div>
-          <span class="text-gray-300 font-medium">3 DIENA</span>
-        </div>
-
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
-          <span class="gradient-text">Grįžimas</span>
-          <br>
-          <span class="text-white">Namo</span>
-        </h2>
-
-        <div class="flex flex-wrap items-center gap-6 text-gray-400">
-          <div class="flex items-center gap-2">
-            <div class="text-violet-400" id="pin-icon-8"></div>
-            <span>Visur gerai, bet namuose geriausia...</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 1 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">⚔️</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Žalgirio mūšio laukas</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Žalgirio mūšio laukas – vieta, menanti 1410 m.
-              įvykusį vieną didžiausių viduramžių mūšių Europoje. Čia jungtinės
-              Lietuvos Didžiosios Kunigaikštystės ir Lenkijos Karalystės pajėgos
-              sutriuškino Kryžiuočių ordiną, nulėmusios jo galybės saulėlydį. Šiandien
-              mūšio laukas tapęs lankomu istoriniu objektu: čia stovi didžiulis obeliskas,
-              puoštas ir lietuviškais simboliais.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Lemtinga Pergalė</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">- - -</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Activity 2 -->
-      <div class="glass rounded-2xl p-6 mb-8 card-hover">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="text-3xl">😇</div>
-          <div class="flex-1">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="text-cyan-400" id="pin-icon-2"></div>
-              <h3 class="text-2xl font-bold text-white">Šv. Brunono kalnas</h3>
-            </div>
-            <p class="text-gray-300 text-lg mb-4">
-              Pasak daugelio istorikų, būtent šioje vietoje buvo
-              nukirsdintas Šv. Brunonas. Lietuviams tai simbolizuoja pirmąjį Lietuvos paminėjimą
-              rašytiniuose šaltiniuose (1009 m.). Prieš porą metų kalnas buvo praturtintas moderniu apžvalgos bokštu
-              (15 m), kuris greitai tapo vienu iš pagrindinių Lėciaus (Gižycko) turistų traukos objektų.
-              Iš medžio ir plieno pagaminta konstrukcija harmoningai įsilieja į kalvos kraštovaizdį
-              ir puikiai papildo šios vietos dvasinį charakterį.
-            </p>
-
-            <div
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
-              <div class="text-cyan-400" id="sparkle-icon"></div>
-              <span class="text-cyan-300 text-sm font-medium">Lietuvos Istorijos Pradžia</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="clock-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Laikas</div>
-              <div class="text-white font-semibold">- - -</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-            <div class="text-gray-400" id="wallet-icon"></div>
-            <div>
-              <div class="text-sm text-gray-400">Kaina</div>
-              <div class="text-lg font-bold text-emerald-400">00,00 EUR</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Day Progress -->
-      <div class="mt-16 pt-8 border-t border-gray-800">
-        <div class="flex items-center justify-between text-gray-400 mb-2">
-          <span class="text-sm">Trečiosios dienos pabaiga...</span>
-          <span class="text-sm">3 iš 3</span>
-        </div>
-        <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-          <div class="h-full w-full rounded-full bg-gradient-to-r from-violet-500 to-purple-500"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final Section -->
-  <section class="min-h-screen py-20 px-4 scroll-section relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-80"></div>
-
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <div class="mb-12">
-        <div class="inline-block p-4 rounded-full glass">
-          <div class="text-cyan-400" id="sparkle-icon-8"></div>
-        </div>
-      </div>
-
-      <h2 class="text-4xl sm:text-5xl md:text-6xl font-black mb-8">
-        <span class="gradient-text">KELIONĖS</span>
-        <br>
-        <span class="text-white">PABAIGA</span>
-      </h2>
-
-      <p class="text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl mx-auto">
-        Įamžinti prisiminimai.
-      </p>
-
-      <div
-        class="inline-flex items-center gap-2 px-8 py-4 rounded-full glass hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all cursor-pointer group"
-        onclick="scrollToTop()">
-        <span class="text-white font-semibold">↑ Į pradžią ↑</span>
-        <div class="text-cyan-400 group-hover:translate-x-2 transition-transform" id="chevron-icon-2"></div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Initialize Lucide icons
-    document.addEventListener('DOMContentLoaded', function () {
-      // Create Lucide icons
-      const icons = {
-        'wind-icon': lucideReact.Wind,
-        'calendar-icon': lucideReact.Calendar,
-        'map-icon': lucideReact.MapPin,
-        'compass-icon': lucideReact.Compass,
-        'chevron-icon': lucideReact.ChevronRight,
-        'castle-icon': lucideReact.Castle,
-        'pin-icon': lucideReact.MapPin,
-        'pin-icon-2': lucideReact.MapPin,
-        'sparkle-icon': lucideReact.Sparkles,
-        'clock-icon': lucideReact.Clock,
-        'wallet-icon': lucideReact.Wallet,
-        'pin-icon-3': lucideReact.MapPin,
-        'sparkle-icon-2': lucideReact.Sparkles,
-        'clock-icon-2': lucideReact.Clock,
-        'wallet-icon-2': lucideReact.Wallet,
-        'pin-icon-4': lucideReact.MapPin,
-        'sparkle-icon-3': lucideReact.Sparkles,
-        'clock-icon-3': lucideReact.Clock,
-        'wallet-icon-3': lucideReact.Wallet,
-        'mountain-icon': lucideReact.Mountain,
-        'pin-icon-5': lucideReact.MapPin,
-        'pin-icon-6': lucideReact.MapPin,
-        'sparkle-icon-4': lucideReact.Sparkles,
-        'clock-icon-4': lucideReact.Clock,
-        'wallet-icon-4': lucideReact.Wallet,
-        'pin-icon-7': lucideReact.MapPin,
-        'sparkle-icon-5': lucideReact.Sparkles,
-        'clock-icon-5': lucideReact.Clock,
-        'wallet-icon-5': lucideReact.Wallet,
-        'anchor-icon': lucideReact.Anchor,
-        'pin-icon-8': lucideReact.MapPin,
-        'pin-icon-9': lucideReact.MapPin,
-        'sparkle-icon-6': lucideReact.Sparkles,
-        'clock-icon-6': lucideReact.Clock,
-        'wallet-icon-6': lucideReact.Wallet,
-        'pin-icon-10': lucideReact.MapPin,
-        'sparkle-icon-7': lucideReact.Sparkles,
-        'clock-icon-7': lucideReact.Clock,
-        'wallet-icon-7': lucideReact.Wallet,
-        'sparkle-icon-8': lucideReact.Sparkles,
-        'chevron-icon-2': lucideReact.ChevronRight
-      };
-
-      // Render all icons
-      Object.keys(icons).forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-          const Icon = icons[id];
-          const iconElement = Icon({ size: 24 });
-          element.innerHTML = iconElement.outerHTML || '';
+    <script>
+        // Navigation highlighting
+        function updateNavigation(dayNumber) {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn')[dayNumber - 1]?.classList.add('active');
         }
-      });
 
-      // Create particles
-      createParticles();
+        // Scroll to day
+        function scrollToDay(dayNumber) {
+            const element = document.getElementById(`day-${dayNumber}`);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                updateNavigation(dayNumber);
+            }
+        }
 
-      // Mouse parallax effect
-      document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            updateNavigation(1);
+        }
 
-        const orbs = document.querySelectorAll('.orb');
-        orbs.forEach(orb => {
-          orb.style.transform = `translate(${x}px, ${y}px)`;
+        // Timeline toggle
+        function toggleGdanskTimeline() {
+            const timeline = document.getElementById('gdansk-timeline');
+            const icon = document.getElementById('timeline-icon');
+
+            timeline.classList.toggle('expanded');
+
+            if (timeline.classList.contains('expanded')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Update navigation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.day-section');
+            const navHeight = 100;
+
+            let currentSection = 0;
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= navHeight) {
+                    currentSection = index + 1;
+                }
+            });
+
+            updateNavigation(currentSection || 1);
         });
 
-        const grid = document.querySelector('.grid-bg');
-        if (grid) {
-          grid.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
-        }
-      });
+        // Add parallax effect to background
+        document.addEventListener('mousemove', (e) => {
+            const grid = document.querySelector('.construction-grid');
+            const lines = document.querySelector('.construction-lines');
 
-      // Set up Intersection Observer for navigation highlighting
-      setupNavigationObserver();
-    });
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    // Gdansk expandable section function
-    function toggleGdanskDetails() {
-      const details = document.getElementById('gdansk-details');
-      const expandIcon = document.getElementById('expand-icon');
-      const expandText = document.getElementById('expand-text');
-      const expandBtn = document.getElementById('expand-btn');
-
-      if (details.classList.contains('expanded')) {
-        details.classList.remove('expanded');
-        expandIcon.classList.remove('rotated');
-        expandText.textContent = 'Peržiūrėti Gdansko Maršrutą';
-        expandBtn.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2))';
-      } else {
-        details.classList.add('expanded');
-        expandIcon.classList.add('rotated');
-        expandText.textContent = 'Paslėpti Detales';
-        expandBtn.style.background = 'linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3))';
-
-        // Smooth scroll to show the expanded content
-        setTimeout(() => {
-          details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 300);
-      }
-    }
-
-    function createParticles() {
-      const container = document.querySelector('body');
-      if (!container) return;
-
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.cssText = `
-                    position: fixed;
-                    width: ${Math.random() * 3 + 1}px;
-                    height: ${Math.random() * 3 + 1}px;
-                    background: rgba(255, 255, 255, ${0.05 + Math.random() * 0.1});
-                    border-radius: 50%;
-                    top: ${Math.random() * 100}vh;
-                    left: ${Math.random() * 100}vw;
-                    pointer-events: none;
-                    z-index: -1;
-                `;
-
-        // Animation
-        particle.animate([
-          { transform: 'translateY(0) translateX(0)', opacity: 0 },
-          { transform: `translateY(${Math.random() * -1000}px) translateX(${(Math.random() - 0.5) * 200}px)`, opacity: 1 },
-          { transform: `translateY(${Math.random() * -1000}px) translateX(${(Math.random() - 0.5) * 200}px)`, opacity: 0 }
-        ], {
-          duration: Math.random() * 10000 + 10000,
-          delay: Math.random() * 5000,
-          iterations: Infinity
+            if (grid) grid.style.transform = `translate(${x}px, ${y}px)`;
+            if (lines) lines.style.transform = `translate(${-x * 0.5}px, ${-y * 0.5}px)`;
         });
 
-        container.appendChild(particle);
-      }
-    }
+        // Add fade-in animation for cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    function setupNavigationObserver() {
-      // Create observer to track which day is in view
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const sectionId = entry.target.id;
-              const dayNumber = sectionId.split('-')[1];
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-              // Update navigation buttons
-              updateNavigation(parseInt(dayNumber) - 1);
-            }
-          });
-        },
-        {
-          threshold: 0.5, // When 50% of the section is visible
-          rootMargin: '-20% 0px -20% 0px' // Adjust the viewport area
-        }
-      );
+        // Observe activity cards
+        document.querySelectorAll('.activity-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
 
-      // Observe all day sections
-      ['day-1', 'day-2', 'day-3'].forEach(id => {
-        const section = document.getElementById(id);
-        if (section) {
-          observer.observe(section);
-        }
-      });
-    }
-
-    function updateNavigation(activeIndex) {
-      // Remove active class from all buttons
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.classList.add('text-gray-400');
-      });
-
-      // Add active class to current button
-      const activeButton = document.getElementById(`nav-day-${activeIndex + 1}`);
-      if (activeButton) {
-        activeButton.classList.add('active');
-        activeButton.classList.remove('text-gray-400');
-      }
-    }
-
-    function scrollToDay(dayIndex) {
-      const daySections = ['day-1', 'day-2', 'day-3'];
-      const section = document.getElementById(daySections[dayIndex]);
-      if (section) {
-        // Update navigation immediately
-        updateNavigation(dayIndex);
-
-        // Scroll to section
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Add CSS animation for fade-in
-    const style = document.createElement('style');
-    style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .animate-fade-in {
-                animation: fadeIn 0.6s ease-out forwards;
-            }
-            .particle {
-                position: fixed;
-                pointer-events: none;
-                z-index: -1;
-            }
-        `;
-    document.head.appendChild(style);
-  </script>
+        // Observe day headers
+        document.querySelectorAll('.day-header').forEach(header => {
+            header.style.opacity = '0';
+            header.style.transform = 'translateY(20px)';
+            header.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(header);
+        });
+    </script>
 </body>
 
 </html>
