@@ -24,6 +24,7 @@
             --bg-gradient: linear-gradient(135deg, #f0f5ff 0%, #e6f0ff 100%);
             --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --random: #00796b;
         }
 
         * {
@@ -751,6 +752,86 @@
             }
         }
 
+        .tab-btn.random.active {
+            background: var(--random);
+        }
+
+        .random .route-header {
+            background: linear-gradient(135deg, var(--random), #009688);
+        }
+
+        .random .timeline-time {
+            color: var(--random);
+        }
+
+        .random .timeline-item::before {
+            background: var(--random);
+            box-shadow: 0 0 0 2px var(--random);
+        }
+
+        /* Random trips grid */
+        .random-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .random-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--random);
+        }
+
+        .random-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .random-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .random-card-icon {
+            color: var(--random);
+            font-size: 1.2rem;
+        }
+
+        .random-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .random-card-content {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .random-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .random-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 576px) {
             .logo {
                 flex-direction: column;
@@ -803,6 +884,9 @@
 
         <!-- Navigation -->
         <nav class="nav-tabs">
+            <button class="tab-btn random" data-tab="random">
+                <i class="fas fa-shuffle"></i>Atsitiktiniai Pasiūlymai
+            </button>
             <button class="tab-btn future active" data-tab="future">
                 <i class="fa-solid fa-water"></i>Panemunių RP
             </button>
@@ -812,13 +896,71 @@
             <button class="tab-btn gauja" data-tab="gauja">
                 <i class="fas fa-mountain"></i>Gaujos NP
             </button>
-            <button class="tab-btn lenkija" data-tab="lenkija">
-                <i class="fas fa-external-link-alt"></i>PLACEHOLDER
-            </button>
         </nav>
 
         <!-- Content Sections -->
-        <!-- Anykščių-Zarasų maršrutas -->
+
+        <!-- Atsitiktinės trumpos kelionės -->
+        <section id="random" class="content-section">
+            <div class="route-card random">
+                <div class="route-header">
+                    <div class="route-icon"><i class="fas fa-shuffle"></i></div>
+                    <h2 class="route-title">Atsitiktinės trumpos kelionės</h2>
+                </div>
+                <div class="route-content">
+
+                    <div class="random-grid">
+
+                        <div class="random-card">
+                            <div class="random-card-header">
+                                <i class="fas fa-tree random-card-icon"></i>
+                                <div class="random-card-title">Tytuvėnų RP</div>
+                            </div>
+                            <div class="random-card-content">
+                                Tytuvėnų bernardinų vienuolynas, Giliaus ežero pažintinis takas, Akmenų rūžos pažintis
+                                takas, Šiluva
+                            </div>
+                            <div class="random-card-footer">
+                                <span><i class="fas fa-clock"></i> 3–4 val. (be kelionės)</span>
+                                <span><i class="fas fa-hiking"></i> Lengva</span>
+                            </div>
+                        </div>
+
+                        <div class="random-card">
+                            <div class="random-card-header">
+                                <i class="fas fa-tree random-card-icon"></i>
+                                <div class="random-card-title">Aplink Trakus</div>
+                            </div>
+                            <div class="random-card-content">
+                                Strėvos žaliasis takas, Aleksandriškių basakojų takas, Lentvario dvaras bei bažnyčia,
+                                Stirnių piliakalnis
+                            </div>
+                            <div class="random-card-footer">
+                                <span><i class="fas fa-clock"></i> 5–6 val. (be kelionės)</span>
+                                <span><i class="fas fa-hiking"></i> Vidutinė</span>
+                            </div>
+                        </div>
+
+                        <div class="random-card">
+                            <div class="random-card-header">
+                                <i class="fas fa-tree random-card-icon"></i>
+                                <div class="random-card-title">Rumšiškių šilas</div>
+                            </div>
+                            <div class="random-card-content">
+                                Lietuvos etnografijos muziejus, Mergakalnio regykla, Vieškūnų piliakalnis, Salomėjos Nėries muziejus
+                            </div>
+                            <div class="random-card-footer">
+                                <span><i class="fas fa-clock"></i> 2–3 val. (be kelionės)</span>
+                                <span><i class="fas fa-hiking"></i> Lengva</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panemunių RP -->
         <section id="future" class="content-section active">
             <div class="route-card future">
                 <div class="route-header">
@@ -826,81 +968,95 @@
                     <h2 class="route-title">Panemunių RP maršrutas</h2>
                 </div>
                 <div class="route-content">
-                    
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-time">08:30</div>
-                                <div class="timeline-location">Išvykstame</div>
-                                <div class="timeline-description">Prieš išeinant pro duris, svarbu pasitikrinti, ar
-                                    viską pasiėmėte!</div>
-                            </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">10:50 – 12:50</div>
-                                <div class="timeline-location">Gelgaudiškio dvaro parkas</div>
-                                <div class="timeline-description">Gelgaudiškyje ant Nemuno kranto stovi vienas didžiausių dvarų
-                                    Lietuvoje – Gelgaudiškio dvaras. Dydžiu išsiskiria ir šalia dvaro rūmų esantis dvaro parkas,
-                                    kurio plotas siekia 118 ha. Į rūmus vedanti ketureilė sidabrinių klevų alėja, dvaro parke
-                                    Žvaigžde vadinama aikštelė, terasose užveistas sodas, Acesoriaus kapas ir Velnio kalnas –
-                                    keletas vietų, kurias verta aplankyti vaikščiojant parko takais. Gelgaudiškio pažintinis
-                                    takas – tai maršrutas, kuriuo einant galima ne tik pasigrožėti dvaro rūmais ir didžiuliu parku,
-                                    bet ir pasiskaityti legendomis apipintų istorijų.</div>
-                            </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:30</div>
+                            <div class="timeline-location">Išvykstame</div>
+                            <div class="timeline-description">Prieš išeinant pro duris, svarbu pasitikrinti, ar
+                                viską pasiėmėte!</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">13:10 – 14:50</div>
-                                <div class="timeline-location">Plokščių pažintinis takas</div>
-                                <div class="timeline-description">Tikriausiai labiausiai turistus traukiantis lankytinas objektas
-                                    Plokščiuose yra Vaiguvos gatvė–upė. Kaip tik ties ja prasideda Plokščių pažintinis takas,
-                                    kuris ne tik kurį laiką veda palei šią „gatvę“, bet ir aprodo kitas gyvenvietės įdomias vietas.
-                                    Vincas Kudirka šių apylinkių gamtovaizdį vadino Alpėmis.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:50 – 12:50</div>
+                            <div class="timeline-location">Gelgaudiškio dvaro parkas</div>
+                            <div class="timeline-description">Gelgaudiškyje ant Nemuno kranto stovi vienas didžiausių
+                                dvarų
+                                Lietuvoje – Gelgaudiškio dvaras. Dydžiu išsiskiria ir šalia dvaro rūmų esantis dvaro
+                                parkas,
+                                kurio plotas siekia 118 ha. Į rūmus vedanti ketureilė sidabrinių klevų alėja, dvaro
+                                parke
+                                Žvaigžde vadinama aikštelė, terasose užveistas sodas, Acesoriaus kapas ir Velnio kalnas
+                                –
+                                keletas vietų, kurias verta aplankyti vaikščiojant parko takais. Gelgaudiškio pažintinis
+                                takas – tai maršrutas, kuriuo einant galima ne tik pasigrožėti dvaro rūmais ir didžiuliu
+                                parku,
+                                bet ir pasiskaityti legendomis apipintų istorijų.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">15:10 - 15:25</div>
-                                <div class="timeline-location">Žemosios Panemunės I piliakalnis</div>
-                                <div class="timeline-description">Piliakalnis yra ant kairiojo Nemuno kranto aukštumos kyšulio. 
-                                    Į pietryčius nuo piliakalnio yra papėdės gyvenvietė, kurioje rasta graikiška Romos imperatoriaus
-                                    Marko Aurelijaus moneta. Aikštelėje įrengta nedidelė poilsiavietė, iš jos atsiveria puikus vaizdas
-                                    į Nemuno slėnį.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:10 – 14:50</div>
+                            <div class="timeline-location">Plokščių pažintinis takas</div>
+                            <div class="timeline-description">Tikriausiai labiausiai turistus traukiantis lankytinas
+                                objektas
+                                Plokščiuose yra Vaiguvos gatvė–upė. Kaip tik ties ja prasideda Plokščių pažintinis
+                                takas,
+                                kuris ne tik kurį laiką veda palei šią „gatvę“, bet ir aprodo kitas gyvenvietės įdomias
+                                vietas.
+                                Vincas Kudirka šių apylinkių gamtovaizdį vadino Alpėmis.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">16:00 – 16:10</div>
-                                <div class="timeline-location">Vilkijos keltas</div>
-                                <div class="timeline-description">„Vilkynė“ – upinis motorinis keltas per Nemuną, reguliariai
-                                    perkeliantis keleivius ir transporto priemones tarp Vilkijos (Kauno r.) ir Pavilkijo (Šakių r.).
-                                    Tai vienintelis per Nemuno upę keliantis keltas Lietuvoje.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:10 - 15:25</div>
+                            <div class="timeline-location">Žemosios Panemunės I piliakalnis</div>
+                            <div class="timeline-description">Piliakalnis yra ant kairiojo Nemuno kranto aukštumos
+                                kyšulio.
+                                Į pietryčius nuo piliakalnio yra papėdės gyvenvietė, kurioje rasta graikiška Romos
+                                imperatoriaus
+                                Marko Aurelijaus moneta. Aikštelėje įrengta nedidelė poilsiavietė, iš jos atsiveria
+                                puikus vaizdas
+                                į Nemuno slėnį.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">16:15 – 16:30</div>
-                                <div class="timeline-location">Ringovės piliakalnis</div>
-                                <div class="timeline-description">Ringovės piliakalnis vadinamas Pilike
-                                    arba Linksmuoju kalnu. Šis Ringovės etnologiniame draustinyje, dešiniajame
-                                    Nemuno kranto kyšulyje, suformuotame Ringovės ir Krestinavos upelių daubų,
-                                    stūksantis piliakalnis yra svarbus lietuvių kovų su kryžiuočiais paminklas.
-                                    Ant jo stovėjo senuosiuose metraščiuose 1364 m. minima Ringės medinė pilis.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00 – 16:10</div>
+                            <div class="timeline-location">Vilkijos keltas</div>
+                            <div class="timeline-description">„Vilkynė“ – upinis motorinis keltas per Nemuną,
+                                reguliariai
+                                perkeliantis keleivius ir transporto priemones tarp Vilkijos (Kauno r.) ir Pavilkijo
+                                (Šakių r.).
+                                Tai vienintelis per Nemuno upę keliantis keltas Lietuvoje.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">16:40 – 16:55</div>
-                                <div class="timeline-location">Seredžiaus piliakalnis</div>
-                                <div class="timeline-description">Tvirtovės tipo Seredžiaus piliakalnis, vadinamas
-                                    Palemono kalnu, yra dešiniajame Nemuno slėnio iškyšulyje. XIII–XIV a. čia stovėjo Pieštvės pilis,
-                                    turėjusi užtikrinti ne tik Nemuno, bet ir Dubysos žemupio gynybą. Pieštvės
-                                    pilis ilgai atlaikė Kryžiuočių ordino puolimus, nes buvo įrengta patogioje
-                                    gynybai vietoje. Pirmą kartą pilis minima 1293 metais.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:15 – 16:30</div>
+                            <div class="timeline-location">Ringovės piliakalnis</div>
+                            <div class="timeline-description">Ringovės piliakalnis vadinamas Pilike
+                                arba Linksmuoju kalnu. Šis Ringovės etnologiniame draustinyje, dešiniajame
+                                Nemuno kranto kyšulyje, suformuotame Ringovės ir Krestinavos upelių daubų,
+                                stūksantis piliakalnis yra svarbus lietuvių kovų su kryžiuočiais paminklas.
+                                Ant jo stovėjo senuosiuose metraščiuose 1364 m. minima Ringės medinė pilis.</div>
+                        </div>
 
-                            <div class="timeline-item">
-                                <div class="timeline-time">19:40</div>
-                                <div class="timeline-location">Grįžimas namo</div>
-                                <div class="timeline-description">Kelionės pabaiga.</div>
-                            </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:40 – 16:55</div>
+                            <div class="timeline-location">Seredžiaus piliakalnis</div>
+                            <div class="timeline-description">Tvirtovės tipo Seredžiaus piliakalnis, vadinamas
+                                Palemono kalnu, yra dešiniajame Nemuno slėnio iškyšulyje. XIII–XIV a. čia stovėjo
+                                Pieštvės pilis,
+                                turėjusi užtikrinti ne tik Nemuno, bet ir Dubysos žemupio gynybą. Pieštvės
+                                pilis ilgai atlaikė Kryžiuočių ordino puolimus, nes buvo įrengta patogioje
+                                gynybai vietoje. Pirmą kartą pilis minima 1293 metais.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-time">19:40</div>
+                            <div class="timeline-location">Grįžimas namo</div>
+                            <div class="timeline-description">Kelionės pabaiga.</div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- Pietų Vidžemės maršrutas -->
@@ -1022,7 +1178,8 @@
                             <div class="timeline-time">11:15 – 12:00</div>
                             <div class="timeline-location">Siguldos senoji pilis</div>
                             <div class="timeline-description">1207 m. pastatyta Livonijos ordino pilis iš
-                                pradžių buvo suprojektuota kaip <i>castellum</i> tipo tvirtovė, bet vėliau buvo perstatyta į
+                                pradžių buvo suprojektuota kaip <i>castellum</i> tipo tvirtovė, bet vėliau buvo
+                                perstatyta į
                                 vienuolyno tipo pastatą. Su šaunamųjų ginklų plėtra viduramžių tvirtovės palaipsniui
                                 prarado savo pirminę reikšmę ir buvo sunaikintos XVIII a. pradžioje per Šiaurės karą.
                                 Nuo 2011 m. rekonstrukcijos pilis yra atvira lankytojams.</div>
